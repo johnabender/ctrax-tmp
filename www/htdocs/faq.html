@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index">
+
+
+<title>Ctrax FAQ</title>
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" 
+href="styles/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" 
+href="styles/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" 
+href="styles/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" 
+media="projection" href="styles/projection.css">
+</head><body dir="ltr" lang="en">
+
+<div id="title" dir="ltr" lang="en">
+<table width="100%" border="0">
+  <tr>
+    <td><a href="index.html"><img src="images/ctrax-logo2b_128.png" width="128" height="128" alt="Ctrax logo" border=0></a></td>
+    <td><h1>Ctrax Quick Answers</h1></td>
+  </tr>
+</table>
+</div>
+
+<div id="page" dir="ltr" lang="en"><!-- start page -->
+<div id="content" dir="ltr" lang="en">
+
+<ul>
+  <li><a class="reference" href="#quick-guide">Quick Guide to Tracking</a></li>
+  <li><a class="reference" href="#faq">Frequently Asked Questions</a></li>
+  <ul>
+    <li><a class="reference" href="#faq-2d">How important is it that the arena be 2D?</a></li>
+    <li><a class="reference" href="#faq-avi">Why won't Ctrax read my movie?</a></li>
+    <li><a class="reference" href="#faq-time">Can I speed Ctrax up?</a></li>
+    <li><a class="reference" href="#faq-matvar">How do I access the raw data on fly movements?</a></li>
+    <li><a class="reference" href="#faq-help">I have a question that isn't answered here. How do I get help?</a></li>
+  </ul>
+</ul>
+
+<hr class="h2-divider"><h2><a name="quick-guide">Quick Guide to Tracking</a></h2>
+
+<h3>Don't be impatient!</h3>
+
+<p>Tracking animals in video is a very hard problem, even though it is very easy for the human eye. (This fact ought to teach us something about the evolution of our neural circuitry for vision.) Ctrax does its best, but it needs all the help you can give it. Ctrax is optimized to track adult fruit flies (<i>D. melanogaster</i>) walking in a non-varying, two-dimensional space, and any other conditions may result in widely varying outcomes.</p>
+
+<p>This so-called "quick" guide gives the shortest sequence of steps required to achieve reliable tracking results.</p>
+
+<ol>
+  <li>Design your arena to produce good (i.e., easily trackable) movies. Good movies are more likely to be produced in arenas that <a href="install.html#arena-and-video-requirements">meet the following criteria</a>:</li>
+  <ul>
+    <li><b><i>Flies' movements are constrained to two dimensions.</i></b> This is not in any way optional. Flies cannot crawl up the walls or fly away. Best results are achieved by clipping the flies' wings and using heated walls to keep them in the center of the arena (though heated walls require an actively cooled floor). Simpler, alternate arena designs have been published, as well (see <a href="http://dx.doi.org/10.1371/journal.pone.0008793">Simon and Dickinson, 2010</a> and <a href="http://dx.doi.org/10.3389/fnins.2010.00205">White, et al., 2010</a>).</li>
+    <li><b><i>The background is static and consistently provides high luminance contrast with the flies' bodies.</i></b> Note that standard incandescent (and fluorescent) lighting flickers at 50/60 Hz, yielding video frames that can vary in lighting quality and hinder automatic tracking. LED lighting is recommended, and in particular, infrared LEDs can be used to light the arena quite brightly without affecting the flies.</li>
+    <li><b><i>All flies are approximately the same size and have a constant, elliptical shape.</i></b> This is not an issue when tracking adult fruit flies (or <a href="http://dx.doi.org/10.1242/jeb.056481">cockroaches</a>), but will result in tracking errors in videos of larvae or mixed species.</li>
+  </ul>
+  <br>
+  <li>See step 1. Don't skip it. You can go ahead and try tracking poor videos, but you'll have only yourself to blame.</li>
+  <br>
+  <li>Download and install <a href="https://sourceforge.net/projects/ctrax/files/Ctrax%20in%20Windows/">Ctrax for Windows</a>, <a href="https://sourceforge.net/projects/ctrax/files/Ctrax%20in%20Mac%20OS/">Ctrax for Mac</a> or <a href="https://sourceforge.net/projects/ctrax/files/Ctrax%20in%20Linux/">Ctrax for Ubuntu Linux</a> (or follow the <a href="install.html#ubuntu-package">Linux repository instructions</a>). You can also install from source, but in that case, you probably need the <a href="install.html">full installation instructions</a>.</li>
+  <br>
+  <li>Open a trackable video. The most common are probably AVI movies, but there are <a href="install.html#input-video-formats">other options</a>. Note that virtually all video compression codecs lose data, meaning that tracking results may be affected negatively.</li>
+  <br>
+  <li>Run the Tracking Wizard (Track->Tracking Wizard). The wizard will guide you through configuring the most common and important settings. There are many additional settings available through the <a href="ctrax.html">Settings</a> menu, as well.</li>
+  <br>
+  <li>Before analyzing the data, fix the inevitable tracking errors. Rather than fixing them, it is faster in the long run to prevent tracking errors by using a better arena setup or altering some of the myriad tracking parameters. However, some number of errors will always remain.</li>
+  <ol>
+    <li>Export the data for Matlab (File->Export as MAT-file).</li>
+    <li>Download the <a href="https://sourceforge.net/projects/ctrax/files/Matlab%20complete/">Ctrax Matlab tools</a> (you will also need the <a href="http://www.mathworks.com/products/image/">Matlab Image Processing Toolbox</a> and the <a href="http://www.mathworks.com/products/statistics/">Matlab Statistics Toolbox</a>). <a href="install.html#matlab-toolboxes-installation">Install them</a> by unzipping the tools file and copying the unzipped Matlab code to a known location.</li>
+    <li>Run Matlab and add all of the Ctrax tools directories and subdirectories to your path.</li>
+    <li>Type <tt>FixErrors</tt> to run the <a href="fixerrors.html">FixErrors GUI</a>.</li>
+    <li>In FixErrors, open the MAT-file you exported from Ctrax. It will prompt you for the number of camera pixels per millimeter, and the number of camera frames per second. If you don't know, it's best to enter 1 for both, and then your fly speeds will be in pixels/frame rather than mm/s.</li>
+    <li>FixErrors will search for &quot;suspicious&quot; sequences of tracking data and give you tools to correct them. See the <a href="fixerrors.html">FixErrors GUI instructions</a> for details on usage.</li>
+  </ol>
+  <br>
+  <li>Analyze your data further in the environment of your choice. We provide the <a href="bmat.html">BehavioralMicroarray Toolbox</a> for Matlab and additionally recommend the <a href="http://jaaba.sourceforge.net/">JAABA</a> tools. Of course, there is a <a href="http://www.mathworks.com/matlabcentral/fileexchange/">wide spectrum</a> of other Matlab analysis tools available, and Matlab data can be exported into other formats, as well.</li>
+</ol>
+
+<hr class="h2-divider"><h2><a name="faq">Frequently Asked Questions</a></h2>
+
+<h4><a name="faq-2d">How important is it that the arena be 2D?</a></h4>
+<p>It's critical. The tracking algorithm will not work well or at all if flies regularly change shape (crawl up walls), change size (come closer to the camera), or occlude each other.</p>
+
+<h4><a name="faq-avi">Why won't Ctrax read my movie?</a></h4>
+<p>Ctrax will only read <a href="http://code.astraw.com/projects/motmot/fly-movie-format.html">FlyMovieFormat</a> (FMF) videos, FMF derivatives, and AVI videos which are either uncompressed or are readable by <a href="http://opencv.org/">OpenCV</a>. There are too many video formats for us to support them all, but there are free software packages on the Internet that will allow you to convert your movies to an AVI. See the detailed discussion of <a href="install.html#input-video-formats">input video formats</a>. We also provide the <a href="any2ufmf.html">any2ufmf</a> program to help converting AVI files to &mu;FMFs, which are many times smaller and tracked equally well (and more quickly) by Ctrax.</p>
+<p>If you have an uncompressed AVI video that Ctrax will not read, we may be able to help. Send an email to the <a href="http://groups.google.com/group/ctrax">Ctrax Google Group</a>.</p>
+
+<h4><a name="faq-time">Can I speed Ctrax up?</a></h4>
+<p>Several factors can influence how long Ctrax requires to process movies. To make it go faster, try the following:</p>
+<ul>
+  <li>Decrease the frame rate. Every frame Ctrax tracks requires more time. The original publication used 20 frames per second, and results have been published with as few as 5 fps. Just don't go so low that Ctrax has difficulty telling which fly is which between frames.</li>
+  <li>Make the tracking easier (see step 1 in the <a href="#quick-guide">Quick Guide</a> above). Good videos can easily track 2-3 times faster than bad videos. In addition, proper configuration of the <a href="ctrax.html">tracking settings</a> will improve both quality and speed.</li>
+  <li>Decrease the video resolution. Larger frames take more time to load and process, and may not improve tracking quality. 4 pixels per millimeter is a reasonable benchmark.</li>
+  <li>Track fewer flies. The relationship between the number of flies in a video and its processing time is sublinear but still significant.</li>
+  <li>Decrease the display's refresh rate using the "rewind" button on the Ctrax window, or eliminate the display altogether by running Ctrax from the command line.</li>
+  <li>Multi-core CPUs will not speed up Ctrax, but if you have sufficient RAM, you can use multiple instances of Ctrax to process different movies simultaneously on a multi-core machine.</li>
+</ul>
+<p>Tracking rates of 1-2 frames per second on a circa-2009 computer are not unreasonable. Ctrax versions >= 0.4 are approximately twice as fast as earlier versions.</p>
+
+<h4><a name="faq-matvar">How do I access the raw data on fly movements?</a></h4>
+<p>The <a href="install.html#matlab-toolboxes-installation">Ctrax Matlab Toolboxes</a> include scripts to parse an annotation file. The simplest method is to use <a href="bmat.html#load-tracks-m"><tt>load_tracks()</tt></a>, which returns a variable containing per-fly location information. See, for example, the sample code in the <a href="http://groups.google.com/group/ctrax/browse_thread/thread/b4c7d5dce24978a2">email thread discussing positional analysis</a>.</p>
+<p>Beyond simple positions, you also can use <a href="bmat.html#compute-perframe-stats-m"><tt>compute_perframe_stats()</tt></a> to calculate each fly's instantaneous velocity, angular velocity, sideslip magnitude, etc., etc.</p>
+<p>If you want to parse an annotation file yourself, we also provide <a href="ctrax.html#annotation-file-format">a description of the file format</a>.</p>
+
+<h4><a name="faq-help">I have a question that isn't answered here. Can I get help?</a></h4>
+<p>We have <a href="index.html#contact">instructions on how to request more help</a> via the community email list.</p>
+
+</div>
+</div>
+
+
+</body></html>

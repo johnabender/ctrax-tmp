@@ -1,0 +1,78 @@
+﻿1. Install Python 2.5, available at: http://www.python.org/ftp/python/2.5.4/python-2.5.4.msi . I Installed to C:\Python25.
+***Python27 used 8/11/11 JAB
+***Python 2.7.6 used 11/21/13 JAB
+
+2. Set environment variables for Python (http://www.python.org/doc/faq/windows/#how-do-i-run-a-python-program-under-windows and http://www.python.org/doc/faq/windows/#how-do-i-make-python-scripts-executable): 
+   1. Go to: Control Panel » [Classic View] » System » Advanced » Environment Variables  
+   2. Under "System variables" you will see the variable "Path". Select this variable and hit "Edit".  
+   3. Add the location you installed Python to to the Path variable. This requires concatenating ;C:\Python25;C:\Python25\Scripts to the end of the current definition, so that now my definition is: %SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;C:\Program Files\MATLAB\R2009a\bin;C:\Program Files\MATLAB\R2009a\bin\win32;C:\Program Files\TortoiseSVN\bin;C:\Python25;C:\Python25\Scripts 
+***Substitute Python27 as appropriate
+   4. Under "System variables", edit the "PATHEXT" variable.
+   5. Add ;.PY to the end of the current definition
+
+2.1. Install Six from source - https://pypi.python.org/pypi/six (1.10.0).
+
+2.2. Install Packaging from source - https://pypi.python.org/pypi/packaging (16.8).
+
+2.3. Install Appdirs from source - https://pypi.python.org/pypi/appdirs (1.4.0).
+
+2.4 Install Setuptools from source - https://pypi.python.org/pypi/setuptools (34.0.3).
+
+3. Download and install Numpy from http://sourceforge.net/projects/numpy/files/NumPy/1.3.0/numpy-1.3.0-win32-superpack-python2.5.exe/download (linked from http://sourceforge.net/projects/numpy/files/) 
+***Numpy 1.6.1 used 8/11/11 JAB
+***Numpy 1.8.0 used 3/6/14 JAB
+***Numpy 1.12.0 used 1/28/17 JAB
+
+4. Download and install Scipy from http://sourceforge.net/projects/scipy/files/scipy/0.7.1/scipy-0.7.1-win32-superpack-python2.5.exe/download (linked from http://sourceforge.net/projects/scipy/files/).
+***Scipy 0.9.0 used 8/11/11 JAB
+***Scipy 0.13.3 used 3/6/14 JAB
+***Scipy 0.18.1 used 1/28/17 JAB
+
+5. Download and install PIL from http://effbot.org/downloads/PIL-1.1.6.win32-py2.5.exe (linked from http://www.pythonware.com/products/pil/).
+***PIL 1.1.7 used 8/11/11 JAB
+
+6. Download and install wxPython from http://downloads.sourceforge.net/wxpython/wxPython2.8-win32-unicode-2.8.10.1-py25.exe (linked from http://www.wxpython.org/download.php#binaries).
+***Wx 2.8.12 used 8/11/11 JAB
+***Wx 2.9.4 used 3/25/13 JAB
+***Wx 2.9.5 used 11/9/13 JAB
+***Wx 3.0.2 used 1/28/17 JAB
+
+(step 7 is deprecated)
+
+8. Download and install setuptools from http://pypi.python.org/packages/2.5/s/setuptools/setuptools-0.6c9.win32-py2.5.exe#md5=602d06054ec1165e995ae54ac30884d7 (linked from http://pypi.python.org/pypi/setuptools)
+***Setuptools 0.6c11 used 8/11/11 JAB
+***Setuptools 20.2.2 used 2/27/16 JAB
+
+9. Download and install matploblib from http://pypi.python.org/pypi/matplotlib (links to http://sourceforge.net/projects/matplotlib/files/matplotlib/). Version 1.0.1 tested 8/11/11 JAB.
+
+10. Install pygarrayimage from http://pypi.python.org/pypi/pygarrayimage . Version 0.0.7 tested 8/11/11 JAB.
+
+11. Install Motmot bits
+   1. Download and install motmot.imops from http://pypi.python.org/packages/2.5/m/motmot.imops/motmot.imops-0.5.3.win32-py2.5.exe#md5=7f1016232af938c816c9ed1abe459912 (linked from http://pypi.python.org/pypi/motmot.imops/0.5.3).
+***Imops 0.5.6 installed from source 8/11/11 JAB (see Cython instructions -- perform Cygwin and Mingw installation first).
+   2. Download and install motmot.wxvideo from http://pypi.python.org/packages/any/m/motmot.wxvideo/motmot.wxvideo-0.5.4.win32.exe#md5=ea2017b539e2a67abd0ac5fb71889da3 (linked from http://pypi.python.org/pypi/motmot.wxvideo).
+***Wxvideo 0.5.5 installed from source 8/11/11 JAB.
+   3. Download and install motmot.wxvalidatedtext from http://pypi.python.org/packages/any/m/motmot.wxvalidatedtext/motmot.wxvalidatedtext-0.5.3.win32.exe#md5=82fa4809e9908ab73f1d3ade3270928c (linked from http://pypi.python.org/pypi/motmot.wxvalidatedtext/0.5.3)
+***Installed from source 8/11/11 JAB.
+   4. Download and install motmot.ufmf from a link at http://pypi.python.org/pypi/motmot.ufmf .
+***Installed version 0.3.4 from source 8/12/11 JAB.
+
+12. Download and install cygwin from http://www.cygwin.com/setup.exe (linked from http://www.cygwin.com).
+
+(step 13 is deprecated)
+
+14. Install the MS VC compiler from https://www.microsoft.com/en-us/download/details.aspx?id=44266 .
+
+15. Install Cython from http://pypi.python.org/pypi/Cython .
+ This installs the source package, which needs to be built from the command line. Change into the source directory and type 'python setup.py build' and then 'python setup.py install'. Version 0.15 tested 8/11/11 JAB.
+***Cython 0.23.4 used 2/27/16 JAB
+
+16. Install OpenCV from https://sourceforge.net/projects/opencvlibrary/files/opencv-win/2.4.13/opencv-2.4.13.exe/download (linked from http://opencv.org). Unzip the package and copy the file build\python\2.7\x86\cv2.pyd into c:\python27\Lib\site-packages . For distribution, will also need to copy OpenCV DLLs from downloaded opencv-2.4.13\build\x86\vc12\bin to Ctrax's \trunk\py2exe\maintain\dlls folder.
+
+17. Check out Ctrax following instructions at http://sourceforge.net/scm/?type=svn&group_id=552243 (TortoiseSVN is a good Subversion client).
+
+18. Build Ctrax by changing into the downloaded Ctrax directory and entering 'python setup.py build' at the command prompt.  
+
+19. Install Ctrax by entering 'python setup.py install'.  
+
+20. Run by typing Ctrax at the command prompt.

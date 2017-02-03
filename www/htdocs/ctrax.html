@@ -1,0 +1,908 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="nofollow">
+
+
+<title>Ctrax Usage</title>
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all"
+href="styles/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen"
+href="styles/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print"
+href="styles/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8"
+media="projection" href="styles/projection.css">
+
+<style type="text/css">
+strong.regular-font {
+  font-family: Arial, Lucida Grande, sans-serif;
+  font-style: italic;
+  font-size: 0.9em;
+}
+</style>
+
+</head>
+
+<body dir="ltr" lang="en">
+
+<div id="title" dir="ltr" lang="en">
+<table width="100%" border="0">
+  <tr>
+    <td><a href="index.html"><img src="images/ctrax-logo2b_128.png" width="128" height="128" alt="Ctrax logo" border=0></a></td>
+    <td><h1>Ctrax Usage</h1></td>
+  </tr>
+</table>
+</div>
+
+<div id="page" dir="ltr" lang="en"><!-- start page -->
+<div id="content" dir="ltr" lang="en">
+
+<ul>
+  <li><a class="reference" href="#usage">Usage</a></li>
+  <ul>
+    <li><a class="reference" href="#tracking-wizard">Track-&gt;Tracking Wizard...</a></li>
+    <li><a class="reference" href="#settings-background-model"
+id="id23" name="id23">Settings-&gt;Background Model...</a></li>
+    <li><a class="reference" href="#settings-background-subtraction"
+id="id24" name="id24">Settings-&gt;Background Subtraction...</a></li>
+    <li><a class="reference" href="#settings-tracking-settings"
+id="id25" name="id25">Settings-&gt;Tracking Settings...</a>
+    <ul>
+      <li><a class="reference"
+href="#tracking-settings-shape-parameters" id="id26" name="id26">Tracking Settings: Shape Parameters</a></li>
+      <li><a class="reference"
+href="#tracking-settings-motion-parameters" id="id27" name="id27">Tracking Settings: Motion Parameters</a></li>
+      <li><a class="reference" href="#tracking-settings-observation-parameters" id="id28"
+name="id28">Tracking Settings: Observation Parameters</a></li>
+      <li><a class="reference" href="#tracking-settings-hindsight-parameters" id="id29"
+name="id29">Tracking Settings: Hindsight Parameters</a></li>
+    </ul>
+    </li>
+    <li><a class="reference" href="#track-start-tracking" id="id30"
+name="id30">Track-&gt;Start Tracking</a></li>
+    <li><a class="reference" href="#track-choose-orientations"
+id="id31" name="id31">Track-&gt;Choose Orientations...</a></li>
+    <li><a class="reference" href="#analyze">Analysis Plots</a>
+    <ul>
+      <li><a class="reference" href="#analyze-trajectories">Analyze-&gt;Plot Trajectories</a></li>
+      <li><a class="reference" href="#analyze-velocity">Analyze-&gt;Plot Velocities</a></li>
+      <li><a class="reference" href="#analyze-position">Analyze-&gt;Position Histogram</a></li>
+      <li><a class="reference" href="#analyze-speed">Analyze-&gt;Speed Histogram</a></li>
+      <li><a class="reference" href="#analyze-turning-speed">Analyze-&gt;Turning Speed Histogram</a></li>
+    </ul>
+    </li>
+    <li><a class="reference" href="#file-export-as-mat-file" id="id32"
+ name="id32">File-&gt;Export as MAT-file...</a></li>
+    <li><a class="reference" href="#file-export-as-csv-file">File-&gt;Export as CSV-file...</a></li>
+    <li><a class="reference" href="#display-control" id="id33"
+name="id33">Display Control</a></li>
+    <li><a class="reference" href="#other-commands" id="id35"
+name="id35">Other Commands</a></li>
+  </ul>
+  </li>
+  <li><a class="reference" href="#automation">Automation</a>
+  <ul>
+    <li><a class="reference" href="#batch-processing">Batch Processing</a></li>
+    <li><a class="reference" href="#command-line">Running from the Command Line</a></li>
+    <li><a class="reference" href="#learning">Learning a Model and Settings</a></li>
+  </ul>
+  </li>
+  <li><a class="reference" href="#example-video-annotation-and-mat-files"
+id="id36" name="id36">Example Video, Annotation, and MAT files</a></li>
+  <li><a class="reference" href="#annotation-file-format">Annotation File Format</a></li>
+  <ul>
+    <li><a href="#annotation-file-header">Header</li>
+    <li><a href="#annotation-file-data">Data</li>
+  </ul>
+  <li><a class="reference" href="#changelist">Ctrax version notes</a></li>
+</ul>
+
+<hr class="h2-divider"><h2><a name="usage">Usage</a></h2>
+
+<p>The first order of business after starting Ctrax is to open a video to be processed by selecting File->Open. See <a class="reference"
+href="install.html#input-video-formats">Input Video Formats</a> for information on the types of video Ctrax currently supports. The tracking results will be saved in the same location as the movie file, with the extension <tt>.ann</tt>. This annotation file will contain the flies' trajectories, as well as all parameters used during tracking. If the movie has previously been tracked, Ctrax will read in the parameters and trajectories, and tracking can be either resumed or restarted from the beginning. A backup copy of the previous tracking results is created in the same directory.</p>
+<div class="figure" style="width: 310px;" align="center">
+<a class="reference image-reference" href="images/ctrax_011.png"><img
+ alt="Screenshot of main Ctrax window and zoom window"
+src="images/ctrax_011.png" style="width: 300px;"></a>
+<p class="caption">Screenshot of main Ctrax window (right) and zoom
+window (left).</p>
+</div>
+<p>Ctrax will then bring up the main Ctrax window, shown at right. The main panel shows a frame of the video. To track a video, perform the following steps:</p>
+<ol type="1">
+  <li>Alter the tracking settings to match your video, by one of the following two methods:
+    <ol type="A">
+      <li>Run the Tracking Wizard: <a class="reference" href="#tracking-wizard">Ctrax Track-&gt;Tracking Wizard...</a></li>
+      <b><i>AND/OR</i></b>
+      <li>Calculate the settings individually. More settings are available through this method than through the Tracking Wizard, and such detailed tracking configuration may or may not be necessary.
+        <ol type="I">
+          <li>Compute the background model: <a class="reference"
+href="#settings-background-model">Ctrax Settings-&gt;Background
+Model...</a></li>
+          <li>Set the background-subtraction parameters:  <a class="reference" href="#settings-background-subtraction">Ctrax Settings-&gt;Background Subtraction...</a></li>
+          <li>Set the tracking parameters: <a class="reference" href="#settings-tracking-settings">Ctrax Settings-&gt;Tracking
+Settings...</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Begin tracking: <a class="reference" href="#track-start-tracking">Ctrax Track-&gt;Start Tracking</a>.</li>
+  <li>When tracking is complete, resolve the 180-degree orientation
+ambiguity: <a class="reference" href="#track-choose-orientations">Ctrax Track-&gt;Choose Orientations...</a>.</li>
+  <li>Write the output trajectories to a <tt>.mat</tt> file for use with the <a class="reference" href="fixerrors.html">FixErrors Matlab GUI</a>, the <a class="reference" href="bmat.html">BehavioralMicroarray Matlab Toolbox</a>, or other Matlab code: <a class="reference" href="#file-export-as-mat-file">Ctrax File-&gt;Export as MAT-file...</a>.</li>
+</ol>
+
+<h3><a name="tracking-wizard">Ctrax Track-&gt;Tracking Wizard</a></h3>
+<div class="figure" style="width: 330px;" align="center">
+<a class="reference image-reference" href="images/ctrax-wizard-02.png"><img alt="Screenshot of Tracking Wizard dialog" src="images/ctrax-wizard-02.png" style="width: 320px;"></a>
+<p class="caption">Tracking Wizard assists in choosing thresholds.</p>
+</div>
+<div class="figure" style="width: 330px;" align="center">
+<a class="reference image-reference" href="images/ctrax-wizard-01.png"><img alt="Screenshot of Tracking Wizard dialog" src="images/ctrax-wizard-01.png" style="width: 320px;"></a>
+<p class="caption">Initial view of the Tracking Wizard.</p>
+</div>
+<p>The Tracking Wizard [new in version 0.3.0] helps set the most common necessary parameters for tracking. For simple and easy arena configurations, the Tracking Wizard may be sufficient to provide high-quality tracking. Many users will still need to perform detailed parameter-setting as described below, but the Tracking Wizard can provide guided initialization for that process.</p>
+<p>The tracking wizard sets the following parameters, in order:</p>
+<ol>
+  <li><b>Tracking type</b>: Dark flies on a light background, or light flies on a dark background.</li>
+  <li><b>Region of interest</b>: Tracking power should not be wasted on regions of the image that are outside of the arena, which can also confuse the tracker.</li>
+  <li><b>Fixing background</b>: If some flies do not move during the movie, they may become part of the background. This can be fixed by interpolating the image across user-defined regions that include stationary flies.</li>
+  <li><b>High threshold</b>: "Foreground" (fly) pixels are discriminated from background by their distance from the background model. The high threshold is the minimum required "brightness" (distance from background) required in each foreground component. I.e., the high threshold is the detection threshold.</li>
+<div class="figure" style="width: 330px;" align="center">
+<a class="reference image-reference" href="images/ctrax-wizard-03.png"><img alt="Screenshot of Tracking Wizard dialog" src="images/ctrax-wizard-03.png" style="width: 320px;"></a>
+<p class="caption">Drag to zoom in.</p>
+</div>
+  <li><b>Low threshold</b>: The area surrounding each "bright" pixel is considered to be foreground as long as it is above the low threshold. Therefore, the low threshold determines the edges of each foreground component.</li>
+  <li><b>Shape computation</b>: Each connected set of foreground pixels is initially assumed to be a single fly. Connected components that differ greatly in size or aspect ratio from the average fly are merged, split, or discarded. The average and allowed variance in size are learned from a subset of images, or they can be set manually.</li>
+</ol>
+<p>Dragging a bounding box on any of the images provides the ability to zoom in on it (double-click to zoom out).</p>
+
+<h3><a name="settings-background-model">Ctrax Settings-&gt;Background
+Model...</a></h3>
+<div class="figure" style="width: 160px;" align="center">
+<a class="reference image-reference"
+href="images/ctrax_003.png"><img
+ alt="Screenshot of Background Model Settings dialog"
+src="images/ctrax_003.png" style="width: 150px;"></a>
+<p class="caption">Screenshot of the Background Model Settings dialog.</p>
+</div>
+<p>The first step to start tracking is to set up the background model (see <a class="reference" href="install.html#background-subtraction-considerations">Background Subtraction Considerations</a>). First define the parameters of
+the background model computation, then hit the "Calculate Now" button to compute. Note that this dialog has no effect if the movie loaded in is an SBFMF, as the background model is provided by that movie. The parameters to set are the following:</p>
+<ul>
+  <li><b>Algorithm</b>: This is the algorithm used to estimate the
+background image and background deviation. "Median/Median Absolute
+Difference" estimates the center image as the median of the sampled
+frames and the standard deviation from the median absolute difference from this median. "Mean/Standard Deviation" estimates the center image as the mean of the sampled frames and the deviation as the standard deviation of the sampled frames. In all our experiments, we use the "Median/Median Absolute Difference" algorithm.</li>
+  <li><b>Number of frames</b>: Background is estimated from frames
+sampled evenly between the first frame and the last frame of the input video. Specify the number of frames to sample here. In all our
+experiments, we used 200 frames.</li>
+  <li><b>First Frame</b> and <b>Last Frame</b>: Specify the interval from which to sample frames to estimate the background. In our experiments, we noticed that the flies toward the end of longer trials tended to sit still, which can interfere with background modeling. In our current experiments, we use the first 6000 frames = 5 minutes of video to estimate the background model.</li>
+</ul>
+
+<h3><a name="settings-background-subtraction">Ctrax
+Settings-&gt;Background Subtraction...</a></h3>
+<div class="figure" style="width: 410px;" align="center"><a class="reference image-reference"
+href="images/ctrax_026.png"><img alt="Screenshot of Background
+Subtraction Settings dialog" class="align-center"
+src="images/ctrax_026.png" style="width: 400px;"></a>
+<p class="caption">Screenshot of the Background Subtraction Settings dialog</p></div>
+<p>Background subtraction involves thresholding the difference between the current frame and the mean background image divided by the normalization image. If "Background Type" is "Light flies on dark background", then Ctrax only looks for pixels that are brighter than the background image, with the threshold:</p>
+<pre>[distance image] =
+  ([current image] - [mean background image]) /
+  [normalization image]</pre>
+<p>If "Background Type" is "Dark flies on light background", then Ctrax only looks for pixels that are darker than the background image, so the threshold is:</p>
+<pre>[distance image] =
+ -([current image] - [mean background image]) /
+  [normalization image]</pre>
+<p>If "Background Type" is "Other", then Ctrax looks for any difference from the background, and thresholds the absolute difference:</p>
+<pre>[distance image] =
+  |[current image] - [mean background image]| /
+  [normalization image]</pre>
+<p>The image that is thresholded, the "distance image", can be thought of as the distance between the background model and the current image. This distance image can be seen if "Distance from Background" is selected from the display drop-down menu.</p>
+<ul>
+  <li>The mean background image can be seen by selecting "Background
+Image" from the display drop-down menu. It is the mean image computed during the background modeling step (<a class="reference" href="#settings-background-model">Ctrax Settings-&gt;Background
+Model...</a>).</li>
+  <li>The normalization image is defined in the "Normalize by" drop-down menu. It can be seen by selecting "Normalization Image" from the display drop-down menu.</li>
+  <ul>
+    <li>If "Standard Deviation" is selected, then Ctrax normalizes by the thresholded standard deviation, as computed in the background modeling step. The thresholds are set at "Std Range". The standard deviation image is more susceptible to errors in estimation from flies sitting still for long periods of time. If you see bright spots in the normalization image that are fly-shaped, these are probably caused by flies that sit still for too long. Having bright spots like this can cause the background subtraction to fail in these areas, as it is equivalent to setting the threshold to much higher values in these regions of the image. One can avoid this by setting the range of allowed standard deviations. In our experiments, we normalize by the standard deviation, and we set the Std Range so that the maximum standard deviation is three times the minimum standard deviation, and the range is centered on the average standard deviation for the arena (for our open arena, this is [1,3]).</li>
+    <li>If "Background Brightness" is selected, then we normalize by the background mean image. This is sometimes a reasonable approximation, as in general the brighter the pixel, the higher the noise is.</li>
+    <li>If "Homomorphic Filtering" is selected, then Ctrax approximates <a class="reference" href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/OWENS/LECT5/node4.html#SECTION00042000000000000000">Homomorphic
+ Filtering</a> on the current image. This approximation consists of
+finding the normalization image that would give the same results as
+homomorphic filtering on the background mean image, then just
+normalizing any given frame by this normalization image. The parameters of the homomorphic filter can be set by clicking the "Homomorphic Filter Settings..." button.</li>
+  </ul>
+<a class="reference image-reference"
+href="images/ctrax_018.png"><div
+ class="align-center" align="center"><img alt="Screenshot of Background
+Subtraction Settings image panel illustrations" class="align-center"
+src="images/ctrax_018.png" style="width: 600px;"></div>
+</a>
+
+  <li>There may be regions of the video where there will never be
+flies. The regions of the image that will always be classified as
+background are shown in white if "Background-Only Areas" is selected
+from the display drop-down menu. You can force the algorithm to never detect foreground in certain regions in the following three ways.</p>
+  <ol>
+    <li>Set the "Minimum Non-Foreground Intensity". All locations in the image such that the mean background image is above this value will always be classified as background. Similarly, you can set the "Maximum Non-Foreground Intensity" and all locations in the image such that the mean background image brightness is below this value will always be classified as background.</li>
+    <li>Set a circular region of interest using the "Detect Circular Arena" dialog. All regions outside of the circle are assumed to be background. In this dialog, the image panel shows edges detected in the image. The circular region of interest can be manually adjusted by dragging the green and yellow circles to set the center and radius, respectively. Or, the "Radius", "X", and "Y" values can be adjusted manually. The circular region of interest can also be detected automatically by fitting a circle to edges in the image using the "Detect Arena" button. "Refine Estimate" can be used to automatically refine the estimate. The edge threshold used can be increased or decreased using the "Edge Threshold" control. We used the automatically detected circular region of interest in our experiments, as the wall of the arena was reflective, and flies were spuriously detected on the walls when this region of interest was not set.</li>
+    <li>Set polygonal regions of interest using the "Regions of Interest" dialog [new in version 0.1.4]. Regions outside of all polygons set are assumed to be background. In this dialog, the image panel can show either the background model center or the currently selected regions of interest in white and the always-background regions in black. The previously selected polygons are shown by red lines. To select a region, click on the image. Continue clicking to add more points. Either double-click the start point or push the "Close" button to close and add the selected region. To cancel adding the current polygon, push the "Cancel" button. To remove the last-added polygon, use the "Undo" button. To save the currently selected regions, use the "Save" button. To close the dialog, use the "Quit" button.</li>
+  </ol>
+  </li>
+</ul>
+<div class="figure" style="width: 160px;" align="center">
+<a class="reference image-reference"
+href="images/ctrax_014.png"><img
+ alt="Screenshot of Detect Circular Arena dialog"
+src="images/ctrax_014.png" style="width: 150px;"></a>
+<p class="caption">Screenshot of Detect Circular Arena dialog</p>
+</div>
+<div class="figure" style="width: 160px;" align="center">
+<a class="reference image-reference"
+href="images/ctrax_015.png"><img
+ alt="Screenshot of Regions of Interest dialog"
+src="images/ctrax_015.png" style="width: 150px;"></a>
+<p class="caption">Screenshot of Regions of Interest dialog</p>
+</div>
+<!--<div class="figure" style="width: 160px;" align="center">
+<a class="reference image-reference"
+href="images/ctrax_013.png"><img
+ alt="Screenshot of Fix Background Model dialog"
+src="images/ctrax_013.png" style="width: 150px;"></a>
+<p class="caption">Screenshot of Fix Background Model dialog</p>
+</div>-->
+<p>To obtain a classification of each pixel location as foreground or background, Ctrax thresholds the distance image, the normalized difference between the current image and the background mean. It uses a hysteresis approach to thresholding. For a pixel to be foreground, its distance from the background must be above a low threshold ("Low Thresh"), and there must be a path from it to a pixel that is above a higher threshold ("High Thresh") that only goes through pixels above the low threshold. That is, Ctrax finds all pixels that are above the low threshold, then removes all connected components of pixels such that no pixel in the connected component is above the high threshold. The low and high thresholds can be set with the scrollbars on the left. The low threshold cannot be higher than the high threshold. Changing the normalization algorithm will greatly change the range of distances, so the GUI tries to compensate for these changes in magnitude. The classification of pixels into foreground and background can be seen by selecting "Foreground/Background Classification" from the display drop-down menu.</p>
+<p>If there are flies that are not being detected, lowering the high
+threshold can help. If there are objects other than flies being detected, raising the high threshold can help. Lowering the low threshold will result in the area of the detected flies being bigger and raising the low threshold will result in the area of the detected flies being smaller. Setting the low threshold too low will result in noise near a fly being detected as part of the fly. The benefits of a larger area are that Ctrax can better estimate the center position and orientation of the fly. The disadvantages of a larger area are that when flies are close to each other, they will merge into a single connected component, and clustering will need to be used to separate the flies, causing the tracker to run slower. The connected components of foreground pixels can be seen by selecting "Connected Components" from the display drop-down menu. The ellipses fit to each connected component of foreground pixels can be seen by selecting "Ellipse Fits" from the display drop-down menu. Note that if two flies are part of the same connected component, they will only be fit at this step by one ellipse. When tracking is performed, this ellipse may be split into multiple flies, depending on the tracking settings. This is the best display setting for looking for errors in the background-subtraction step, as it displays the raw frame below the annotated ellipses. For all display settings, the frame shown can be controlled with the slider bar below the image panel.</p>
+<p>Camera noise and compression artifacts can potentially be compensated for by applying morphological filtering. One can apply <a class="reference" href="http://en.wikipedia.org/wiki/Opening_%28morphology%29">Morphological
+ Opening</a> and <a class="reference" href="http://en.wikipedia.org/wiki/Closing_%28morphology%29">Morphological
+ Closing</a>. We do not use morphological filtering in our experiments.</p>
+<p>If a fly sits still for too long, the background model may assume that this fly is part of the background. Errors in the background modeling can be fixed using the "Fix Background Model" dialog [new in version 0.1.4]. Using this dialog, one can select polygonal regions of the image, and fill these regions by interpolating from the boundaries. The interface is the same as the "Regions of Interest" dialog. The image panel can show either the background model center or deviation estimates.</p>
+
+<h3><a name="settings-tracking-settings">Ctrax Settings-&gt;Tracking Settings...</a></h3>
+<div class="figure" style="width: 410px;" align="center"><a class="reference image-reference"
+href="images/ctrax_009.png"><img alt="Screenshot of some of the shape parameter-related displays in the Tracking Settings dialog" src="images/ctrax_009.png" style="width: 400px;"></a>
+<p class="caption">Screenshot of the Tracking Settings dialog.</p></div>
+<p>The "Settings-&gt;Tracking Settings..." dialog controls the
+parameters of the observation detection, identity assignment, and
+hindsight steps. Please see the related sections in the online methods and supplementary note of the article, <a class="reference" href="http://dx.doi.org/10.1038/nmeth.1328">"High-Throughput
+ Ethomics in Large Groups of <i>Drosophila</i></a>."</p>
+<div class="figure" style="width: 410px;" align="center">
+<a class="reference image-reference" href="images/ctrax_027.png"><img alt="Screenshot of some of the shape parameter-related displays in the Tracking Settings dialog" src="images/ctrax_027.png" style="width: 400px;"></a>
+<p class="caption">Screenshot of some of the shape parameter-related
+displays in the Tracking Settings dialog.</p>
+</div>
+<div class="figure" style="width: 210px;" align="center">
+<a class="reference image-reference" href="images/ctrax_024.png"><img alt="Screenshot of some of the motion parameter-related displays in the Tracking Settings dialog" src="images/ctrax_024.png" style="width: 200px;"></a>
+<p class="caption">Screenshot of some of the motion parameter-related
+displays in the Tracking Settings dialog.</p>
+</div>
+<p>The right side of the dialog shows the current frame annotated with estimates of the positions of the flies at different stages in the algorithm so that the user may attempt to see the effects of many of the parameters. The toolbar above the image allows one to zoom in, zoom out, and get information about the shape of the next-selected fly. The following displays are available.</p>
+<ul>
+  <li><b>Unfiltered Observations</b>: The current frame is annotated
+with the ellipses fit to each connected component of foreground pixels (the same as "Ellipse Fits" in the Background Subtraction dialog).</li>
+  <li><b>Filtered Observations</b>: The current frame is annotated with the final results from the observation detection step -- the result of modifying the ellipse fits based on the model of allowed fly shapes.</li>
+  <li><b>Small Observations</b>: The current frame is annotated with ellipse fits for only those connected components whose area is smaller than the minimum area.</li>
+  <li><b>Large Observations</b>: The current frame is annotated with
+ellipse fits for the only those connected components whose area is bigger than the maximum area.</li>
+  <li><b>Deleted Observations</b>:The current frame is annotated with the initial ellipse fits for connected components that are ignored in the detection step.</li>
+  <li><b>Split Observations</b>: The current frame is annotated with
+observation detections that resulted from large observations being split into multiple flies.</li>
+  <li><b>Merged Observations</b>: The current frame is annotated with observation detections that resulted from small observations being
+merged into a single fly.</li>
+  <li><b>Threshold-Lowered Observations</b>: The current frame is annotated then observation detections whose initial area was small and were enlarged by lowering the background subtraction threshold nearby.</li>
+  <li><b>Max Jump</b>: Illustration of the "Max Jump Distance" parameter from the "Motion" tab. The current frame is annotated with a circle for each fly. The radius of this circle reflects the maximum distance between the predicted and detected positions of a fly if the change in orientation is zero. If the distance is larger than this, then the algorithm will instead create a new trajectory.</li>
+  <li><b>Motion Model Prediction</b>: Illustration of the motion model parameters. For each fly in the current frame, we show the previous two positions of the fly and the predicted position of the fly in this frame. The green bars and blue arcs illustrate the relative weight of errors in orientation matching and center position matching. The green lines are equivalent in error weight to the blue arcs.</li>
+</ul>
+
+<h4><a name="tracking-settings-shape-parameters">Tracking Settings: Shape Parameters</a></h4>
+<div class="figure" style="width: 410px;" align="center">
+<a class="reference image-reference"
+href="images/ctrax_031.png"><img alt="Screenshot of the four
+Trackings Settings tabs" class="align-center"
+src="images/ctrax_031.png" style="width: 400px;"></a>
+<p class="caption">Screenshot of the four Tracking Settings dialog tabs.</p></div>
+<p>The parameters controlled by the Tracking Settings Shape tab describe the expected sizes of the ellipses fit to each fly. These parameters set the minimum allowed, expected, and maximum allowed area of a fit ellipse, major axis length of a fly, minor axis length of a fly, and eccentricity of a fly. Currently, the eccentricity is not used by the tracking algorithm.</p>
+<p>If the area of a connected component is larger than the maximum area, the algorithm clusters the pixel locations in the component into iteratively increasing numbers of ellipse fits (the shape-parameter
+related displays above show a large connected component that is split
+into two ellipses). The number of ellipses to split into is chosen so
+that each ellipse respects the area and major and minor axis length
+upper bounds, and the area of each ellipse is close to the mean area.</p>
+<p>If the area of a connected component is smaller than the minimum area allowed, then Ctrax first tries to enlarge it by decreasing the background-subtraction threshold near the connected component. If this does not result in a sufficiently large connected component, then Ctrax tries to merge it with nearby connected components without changing the foreground/background classification of "too many" pixels. The minimum area should thus be set to first make the expected area of a fly close to the mean of the minimum and maximum bounds on the area and second so that it is approximately the minimum area of a fly. (In a future version of Ctrax, we plan to separate the mean area and minimum and maximum area controls.)</p>
+<p>You can use the "Automatically Compute Bounds on Shape" option to estimate these bounds. This will cause the algorithm to sample "Number of Frames" frames from the video, then find the median and median-based approximation of the standard deviation of the area, major and minor axis lengths, and eccentricity of the connected components of foreground pixels in these frames. You can then approximate the bounds as the median plus or minus some number of standard deviations. The results of the automatic computation are shown in the "Manually Set Bounds on Shape" section, and can be adjusted manually after being approximated automatically.</p>
+<p>When we are choosing the parameters for a new experimental set-up, we first automatically compute the bounds from 50 frames and set the
+"Number of standard deviations" to 3. Then, we use the "?" toolbar button to inspect the actual sizes of the ellipses in some frames with
+the "Unfiltered Observations" display selected, and set the maximum bounds to be the maximum value we observe in our sample. Finally, we set the minimum bound on area so that the mean of the minimum and maximum bounds on area is near the automatically set mean of the minimum and maximum bounds. We then scroll through a bunch of frames with the "Small Observations" and "Large Observations" displays selected, to make sure that there are not many small observations and that the large observations in general correspond to multiple flies. You can also use the "Filtered", "Merged", "Split", and "Threshold-Lowered" displays to observe the effects of these parameters.</p>
+
+<h4><a name="tracking-settings-motion-parameters">Tracking Settings: Motion Parameters</a></h4>
+<p>Ctrax assigns identities to each detected observation by matching the
+detected ellipses to the predicted ellipse positions based on the
+the previous two frames and the motion model. Its goal is to minimize the distance between the detected and predicted ellipses. This distance is based on both the center position of the
+ellipse and its orientation. The "Angle Weight" parameter specifies the relative importance of the orientation with respect to the center position. The total error is the squared distance between the predicted and detected center positions plus the angle weight times the squared distance between the predicted and detected orientations (which are all between 0 and 180 degrees). The error in the center position is measured in squared pixels and the error in the orientation is measured in squared radians. Thus, the angle weight should be higher than 1, even if the desired effect is that the orientation be less important than the center position in the matching. In all our experiments, we used weight 100. The relative importance of the center position versus the orientation can be visualized using the "Motion Model Prediction" display. An error in the center position prediction equal to the length of a green bar is equivalent to an error in the orientation of size equal to the blue arc.</p>
+<p>The "Max Jump Distance" is the square root of the maximum error
+allowed between predicted and observed positions. If the orientation
+error is 0, then this is the maximum distance that a fly is allowed to jump from its predicted position. The "Max Jump" display allows one to visualize this distance, as the circles drawn around each fly are of radius "Max Jump Distance". "Max Jump Split" [new in Ctrax 0.3.1] allows you to prevent large blobs from splitting and jumping in the same frame, whereby they might capture a nearby fly's track. I.e., if an observation is the result of splitting a large connected component, then the maximum distance the fly can jump to this observation is "Max Jump Split", which can be set to something smaller than "Max Jump".</p>
+<p>The "Center Dampening" and "Angle Dampening" control the predicted
+position of the fly given its previous two positions. The algorithm predicts that
+the center position will be the previous center position +
+velocity * (1 - "Center Dampening"), and that
+the orientation will be the previous orientation + angular
+velocity * (1 - "Angle Dampening"). In our
+experiments, we set the center dampening coefficient to 0 (pure constant velocity model), and the angle dampening coefficient to 0.5. The effects of these parameters can be seen in the "Motion Model Prediction" display, which shows the predicted positions of the flies based on this dampened constant velocity model.</p>
+
+<h4><a name="tracking-settings-observation-parameters">Tracking Settings: Observation Parameters</a></h4>
+<p>The observation parameters affect the processing of connected
+components of foreground pixels into ellipse fits.</p>
+<ul>
+  <li><b>Max Area Delete</b>: If a connected component cannot be merged with other connected components or sufficiently enlarged by lowering the background-subtraction threshold and has area at most "Max Area Delete", then this connected component is ignored and not included as an observation detection. Area is measured in pixels squared.</li>
+  <li><b>Min Area Ignore</b>: Extremely large connected components may be caused by objects other than flies or lighting changes. "Min Area
+Ignore" is the minimum area of large foreground detections to be ignored.</li>
+  <li><b>Max Penalty Merge</b>: Ctrax checks to see if small connected
+components can be merged with nearby connected components by flipping
+the labels of some pixels from background to foreground. "Max Penalty
+Merge" is the maximum total distance from the background model minus the foreground threshold of the background pixels that must be flipped to connect the two connected components.</li>
+  <li><b>Lower Threshold</b>: If the area of a connected component is
+small, Ctrax tries to lower the foreground/background threshold around this connected component to increase its area. During this process, "Lower Threshold" is a multiplier for the current low-end threshold.</li>
+  <li><b>Max Clusters per Blob</b>: Ctrax will never split a connected component into more than this many flies.</li>
+  <li><b>Max Blobs to Detect</b>: If a small, known number of flies are present in the arena, this setting can be used to prevent tracking of other foreground areas. Putative foreground detections are sorted in descending order of size and only "Max Blobs to Detect" are processed further. The smaller detections are discarded.</li>
+</ul>
+
+<h4><a name="tracking-settings-hindsight-parameters">Tracking Settings: Hindsight Parameters</a></h4>
+<p>Because the algorithm performs detection independently of matching,
+errors in the observation-detection step are common. We use the <em>hindsight</em> step to modify trajectories after matching to avoid the deaths and births of trajectories. There are four types of modifications which can be made. The checkboxes in the "Hindsight" tabs indicate whether each of the four types will be attempted. For each of the four types, "Max Sequence Length" indicates the number of frames Ctrax will look backward to fix these potential errors. In all our experiments, we set this to 50 for all types of errors.</p>
+<ul>
+  <li><b>Fix Split Detections</b>: Ctrax looks for births of trajectories
+caused by a single fly being split into two detections. These two
+detections will be merged for up to "Max Sequence Length" frames to
+avoid the trajectory birth if the merge penalty (number of pixels that
+must be flipped from background to foreground to merge) is less than
+"Max Penalty Merge". We set this to 40, the same value we used for "Max Penalty Merge" in the "Observation" tab.</li>
+  <li><b>Fix Merged Detections</b>: We look for deaths of trajectories
+caused by two flies being merged into a single detection. These
+detections will be split for up to "Max Sequence Length" frames to avoid the trajectory death if the change in the total prediction error in the first frame merged is at most "Max Prediction Error Increase". Recall that the units of this can be thought of as pixels squared. We used 20 in all our experiments.</li>
+  <li><b>Fix Spurious Detections</b>: Ctrax will delete any newly born
+trajectories that die within "Max Sequence Length" frames.</li>
+  <li><b>Fix Lost Detections</b>: Given a trajectory birth, Ctrax looks
+backward up to "Max Sequence Length" frames to see if there is a
+trajectory death that would end up near this trajectory birth, then
+connects the trajectories to avoid the track birth.</li>
+</ul>
+
+<h3><a name="track-start-tracking">Track-&gt;Start Tracking</a></h3>
+<p>The "Track" menu has various ways to start/restart tracking.</p>
+<ul>
+  <li><b>Start Tracking</b> will delete any trajectories computed
+previously and start tracking from the current frame. <b>Be careful with
+this option.</b></li>
+  <li><b>Resume Tracking</b> will go to the last frame for which
+trajectories have been computed and restart tracking from there.</li>
+  <li><b>Resume Tracking from Current Frame</b> will keep trajectories computed for frames before the current frame, remove trajectories from this frame on, and restart tracking from the current frame.</li>
+</ul>
+
+<h3><a name="track-choose-orientations">Track-&gt;Choose Orientations...</a></h3>
+<div class="figure" align="center"><a class="reference image-reference" href="images/ctrax_028.png"><img
+ alt="Screenshot of Choose Orientations dialog" src="images/ctrax_028.png" style="width: 200px;"></a>
+<p class="caption">Screenshot of "Choose Orientations..." dialog.</p>
+</div>
+<p>The tracking algorithm only computes orientation modulo pi radians -- it does not resolve the head-tail ambiguity. "Choose Orientations..." resolves this ambiguity using the velocity of the flies. It is based on the following two assumptions:</p>
+<ol>
+  <li>When the fly is walking, it is usually walking forward.</li>
+  <li>The orientation does not change much from one frame to the next.</li>
+</ol>
+<p>"Choose Orientations..." decides whether to add pi radians to a fly's orientation in each frame to minimize the following criterion:</p>
+<a class="reference image-reference" href="images/ctrax.jpg"><div class="align-center" align="center"><img alt="chooseorientations criterion" class="align-center" src="images/ctrax.jpg" style="width: 350px;"></div></a>
+<p>Here, <i>J</i><sup>1</sup> is the velocity direction constraint, where <i>θ</i><sub>t</sub> is the orientation at frame <i>t</i> (modulo π radians), <i>φ</i><sub>t</sub> is the velocity direction at frame <i>t</i> (modulo 2π radians), and <i>s</i><sub>t</sub> is whether or not to add π to the orientation. <i>J</i><sup>2</sup> is the temporal constraint. <i>v</i><sub>t</sub> is the speed in frame <i>t</i>. The weight <i>w</i>(<i>v</i><sub>t</sub>) is the weight of the velocity term with respect to the temporal term:</p>
+<a class="reference image-reference"
+href="images/ctrax_004.jpg"><div class="align-center" align="center"><img alt="chooseorientations criterion" class="align-center" src="images/ctrax_004.jpg" style="width: 175px;"></div></a>
+<p><i>λ</i> is the "Velocity Weight Constant" and <i>w</i><sub>max</sub> is the
+"Maximum Velocity Weight". In all our experiments, we set "Velocity
+Weight Constant" to .05 and "Maximum Velocity Weight" to 0.25.</p>
+
+<h3><a name="analyze">Analysis Plots</a></h3>
+<p>Ctrax includes plotting functionality for several common types of data visualization. These are intended primarily to check the sanity of the tracked parameters; publication-quality figures can be produced more easily in MATLAB (see below). However, Ctrax's figures can be saved as images by right-clicking on the figure and using the "Save as..." option.</p>
+<p>To save on memory and processing power, the analysis plots only use the tracked data from the first 500 frames of the video. The axis limits are determined from the data and cannot currently be altered.</p>
+
+<h4><a name="analyze-trajectories">Analyze-&gt;Plot Trajectories</a></h4>
+<p>Shows the raw (x,y) positions of all flies through time, each in its own color. Jagged tracks or data outside the arena area are indicative of tracking errors.</p>
+
+<h4><a name="analyze-velocity">Analyze-&gt;Plot Velocities</a></h4>
+<p>Shows the time course of the flies' speeds (the 2D Euclidean distance moved per frame). The plot is a standard-deviation envelope of the population's mean speed in each frame (the mean +/- the S.D.).</p>
+
+<h4><a name="analyze-position">Analyze-&gt;Position Histogram</a></h4>
+<p>Shows a "heatmap" 2D histogram of fly (x,y) positions. Asymmetries in where flies spend their time in the arena could possibly indicate non-uniform lighting or temperature in the arena. Fly positions outside the arena again suggest errors which may be eliminated by using a tracking region of interest.</p>
+
+<h4><a name="analyze-speed">Analyze-&gt;Speed Histogram</a></h4>
+<p>Shows a histogram of the flies' displacement velocities. A non-smooth histogram might indicate tracking discontinuities.</p>
+
+<h4><a name="analyze-turning-speed">Analyze-&gt;Turning Speed Histogram</a></h4>
+<p>Shows a histogram of the flies' turning rates. This should be roughly symmetrical and centered around zero. Frequent large turning rates suggest difficulties with determining fly orientations, possibly including the need to <a href="#track-choose-orientations">disambiguate the headings</a>.</p>
+
+<h3><a name="file-export-as-mat-file">File-&gt;Export as MAT-file...</a></h3>
+<p>To analyze the trajectories in Matlab using either the FixErrors GUI or the BehavioralMicroarray Toolbox, one must save the trajectories to a Matlab-native format. This can be done by selecting "File-&gt;Export as MAT-file". This will prompt the user for the name of a <tt>.mat</tt> file. It will save the following variables:</p>
+<ul>
+  <li><tt>ntargets</tt>: <tt>1 x nframes</tt> vector, where <tt>ntargets(t)</tt>
+ is the number of flies tracked in frame <tt>t</tt>.</li>
+  <li><tt>identity</tt>: <tt>1 x sum(ntargets)</tt> vector, where <tt>identity(1:ntargets(1))</tt>
+ are the identities of the flies tracked in frame 1, <tt>identity(ntargets(1)+1:ntargets(1)+ntargets(2))</tt>
+ are the identies of the flies tracked in the second frame, etc.</li>
+  <li><tt>x_pos</tt>: <tt>1 x sum(ntargets)</tt> vector, indexed the same way as the
+<tt>identity</tt> variable, storing the x-coordinate of the center of a fly in pixels.</li>
+  <li><tt>y_pos</tt>: <tt>1 x sum(ntargets)</tt> vector storing the y-coordinate of the center of a fly in pixels.</li>
+  <li><tt>maj_ax</tt>: <tt>1 x sum(ntargets)</tt> vector storing the quarter-major axis length of a fly in pixels.</li>
+  <li><tt>min_ax</tt>: <tt>1 x sum(ntargets)</tt> vector storing the quarter-minor axis length of a fly in pixels.</li>
+  <li><tt>angle</tt>: <tt>1 x sum(ntargets)</tt> vector storing the orientation of a fly in radians.</li>
+</ul>
+<p>As is, this is not most user-friendly format within Matlab. The <a
+class="reference" href="bmat.html#load-tracks-m">load_tracks.m</a> function within the BehavioralMicroarray Toolbox reads in this MAT-file and writes it out in a more usable format.</p>
+
+<h3><a name="file-export-as-csv-file">File-&gt;Export as CSV-file...</a></h3>
+<p>Ctrax can export the tracking data in a comma-separated-value (CSV) format for processing in many statistical software environments, including Matlab, R, JMP, or a spreadsheet program such as Microsoft Excel.</p>
+<p>The CSV values will be in a <tt>nframes x 6*nflies</tt> rectangular matrix. Each row is a single frame of the movie, and each group of 6 consecutive columns contains data on a single fly. The six values are:</p>
+<ol>
+  <li>the fly's identity</li>
+  <li><i>x</i> position, in pixels</li>
+  <li><i>y</i> position</li>
+  <li>the length of its fit ellipse (i.e., the fly's body length), in pixels</li>
+  <li>the width of the ellipse</li>
+  <li>the angle of the ellipse (i.e., the fly's heading), in radians</li>
+</ol>
+<p>Values of -1 indicate that no fly with that identity was tracked in that frame. It is common for flies to "disappear" and for "new" flies to appear over the course of a movie, as tracking errors sometimes result in an identity crisis. For cleaner data, export to Matlab first, run and complete <a href="fixerrors.html">FixErrors</a>, then export as CSV at the prompt (or use the <tt>save_trxcsv</tt> function in Matlab). The Matlab CSV export will give positions and sizes in millimeters rather than pixels, if a conversion is available.</p>
+
+<h3><a name="display-control">Display Control</a></h3>
+<p>The frame shown in the main panel can be controlled with the
+slider bar below it. The frame number is also shown in the toolbar at
+the bottom, and the frame shown can also be modified by editing this
+displayed frame number. The buttons on the toolbar, from left to right, have the following effects:</p>
+<ul>
+  <li>Magnifying glass: If this is selected, when you click on a fly in the main panel, the zoom window (above, left) will pop up and show the selected fly in higher resolution. As the frame displayed changes, these zoomed views will update. Additionally, you can drag on an area of the movie frame to zoom in on it (double-click to zoom out).</li>
+  <li>Play button: This will play the video at the speed set in "Play Speed".</li>
+  <li>Stop button: This will stop playback of the video if the video is currently playing, or stop tracking if the video is currently being tracked.</li>
+  <li>Fast-forward button: If the video is playing, then this will
+increase the playback speed. If the video is being tracked, this will
+increase the rate with which the display is refreshed.</li>
+  <li>Rewind button: If the video is playing, then this will decrease the playback speed. If the video is being tracked, this will decrease the rate at with the display is refreshed. For fastest tracking, one can turn off automatic refreshing altogether in the Settings-&gt;Playback Options menu.</li>
+  <li>Refresh button: During tracking, clicking this button will result in the display refreshing after the next frame that's tracked.</li>
+</ul>
+<p>The "Settings-&gt;Playback Options" menu allows you to set the following playback parameters:
+<ul>
+  <li>"Show Old Annotation": Whether Ctrax annotates the displayed movie with the computed trajectories or not.</li>
+  <li>"Tail Length": Number of frames for which to plot the center position of the fly previous to the current frame.</li>
+  <li>"Line Thickness": How thick the lines and tracks drawn on top of the video image are.
+  <li>"Automatically Refresh": During tracking, whether Ctrax will refresh the screen with the current tracking results.</li>
+  <li>"Dim Original": Whether to show the raw video darker -- this causes the trajectories to stand out more in the display.</li>
+  <li>"Flip Movie Vertically" [new in version 0.4.2]: Some movie containers encode their video upside-down; Ctrax can flip the movie to compensate.</li>
+  <li>"Transpose Indexed AVI" [new in version 0.3.11]: Some AVI recorders use indexed colors even when uncompressed (notably, StreamPix). Because of a Ctrax modification, the frames of indexed AVIs may be transposed (in the matrix sense). This setting toggles that behavior.</li>
+</ul></p>
+
+<h3><a name="other-commands">Other Commands</a></h3>
+<ul>
+  <li>File Menu
+  <ul>
+    <li>-&gt;Open: Open a different movie file.</li>
+    <li>-&gt;Load Settings from File...: Load the Ctrax settings from a different annotation file.</li>
+    <li>-&gt;Export as AVI: Writes the movie annotated with the computed trajectories to an uncompressed AVI. This can later be compressed using a free program like <a href="http://www.virtualdub.org">VirtualDub</a>, <a href="http://www.ffmpeg.org">FFmpeg</a>, or <a href="http://avidemux.sourceforge.net/">Avidemux</a>.</li>
+    <li>-&gt;Quit: Quit Ctrax.</li>
+  </ul>
+  </li>
+  <li>Track
+  <ul>
+    <li>-&gt;Write Compressed SBFMF while Tracking: Writes a <a class="reference" href="install.html#static-background-fly-movie-format">Static Background Fly Movie Format</a> version of the movie while tracking. This compresses the movie using the same background model and background-subtraction parameters used by the tracker.</li>
+    <li>-&gt;Compute Background: Computes the background model with the current background model parameters (see <a class="reference" href="#settings-background-model">Ctrax Settings-&gt;Background Model...</a>).</li>
+    <li>-&gt;Compute Target Shape: Automatically estimates the shape parameters using the current shape parameters (see <a class="reference" href="#tracking-settings-shape-parameters">Tracking Settings: Shape Parameters</a>).</li>
+  </ul>
+  </li>
+  <li>Settings
+  <ul>
+    <li>-&gt;"Show Zoom Window": whether to show the zoom window display.</li>
+    <li>-&gt;"Ask for annotation file names": whether to prompt for the name of each <tt>.ann</tt> file. <tt>&lt;moviename&gt;.ann</tt> is the default.</li>
+  </ul>
+  </li>
+  <li>Help
+  <ul>
+    <li>-&gt;"Notify about updates": Every time it starts up, Ctrax will connect to the download site to look for a newer version. If this option is checked, a notification box will pop up once for each new version.</li>
+  </ul>
+  </li>
+</ul>
+
+
+<hr class="h2-divider"><h2><a name="automation">Automation</a></h2>
+
+<h3><a name="batch-processing">Batch Processing</a></h3>
+<div class="figure" align="center"><a class="reference image-reference" href="images/ctrax_030.png"><img
+ alt="Screenshot of Batch Processing dialog" src="images/ctrax_030.png" style="width: 200px;"></a>
+<p class="caption">Screenshot of "Batch Processing" dialog.</p>
+</div>
+<p>Ctrax can be set up to process multiple movies in a row, e.g., overnight. Select File->Batch Processing.</p>
+<ol>
+  <li>Choose the movies to be processed using the "Add" and "Remove"
+buttons.</li>
+  <li>"Load settings file": Set whether you want to load tracking settings from a file before each movie is tracked.
+  <li>"Save compressed SBFMF files": Set whether you want Ctrax to auto-generate static-background FMF files from the raw videos while tracking (identical to the option in <a href="#other-commands">Other Commands</a> above).
+  <li>"Flip movies vertically" [new in version 0.4.2]: Set whether all the movies in the batch should be tracked upside-down by default (identical to the option in <a href="#display-control">Display Control</a> above).
+  <li>"Circular Arena": Set how the circular arena or region of interest should be calculated for each movie.</li>
+  <li>"Shape": Set how the shape parameters (<a class="reference" href="#tracking-settings-shape-parameters">Tracking Settings: Shape Parameters</a>) should be set for each movie.</li>
+  <li>"Background Model": Set how the background model (image) should be set for each movie.</li>
+  <li>Hit "Execute" to begin tracking.</li>
+</ol>
+<p>The precedence for the tracking settings is somewhat confusing. Ctrax will attempt to calculate/load each setting from the following sources in order until a relevant source is found:</p>
+<ol>
+  <li>Auto-detect/do not use</li>
+  <li>Loaded settings file</li>
+  <li>Existing settings (previous tracking data for that movie)</li>
+  <li>User settings (the current settings as displayed in the Settings menus)</li>
+  <li>Default settings</li>
+</ol>
+
+<h3><a name="command-line">Running from the Command Line</a></h3>
+<p>Nearly all of the Ctrax functionality can be accessed from the command line, enabling advanced processing of movie batches. Run <tt>Ctrax --help</tt> to get a printout of the available options, or see the list below. In Windows, the command would be <tt>C:\"Program Files (x86)"\Ctrax0.5\Ctrax.exe --help</tt> , or in Mac OS X, <tt>/Applications/Ctrax.app/Contents/MacOS/Ctrax --help</tt> .</p>
+<table>
+<pre>--Interactive={<b>True</b>,False}                     <strong class="regular-font">-Whether to show the Ctrax GUI. If the GUI is shown, tracking does not begin automatically. In non-interactive mode, Ctrax will run to completion with no user input.</strong>
+--Input=&lt;movie.fmf&gt;                            <strong class="regular-font">-If unspecified in non-interactive mode, Ctrax literally tries to open <tt>movie.fmf</tt> .</strong>
+--Output=&lt;movie.fmf.ann&gt;                       <strong class="regular-font">-If the input filename is specified, it is used as the base name of the annotation file, but that can be altered by specifying an output filename.</strong>
+--MatFile=&lt;movie.mat&gt;
+--CsvFile=&lt;movie.csv&gt;                          <strong class="regular-font">-If unspecified, no CSV file is written.</strong>
+--SettingsFile=&lt;settings.ann&gt;                  <strong class="regular-font">-If unspecified, settings are read from the output filename, if it exists.</strong>
+--AutoEstimateBackground={<b>True</b>,False}          <strong class="regular-font">-Whether the background model should be calculated from the loaded settings (True) or the background model saved in the settings (or existing output file) should be used instead (False). True is enforced if no settings file or existing output file are found.</strong>
+--AutoEstimateShape={<b>True</b>,False}               <strong class="regular-font">-If False, shape parameters are read from the settings file, if it exists.</strong>
+--AutoDetectCircularArena={<b>True</b>,False}
+--FirstFrameTrack={<b>0</b>,1,...}                    <strong class="regular-font">-The frame at which to begin tracking.</strong>
+--LastFrameTrack={<b>-1</b>,0,1,...}                  <strong class="regular-font">-A value of -1 means to track until the last frame.</strong>
+--ResumeTracking={True,<b>False</b>}                  <strong class="regular-font">-As with the GUI command of the same name, if True and previous tracking data exist in the output file, they will be appended to rather than overwritten. Existing <tt>.ann</tt> files are backed up in any case.</strong>
+--CompressMovie=&lt;movie.sbfmf&gt;                  <strong class="regular-font">-Whether a SBFMF movie should be created during tracking and what name it should have.</strong>
+--DiagnosticsFile=&lt;movie_ctraxdiagnostics.txt&gt;
+--FlipMovieUD={<b>False</b>,True}                     <strong class="regular-font">-Whether to flip the movie vertically.</strong>
+--EnforceShapeBounds={<b>True</b>,False}              <strong class="regular-font">-Whether to enforce the shape and size bounds.</strong></pre>
+
+<p>All command-line options are case-insensitive.</p>
+
+<h3><a name="learning">Learning a Model and Settings</a></h3>
+<p>Some super-specialized batch scripts exist to iteratively learn the best settings for tracking a specified set of movies. These scripts are not general-purpose enough to bother documenting, but look for <tt>ExpBGFGModel</tt> in the Ctrax repository if you really want to attempt modifying them for your own use. Basically, these scripts run Ctrax repeatedly on a set of movies and attempt to automatically determine the optimal tracking settings, which can then be used to extract fly position data from the movies with a low error rate. Caveat utilitor.</p>
+
+
+<hr class="h2-divider">
+<h2><a name="example-video-annotation-and-mat-files">Example Video, Annotation, and MAT- files</a></h2>
+<p>For the purposes of testing your installation of Ctrax, we provide
+some example <a class="reference"
+href="install.html#static-background-fly-movie-format">Static Background Fly Movie Format</a> videos with the corresponding annotation and MAT-files created by Ctrax and FixErrors at <a class="reference" href="https://sourceforge.net/projects/ctrax/files/Ctrax%20samples/">Example SBFMF videos, annotation files, and <tt>.mat</tt> files</a>.</p>
+<p>Each of the provided zip files contains the following:</p>
+<ul>
+  <li><b><i>movie&lt;date&gt;.sbfmf</i></b> : <a class="reference"
+href="install.html#static-background-fly-movie-format">Static Background Fly Movie Format</a> video. When Ctrax is started, this video can be used as the input.</li>
+  <li><b><i>movie&lt;date&gt;.sbfmf.ann </i></b>: Annotation file created by Ctrax (see <a class="reference" href="#usage">Usage</a>) containing the tracking parameters and computed trajectories. We include the "fixed" results -- the results processed through the <a class="reference" href="fixerrors.html">FixErrors Matlab GUI</a>. When Ctrax prompts you for the name of the annotation file to save results to, if this file is given, tracking parameters and results will be loaded from here. Alternatively, a different annotation file can be set to write results to, but tracking parameters can be loaded from this annotation file using "File-&gt;Load Settings from File" (see <a class="reference" href="#other-commands">Other Commands</a>).</li>
+  <li><b><i>movie&lt;date&gt;.mat </i></b>: Matlab data file containing the <tt>trx</tt>
+variable, as described at <a class="reference" href="bmat.html#load-tracks-m">load_tracks.m</a>.</li>
+</ul>
+<p>The movies provided are:</p>
+<ul>
+  <li><a class="reference" href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/example-sbfmfvideo-ann-mat-5M5F5min-20090518.zip/download">example-sbfmfvideo-ann-mat-5M5F5min-20090518.zip</a>
+ (35MB): 5-minute video of 5 male and 5 female flies.</li>
+  <li><a class="reference" href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/example-sbfmfvideo-ann-mat-25M25F5min-20090518.zip/download">example-sbfmfvideo-ann-mat-25M25F5min-20090518.zip</a> (140MB): 5-minute video of 25 male and 25 female flies.</li>
+</ul>
+<p>To test whether AVI reading is working with your installation of
+Ctrax, we also provide short AVI clips from the first 100 frames of the SBFMF video in example-sbfmfvideo-ann-mat-5M5F5min-20090518.zip. We provide a zipped, uncompressed video created using Matlab and compressed videos in a variety of codecs created using VirtualDub:</p>
+<ul>
+  <!--<li><a class="reference" href="http://prdownload.berlios.de/ctrax/movie20071009_163231_frames0001to0100.zip">movie20071009_163231_frames0001to0100.zip</a> (65MB): Zipped, uncompressed AVI created using Matlab.</li>-->
+  <li><a class="reference" href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/movie20071009_163231_frames0001to0100_huffyuv.avi/download">movie20071009_163231_frames0001to0100_huffyuv.avi</a> (102MB): Compressed with the HuffYUV codec using VirtualDub.</li>
+  <li><a class="reference" href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/movie20071009_163231_frames0001to0100_ffdshow.avi/download">movie20071009_163231_frames0001to0100_ffdshow.avi</a> (222KB): Compressed with the ffdshow codec using VirtualDub.</li>
+  <li><a class="reference" href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/movie20071009_163231_frames0001to0100_xvid.avi/download">movie20071009_163231_frames0001to0100_xvid.avi</a> (212KB): Compressed with the XviD codec using VirtualDub.</li>
+</ul>
+
+<hr class="h2-divider">
+<h2><a name="annotation-file-format">Annotation File Format</a></h2>
+
+<p>Ctrax's annotation files (<tt>.ann</tt>) are not compressed binary, but rather are ASCII text to be human-readable and easily accessible to third-party software.</p>
+<p>The <a href="install.html#matlab-toolboxes-installation">Ctrax Matlab Toolboxes</a> include scripts to parse an annotation file.</p>
+
+<h3><a name="annotation-file-header">Header</a></h3>
+<p>The annotation file header generally has a simple <tt>name:value</tt> format. All of the tracking settings are saved in the header, allowing full re-creation of tracks. These settings are also portable to other sessions by using File->Load Settings.</p>
+<p>The actual background images used in tracking are also saved into the annotation file header. These are binary data by necessity, but the number of binary bytes is written prior to each image. Since they are uncompressed 8-bit images, there is one byte per pixel and the total number of bytes = width*height, with the first (width) bytes corresponding to the first row of image data.</p>
+<p>Another notable header field containing non-ASCII data is <tt>roipolygons</tt>, which contains a <a href="http://docs.python.org/library/pickle.html">"pickled"</a> Python list representing the polygons used to generate the background region of interest. Again, the first character is a number representing the number of binary bytes in the "pickled" object.</p>
+<p>The only lines guaranteed to be in a <tt>.ann</tt> file header are <tt>Ctrax header</tt> at the beginning of the file and <tt>end header</tt> at the end of the header. None of the specific <tt>name:value</tt> pairs are guaranteed to be present in the file, nor is their order guaranteed to be consistent.</p>
+<pre>Ctrax header
+version:X.Y.Z                 <strong class="regular-font">[the Ctrax version that created this annotation file]</strong>
+name1:value1
+name2:value2
+...
+background median:2576768     <strong class="regular-font">[or "background mean", etc.]</strong>
+[2576768 bytes of image data, with no trailing newline character]
+...
+name3:value3
+name4:value4
+...
+end header</pre>
+
+<h3><a name="annotation-file-data">Data</a></h3>
+Each frame of the video is represented by a single line of data consisting of many flies' positions concatenated together. Each fly is represented by the following string of values:</p>
+<pre>%f\t%f\t%f\t%f\t%f\t%d\t</pre>
+<p>where <tt>%f</tt> means a floating-point number, <tt>%d</tt> is an integer, and <tt>\t</tt> is a tab character. This sequence of numbers denotes the fly's center.x, center.y, size.width, size.height, angle, and identity. Negative numbers (other than for the angle) suggest a tracking error.</p>
+
+<hr class="h2-divider">
+
+<h2><a name="changelist">Changelists</a></h2>
+
+<h3><a name="changelist-0.5.11">New in Ctrax version 0.5.11 (21 December 2016):</a></h3>
+<ul>
+  <li>fixed bug in median background calculation when using a bg/fg model</li>
+</ul>
+
+<h3><a name="changelist-0.5.8">New in Ctrax version 0.5.8 (17 September 2016):</a></h3>
+<ul>
+  <li>double-check movie open before running in non-interactive mode</li>
+  <li>make 'enforce shape parameters' off by default</li>
+  <li>upgrade psutil</li>
+  <li>upgrade OpenCV</li>
+  <li>fix int/float implicit conversions in tracking code</li>
+</ul>
+
+<h3><a name="changelist-0.5.6">New in Ctrax version 0.5.6 (29 August 2015):</a></h3>
+<ul>
+  <li>allow background normalization type to be loaded from settings file</li>
+</ul>
+
+<h3><a name="changelist-0.5.5">New in Ctrax version 0.5.5 (7 March 2015):</a></h3>
+<ul>
+  <li>allow CSV exports in batch mode</li>
+  <li>catch some unimportant OpenCV errors without requiring user input</li>
+</ul>
+
+<h3><a name="changelist-0.5.3">New in Ctrax version 0.5.3 (13 October 2014):</a></h3>
+<ul>
+  <li>add bg_firstframe and bg_lastframe to saved bg model settings</li>
+</ul>
+
+<h3><a name="changelist-0.5.2">New in Ctrax version 0.5.2 (14 August 2014):</a></h3>
+<ul>
+  <li>Windows Wx workaround, SetValue for frame number during tracking</li>
+</ul>
+
+<h3><a name="changelist-0.5.1">New in Ctrax version 0.5.1 (14 July 2014):</a></h3>
+<ul>
+  <li>auto-detect circular arena in Tracking Wizard</li>
+</ul>
+
+<h3><a name="changelist-0.5.0">New in Ctrax version 0.5.0 (29 April 2014):</a></h3>
+<ul>
+  <li>changed compressed AVI reader from Pyglet/AVbin to OpenCV</li>
+  <li>clean exit in Windows 8 (for scripting)</li>
+  <li>better warning when Windows fails saving settings file</li>
+  <li>save background images to settings file</li>
+  <li>fixed load error in batch mode when a movie is shorter than the previous one</li>
+</ul>
+
+<h3><a name="changelist-0.4.2">New in Ctrax version 0.4.2 (29 November 2013):</a></h3>
+<ul>
+  <li>added option to flip movies vertically</li>
+  <li>fixed font warnings in Windows</li>
+  <li>upgraded to WxPython 2.9.5.0 in Mac OS</li>
+  <li>fixed Tracking Wizard bug where mouse clicks could be misinterpreted in Mac OS</li>
+  <li>fixed bug causing MAT-file export to fail for large movies in Windows</li>
+</ul>
+
+<h3><a name="changelist-0.4.1">New in Ctrax version 0.4.1 (24 October 2013):</a></h3>
+<ul>
+  <li>added option to not enforce shape parameters</li>
+  <li>correctly export background algorithm type (crashed FixErrors)</li>
+</ul>
+
+<h3><a name="changelist-0.4.0">New in Ctrax version 0.4.0 (19 October 2013):</a></h3>
+<ul>
+  <li>user-facing changes:
+  <ul>
+    <li>tracking speed improved 2-5x under most circumstances
+    <li>always enforce fly shape bounds
+    <li>bugfixes in ellipse zoom windows
+    <li>various other bugfixes and enhancements
+  </ul>
+
+  <li>internal changes:
+  <ul>
+    <li>complete rewrite of annotation file module
+    <li>moved background-subtraction and ellipse-fitting code to Cython
+    <li>unit tests for annotation files and choosing orientations
+  </ul>
+</ul>
+
+<h3><a name="changelist-0.3.16">New in Ctrax version 0.3.16 (26 June 2013):</a></h3>
+<ul>
+  <li>bugfix in average ellipse eccentricity calculation</li>
+</ul>
+
+<h3><a name="changelist-0.3.15">New in Ctrax version 0.3.15 (31 May 2013):</a></h3>
+<ul>
+  <li>built a signed Mac installer package</li>
+  <li>removed OpenGL drawing references</li>
+  <li>allow ellipse zoom windows to zoom dynamically with fly size</li>
+  <li>added scroll buttons to main window in Mac</li>
+  <li>implemented drag-and-drop file opening</li>
+</ul>
+
+<h3><a name="changelist-0.3.14">New in Ctrax version 0.3.14 (2 May 2013):</a></h3>
+<ul>
+  <li>allow line thickness to be set from GUI</li>
+  <li>fix ValueError in analysis plots on Mac</li>
+  <li>change scrollbars to sliders on Mac</li>
+</ul>
+
+<h3><a name="changelist-0.3.13">New in Ctrax version 0.3.13 (30 March 2013):</a></h3>
+<ul>
+  <li>fix to fix for reading compressed AVIs</li>
+</ul>
+
+<h3><a name="changelist-0.3.12">New in Ctrax version 0.3.12 (25 March 2013):</a></h3>
+<ul>
+  <li>fix for reading compressed AVIs with Pyglet version 1.2 (Ctrax for Windows)</li>
+</ul>
+
+<h3><a name="changelist-0.3.11">New in Ctrax version 0.3.11 (19 March 2013):</a></h3>
+<ul>
+  <li>bugfix for crash writing annotation file with no bg model</li>
+  <li>added new setting for transposing AVI movies</li>
+</ul>
+
+<h3><a name="changelist-0.3.10">New in Ctrax version 0.3.10 (14 December 2012):</a></h3>
+<ul>
+  <li>bugfix in tracking settings when viewing observations</li>
+  <li>bugfix for annfiles not initially seeking to end</li>
+  <li>added "save settings" menu option</li>
+  <li>bugfixes for giant ellipses in hindsight</li>
+  <li>new options and documentation for loading settings during batch processing</li>
+  <li>bugfixes for interpolating fly positions across a background-only region</li>
+  <li>new option to show fly orientation in zoom window</li>
+  <li>bugfix for not choosing orientations late in a movie without early data</li>
+</ul>
+
+<h3><a name="changelist-0.3.9">New in Ctrax version 0.3.9 (3 October 2012):</a></h3>
+<ul>
+  <li>bugfix for chooseorientations not saving</li>
+  <li>bugfix for a chooseorientations crash</li>
+</ul>
+
+<h3><a name="changelist-0.3.8">New in Ctrax version 0.3.8 (20 August 2012):</a></h3>
+<ul>
+  <li>bugfix for analysis plots with very few animals</li>
+  <li>bugfixes for returning -1 for lost ellipses in hindsight</li>
+</ul>
+
+<h3><a name="changelist-0.3.7">New in Ctrax version 0.3.7 (16 August 2012):</a></h3>
+<ul>
+  <li>shape parameters for major/minor axes sizes and eccentricity are enforced</li>
+</ul>
+
+<h3><a name="changelist-0.3.6">New in Ctrax version 0.3.6 (28 July 2012):</a></h3>
+<ul>
+  <li>triage for Ellipse/integer AttributeError crash in hindsight</li>
+  <li>multiprocessor "choose orientations"</li>
+  <li>multiprocessor "determining largest N to keep"</li>
+</ul>
+
+<h3><a name="changelist-0.3.5">New in Ctrax version 0.3.5 (30 June 2012):</a></h3>
+<ul>
+  <li>firstframe, lastframe, "use settings", and remember file extension in batch mode</li>
+</ul>
+
+<h3><a name="changelist-0.3.4">New in Ctrax version 0.3.4 (16 June 2012):</a></h3>
+<ul>
+  <li>don't block with a warning when opening a compressed AVI during batch processing</li>
+</ul>
+
+<h3><a name="changelist-0.3.3">New in Ctrax version 0.3.3 (21 May 2012):</a></h3>
+<ul>
+  <li>better support for small threshold values with "brightness"/intensity background normalization</li>
+  <li>CSV data export</li>
+  <li>analysis plot of velocity vs. time</li>
+  <li>Tracking Wizard shows the number of flies detected when thresholding</li>
+</ul>
+
+<h3><a name="changelist-0.3.2">New in Ctrax version 0.3.2 (22 March 2012):</a></h3>
+<ul>
+  <li>bugfix for correctly choosing largest connected components to keep</li>
+  <li>disable background-fixing in Tracking Wizard SBFMF movies</li>
+  <li>fix lingering offset issues in drag-to-zoom</li>
+  <li>bugfix for incomplete initialization of background parameters in non-interactive mode</li>
+</ul>
+
+<h3><a name="changelist-0.3.1">New in Ctrax version 0.3.1 (11 February 2012):</a></h3>
+<ul>
+  <li>bugfix for saving analysis plots</li>
+  <li>various fixes for command-line mode</li>
+  <li>FirstFrame, LastFrame, and ResumeTracking parameters added to command-line mode</li>
+  <li>setting input movie name from command line now disables opening another movie in GUI</li>
+  <li><tt>.ann</tt> filenames now (again) requested from user by default</li>
+  <li>added option to not ask for <tt>.ann</tt> filenames</li>
+  <li>added robustness in reading/copying <tt>.ann</tt> files</li>
+  <li>fix for display of observation parameters toolbox in Ubuntu Lucid</li>
+  <li>new <a href="#tracking-settings-motion-parameters">max_jump_split</a> parameter</li>
+  <li>background thresholds are reset, then remembered when normalization type is changed</li>
+  <li>fix for unreachable default window positions (esp. Windows 7)</li>
+  <li>fix for uncloseable settings windows after opening a second movie</li>
+  <li>made "load settings" fail gracefully with incompatible movies</li>
+  <li>circular arena settings in batch mode are now used independently of shape setting</li>
+</ul>
+
+<h3><a name="changelist-0.3.0">New in Ctrax version 0.3.0 (21 December 2011):</a></h3>
+<ul>
+  <li><a href="#tracking-wizard">"tracking wizard"</a> to help guide initialization and settings</li>
+  <li>simple tracking <a href="#analyze">analytic plots</a> now included in Ctrax</li>
+  <li>bugfix for "use settings from first movie" in batch processing (was ignored)</li>
+  <li>magnifier tool now allows zooming in on video in playback window</li>
+  <li>zooming allowed in background-threshold video window</li>
+  <li>sliders for background threshold are inverted (i.e., moving the slider up gives higher numbers)</li>
+  <li>background thresholds are no longer re-normalized after selecting image normalization type</li>
+  <li>pressing the play button when the movie is on its last frame will restart playback from the beginning</li>
+  <li>annotation data is displayed during and after batch processing</li>
+  <li>Ctrax remembers the file type of the last loaded movie even after quitting</li>
+  <li>the location and size of the zoom window is remembered across sessions</li>
+  <li>fixed bug involving no immediate display in zoomed-in ellipse window</li>
+  <li>fixed bug in prompting for choosing orientations</li>
+  <li>new tracking setting (observation parameter) to <a href="#tracking-settings-observation-parameters">limit number of flies tracked</a></li>
+  <li>tracking settings "observation properties" now updates when frame is changed</li>
+  <li>Ctrax now checks for the availability of newer releases</li>
+</ul>
+
+<h3><a name="changelist-0.2.4">New in Ctrax version 0.2.4 (2 November 2011):</a></h3>
+<ul>
+  <li>approximate correction for AVI headers that lie about frame count</li>
+  <li>up to 100x faster frame search in large uncompressed AVI files</li>
+  <li>modify environment variables to allow usability in Unity desktop</li>
+</ul>
+
+<h3><a name="changelist-0.2.3">New in Ctrax version 0.2.3 (18 October 2011):</a></h3>
+<ul>
+  <li>AVI codecs defined as '<tt>Y8&nbsp;&nbsp;</tt>' are now allowed to be read in Ctrax</li>
+</ul>
+
+<h3><a name="changelist-0.2.2">New in Ctrax version 0.2.2 (26 September 2011):</a></h3>
+<ul>
+  <li>prompts to choose orientations before exporting, if not done already</li>
+  <li>small bugfix in annotation file write-buffering</li>
+</ul>
+
+<h3><a name="changelist-0.2.1">New in Ctrax version 0.2.1 (12 September 2011):</a></h3>
+<ul>
+  <li>timestamps are always exported with Matlab data</li>
+  <li>improved performance for calculating timestamps for AVI files</li>
+  <li>bugfixes in uncompressed AVI reader</li>
+</ul>
+
+<h3><a name="changelist-0.2.0">New in Ctrax version 0.2.0 (9 September 2011):</a></h3>
+<ul>
+  <li>user-facing changes:</li>
+  <ul>
+    <li>changed icon</li>
+    <li>executable name changed back to "Ctrax" (was "Ctrax-script.py"); in Windows, changed from "Ctrax-script.exe" back to "Ctrax.exe"</li>
+    <li>user is no longer prompted for movie filename immediately upon startup</li>
+    <li>Ctrax remembers the file type of the last movie loaded (though not after quitting and restarting)</li>
+    <li>user is no longer prompted for <tt>.ann</tt> file names; existing annotation is always backed up and then loaded</li>
+    <li>user is no longer prompted for <tt>.sbfmf</tt> file names when saving
+    <li>in Windows, <ttt>.fmf</tt>, <tt>.sbfmf</tt>, and <tt>.ufmf</tt> files are now optionally associated with Ctrax</li>
+    <li>improved robustness for reading various uncompressed AVI movies</li>
+    <li>resizing Ctrax window now preserves movie's aspect ratio</li>
+    <li>batch processing mode is now capable of mass-writing SBFMF files</li>
+    <li>improved layout and display of background-model windows</li>
+    <li>background-threshold sliders and text are now synchronized</li>
+    <li>increased maximum number of zoomed-in fly windows to 10</li>
+    <li>scale of zoom window is set dynamically to fly's size</li>
+  </ul>
+  <li>internal changes:</li>
+  <ul>
+    <li>Ctrax for Windows now built with Python 2.7</li>
+    <li>use built-in "about" box in WxPython (assumes Wx 2.6+)</li>
+    <li>code for opening movies is more modular</li>
+    <li>correction for inf/nan/0 fly positions resulting from hindsight's merge detection</li>
+    <li>floating-point arithmetic errors now raise Python exceptions instead of yielding meaningless data</li>
+    <li>bugfix to allow exporting very long AVI files in Linux</li>
+    <li>various other bugfixes</li>
+    <li>"fix background" dialog is now a subclass of "region of interest"</li>
+    <li>centralized code to eliminate inconsistencies in "Play Speed" text display</li>
+  </ul>
+</ul>
+
+
+</div></div>
+
+</body></html>

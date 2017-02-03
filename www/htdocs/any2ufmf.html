@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>any2ufmf - Video converter AVI->UFMF</title>
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" 
+href="styles/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" 
+href="styles/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" 
+href="styles/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" 
+media="projection" href="styles/projection.css">
+</head>
+
+<body>
+
+<h1>any2ufmf: Convert any AVI to &mu;FMF</h1>
+
+<div id="page" dir="ltr" lang="en"><!-- start page -->
+<div id="content" dir="ltr" lang="en">
+<p>any2ufmf is an open-source program to assist in converting uncompressed AVI files to the Micro Fly Movie Format. It is provided especially for use with the <a href="/">Ctrax</a> tracking package.
+
+<hr class="h2-divider"><h2>Downloads</h2>
+<p>any2ufmf is provided as an installer package for <strong>64-bit</strong> Windows only. The current version is 1.0.0.0.</p>
+<ul>
+  <li><a href="http://sourceforge.net/projects/ctrax/files/any2ufmf/">Download any2ufmf</a></li>
+  <li><a href="https://github.com/kristinbranson/any2ufmf">Source code</a></li>
+</ul>
+
+<hr class="h2-divider"><h2>Instructions</h2>
+
+<p>The version 1.0 interface for any2ufmf is rather crude. Video conversion proceeds in four steps, which start immediately upon running the program:</p>
+<ol>
+  <li>Select input video. Videos are read by <a href="http://opencv.org">OpenCV</a> (currently using version 2.4.7). The list of compatible video formats is undocumented, but it's known to include most AVI files.</li>
+  <li>Select output filename.</li>
+  <li>Select custom <a href="#parameters">compression parameters</a>. You may use the defaults, but the output quality will be better if you customize the settings to match your movie.</li>
+  <li>Video conversion occurs. The program will open a window displaying the video frames as they are compressed, and a DOS terminal window will display information about the conversion progress.</li>
+  <li>When conversion is finished, the terminal window will say so. You may close the windows or press ESC to exit any2ufmf.</li>
+</ol>
+
+<hr class="h2-divider"><h2><a name="parameters">Conversion Parameters</a></h2>
+
+<p>UFMF compresses raw video by performing <a href="/install.html#background-subtraction-considerations">background subtraction</a>. Conceptually, the background is assumed to be static or nearly so, and only the pixels in each frame which differ from the background are stored. This conserves space on disk and also speeds up tracking by effectively pre-processing the video.</p>
+
+<p>Because the conversion to UFMF is a pre-processing step before tracking, it should be treated as equally important to the tracking itself. There are a number of parameters which can be set to affect the compression and conversion, and these should be determined through experience to result in the best tracking possible for your setup. We provide two sets of parameters to document and guide this process:</p>
+
+<ul>
+  <li><a href="https://sourceforge.net/projects/ctrax/files/any2ufmf/ufmfCompressionParams.txt">Janelia fly-tracking compression parameters</a></li>
+  <li><a href="https://sourceforge.net/projects/ctrax/files/any2ufmf/ufmfCompressionParamsLarva.txt">Janelia larva-tracking compression parameters</a></li>
+</ul>
+
+<p>UFMF conversion, like almost all video compression techniques, is lossy, meaning information is lost that cannot be recovered. The information loss is conservative with respect to the foreground portions of the image, but you should confirm that your compressed UFMF videos are generally trackable before deleting the original uncompressed files. Once the correct settings are determined, it is safe to rely on UFMF for all tracking and archival purposes.</p>
+
+<hr class="h2-divider"><h2>Reading UFMFs</h2>
+
+<p>The <a href="http://sourceforge.net/projects/ctrax/files/Matlab%20FixErrors/">Ctrax toolboxes for Matlab</a> (the <tt>Ctrax-matlab-*.zip</tt> archives) contain a detailed description of the UFMF format and Matlab tools to read and write UFMF files. These tools can also be found in the Ctrax source repository inside <a href="http://sourceforge.net/p/ctrax/code/HEAD/tree/trunk/matlab/filehandling/">matlab/filehandling</a>.
+
+<hr class="h2-divider"><h2>Contact</h2>
+
+<p>Support for any2ufmf is provided through the <a href="http://groups.google.com/group/ctrax">Ctrax Google Group</a>.
+
+</div>
+</div>
+
+</body>
+</html>

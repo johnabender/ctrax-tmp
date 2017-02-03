@@ -1,0 +1,28 @@
+JAB 12/8/11, 1/30/13, 4/6/13, 11/14/13
+- download python.org's Python 2.7 and install from DMG (2.7.6-macosx10.6)
+- replace /usr/bin links to python, pythonw, and python-config (and python2.7, etc.)
+with links to the new Python (/Library/Frameworks/... not /System/Library/...)
+- replace /usr/lib links to libpython2.7.dylib with links to the new Python (/Library/Frameworks/... not /System/Library/...)
+- download and install Numpy from DMG (1.6.2-py2.7-macosx10.6)
+- download and install Scipy from DMG (0.11.0-py2.7-macosx10.6)
+- download and install WxPython from DMG (2.9.5.0-cocoa-py2.7) --2.9 is in development, not stable, but is finally compatible with Cocoa; installer is broken but can be installed from command line (http://trac.wxwidgets.org/ticket/14523; 'sudo installer -pkg /Volumes/wxPython2.9-osx-2.9.5.0-cocoa-py2.7/wxPython2.9-osx-cocoa-py2.7.pkg -target /')
+- download and install distribute from source (0.6.36)
+- download and install pip from source (1.2.1)
+= optionally install ipython using pip (and ipython wants readline installed specifically using easy_install)
+- install PIL using pip (1.1.7)
+# download and install matplotlib from DMG (1.2.0-py2.7-python.org-macosx10.6)
+- install matplotlib using pip (1.4.3) --may rebuild Numpy
+- install Cython using pip (0.24)
+- install motmot.wxvideo using pip (0.5.6)
+- install motmot.wxvalidatedtext using pip (0.5.3)
+- install motmot.imops using pip (0.5.7)
+- install motmot.ufmf using pip (0.3.5)
+- install pygarrayimage using pip (1.0)
+- install py2app using pip (0.10)
+- download and install XQuartz from DMG (2.7.4), log out and back in --this is probably required for any end user on OS X 10.8 (Mountain Lion) or higher
+- replace the installed Wx _gdi.py with the version in py2app/wx-mod
+
+- download and install CMake from DMG (2.8.12.1)
+- download OpenCV zip (2.4.8)
+- build and install OpenCV: ‘cd opencv-2.4.8 && mkdir build && cd build && cmake -D CMAKE_BUILD_TYPE=RELEASE -D BUILD_NEW_PYTHON_SUPPORT=ON .. && make && sudo make install’
+- link to OpenCV Python libraries: ‘cd /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages && sudo ln -s /usr/local/lib/python2.7/site-packages/cv* .’

@@ -1,0 +1,144 @@
+; setup2.nsi
+;
+; This script is based on example2.nsi.
+;
+; It will install Ctrax.exe into a directory that the user selects,
+
+;--------------------------------
+
+; The name of the installer
+Name "Ctrax-{ctraxlongversion}"
+
+; The file to write
+OutFile "Ctrax-{ctraxlongversion}-installer.exe"
+Icon 'icons\Ctraxicon.ico'
+
+; The default installation directory
+InstallDir "$PROGRAMFILES\Ctrax-{ctraxshortversion}"
+
+; Registry key to check for directory (so if you install again, it will 
+; overwrite the old one automatically)
+InstallDirRegKey HKLM "Software\Ctrax-{ctraxshortversion}" "Install_Dir"
+
+; Request application privileges for Windows Vista
+RequestExecutionLevel admin
+
+; add file association macros (http://nsis.sourceforge.net/FileAssoc)
+!include "FileAssoc.nsh"
+
+;--------------------------------
+
+; Pages
+
+Page components
+Page directory
+Page instfiles
+
+UninstPage uninstConfirm
+UninstPage instfiles
+
+;--------------------------------
+
+; The stuff to install
+Section "Ctrax {ctraxlongversion} (required)"
+
+  SectionIn RO
+  
+  ; Set output path to the installation directory.
+  SetOutPath $INSTDIR
+
+  ; Whether to compress files
+  SetCompress Auto
+
+  ; Whether to overwrite files
+  SetOverwrite Try
+  
+  ; Put file there
+  File "dist\*.*"
+
+  SetOutPath $INSTDIR\icons
+  SetCompress Auto
+  SetOverwrite Try
+  File "dist\icons\*.*"
+
+  SetOutPath $INSTDIR\xrc
+  SetCompress Auto
+  SetOverwrite Try
+  File "dist\xrc\*.*"
+
+  SetOutPath $INSTDIR\mpl-data
+  SetCompress Auto
+  SetOverwrite Try
+  File "dist\mpl-data\*"
+  
+  ;SetOutPath $INSTDIR\psutil
+  ;SetCompress Auto
+  ;SetOverwrite Try
+  ;File "dist\psutil\*.*"
+
+  ; Write the installation path into the registry
+  WriteRegStr HKLM SOFTWARE\Ctrax-{ctraxshortversion} "Install_Dir" "$INSTDIR"
+  
+  ; Write the uninstall keys for Windows
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Ctrax-{ctraxshortversion}" "DisplayName" "Ctrax-{ctraxlongversion}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Ctrax-{ctraxshortversion}" "UninstallString" '"$INSTDIR\uninstall.exe"'
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Ctrax-{ctraxshortversion}" "NoModify" 1
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Ctrax-{ctraxshortversion}" "NoRepair" 1
+  WriteUninstaller "uninstall.exe"
+
+SectionEnd
+
+; Optional section (can be disabled by the user)
+Section "Start Menu Shortcuts"
+
+  CreateDirectory "$SMPROGRAMS\Ctrax"
+  CreateShortCut "$SMPROGRAMS\Ctrax\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
+  CreateShortCut "$SMPROGRAMS\Ctrax\Ctrax.lnk" "$INSTDIR\Ctrax.exe" "" "$INSTDIR\Ctraxicon.ico"
+  
+SectionEnd
+
+; Optional section (can be disabled by the user)
+Section "Desktop Shortcut"
+
+  CreateShortCut "$DESKTOP\Ctrax.lnk" "$INSTDIR\Ctrax.exe" "" "$INSTDIR\icons\Ctraxicon.ico"
+  
+SectionEnd
+
+; associate .fmf, .ufmf, and .sbfmf files with Ctrax
+Section "Associate with Fly Movie Format files"
+
+  !insertmacro APP_ASSOCIATE "fmf" "Motmot.FlyMovieFormat" "$INSTDIR\Ctrax.exe,0" "icons\drosophila.ico" "Open with Ctrax" "$INSTDIR\Ctrax.exe $\"%1$\""
+  !insertmacro APP_ASSOCIATE "sbfmf" "Motmot.StaticBackgroundFMF" "$INSTDIR\Ctrax.exe,0" "icons\drosophila-gray.ico" "Open with Ctrax" "$INSTDIR\Ctrax.exe $\"%1$\""
+  !insertmacro APP_ASSOCIATE "ufmf" "Motmot.MicroFMF" "$INSTDIR\Ctrax.exe,0" "icons\drosophila-orange.ico" "Open with Ctrax" "$INSTDIR\Ctrax.exe $\"%1$\""
+
+SectionEnd
+
+
+;--------------------------------
+
+; Uninstaller
+
+Section "Uninstall"
+
+  ; unassociate .fmf, .sbfmf, .ufmf files with Ctrax
+  !insertmacro APP_UNASSOCIATE "fmf" "Motmot.FlyMovieFormat"
+  !insertmacro APP_UNASSOCIATE "sbfmf" "Motmot.StaticBackgroundFMF"
+  !insertmacro APP_UNASSOCIATE "ufmf" "Motmot.MicroFMF"
+  
+  ; Remove registry keys
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Ctrax-{ctraxshortversion}"
+  DeleteRegKey HKLM SOFTWARE\Ctrax-{ctraxshortversion}
+
+  ; Remove files and uninstaller
+  Delete $INSTDIR\Ctrax.exe
+  Delete $INSTDIR\uninstall.exe
+
+  ; Remove shortcuts, if any
+  Delete "$SMPROGRAMS\Ctrax\*.*"
+  Delete "$DESKTOP\Ctrax.lnk"
+
+  ; Remove directories used
+  RMDir "$SMPROGRAMS\Ctrax"
+  RMDir "$INSTDIR"
+
+SectionEnd

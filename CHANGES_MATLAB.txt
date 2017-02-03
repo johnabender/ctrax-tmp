@@ -1,0 +1,110 @@
+changes in Ctrax Matlab Toolboxes release 0.2.22
+================================================
+- allow setting a rectangular arena in FixErrors autotracking
+
+changes in Ctrax Matlab Toolboxes release 0.2.21
+================================================
+- fixed make_ctrax_result_movie to work in R2016a
+
+changes in Ctrax Matlab Toolboxes release 0.2.20
+================================================
+- fixes to allow running FixErrors without tracking
+- change default to not show dead tracks in FixErrors
+- update to using JAABA's get_readframe_fcn (may resolve some AVI issues)
+
+changes in Ctrax Matlab Toolboxes release 0.2.18
+================================================
+- try/catch for compatibility with Matlab R2014b+
+
+changes in Ctrax Matlab Toolboxes release 0.2.17
+================================================
+- syntax fixes in BMat for Matlab R2013b+
+
+changes in Ctrax Matlab Toolboxes release 0.2.16
+================================================
+- modifying video 'fps' now modifies timestamps
+- fix for timestamps when extending a track backwards in time
+- check for dummy tracks in process_data
+
+changes in Ctrax Matlab Toolboxes release 0.2.15
+================================================
+- fix for expecting circular arena in saved FixErrors file
+
+changes in Ctrax Matlab Toolboxes release 0.2.14
+================================================
+- added checkbox to show/hide dead tracks in FixErrors
+- added ability to superpose two flies in FixErrors
+- honor circular arena in FixErrors auto-track
+- allow setting temporary circular arena in FixErrors auto-track
+- fix for not allowing results movie to *not* be flipped vertically
+
+changes in Ctrax Matlab Toolboxes release 0.2.13
+================================================
+- fix for no timestamps in mat-file
+
+changes in Ctrax Matlab Toolboxes release 0.2.12
+================================================
+- added GUI field for flipping movie vertically in make_ctrax_result_movie.m
+- fixed crash in fixerrorsgui when timestamps not found for all trx frames
+
+changes in Ctrax Matlab Toolboxes release 0.2.11
+================================================
+- FixErrors again exits cleanly instead of crashing if no suspicious sequences are found
+- bugfix for late-beginning sequences in per-frame stats scripts
+- added flip-image options to results_movie and showtrx
+
+changes in Ctrax Matlab Toolboxes release 0.2.10
+================================================
+- autotracking now uses flipped image if applicable
+- autotracking now updates track timestamps
+
+changes in Ctrax Matlab Toolboxes release 0.2.9
+===============================================
+- bugfix for MxNx3 images input to labelbehaviors
+- bugfix for messy UI after cancelling a FixErrors action
+- bugfix for different numbers of flies per movie in label_data
+
+changes in Ctrax Matlab Toolboxes release 0.2.7
+===============================================
+- bugfixes for safeset() and hObject undefined in some new fix_*.m files
+- bugfix for diff() on trajectory of length 1 in compute_perframe_stats()
+
+changes in Ctrax Matlab Toolboxes release 0.2.6
+===============================================
+- bugfix for movies with no NaN timestamps, created in 0.2.5
+- offload 1000 lines of FixErrors utility functions into separate M-files
+- combine code for auto-tracking one and multiple flies
+- don't prompt to save state unless state has changed
+
+changes in Ctrax Matlab Toolboxes release 0.2.5
+===============================================
+- add ability to add a new fly in FixErrors
+- add ability to flip movie image up/down in FixErrors
+- fix frame offset bug for movies that weren't tracked starting with frame 1
+- extending track in FixErrors now extends timestamps correctly
+
+changes in Ctrax Matlab Toolboxes release 0.2.4
+===============================================
+- allow speed-up of playback as well as slow-down in BehavioralMicroarray
+- allow reverse movie playback in BehavioralMicroarray
+- support for CSV export after FixErrors
+
+changes in Ctrax Matlab Toolboxes release 0.2.3
+===============================================
+- bugfixes in BehavioralMicroarray Toolbox (learn_params_social)
+- bugfixes in FixErrors (compensate for inf/nan fly positions)
+
+changes in Ctrax Matlab Toolboxes release 0.2.2
+===============================================
+- bugfix in FixErrors GUI (after joining tracks with timestamps)
+
+changes in Ctrax Matlab Toolboxes release 0.2.1
+===============================================
+- bugfix for faking timestamps in datafiles that don't include them
+
+changes in Ctrax Matlab Toolboxes release 0.2.0
+===============================================
+- various accumulated bugfixes since last 0.1 release (9/09)
+- per-mm statistics are now recalculated correctly after an error is fixed
+- "back" and "undo" buttons working in FixErrors GUI
+- reading large AVI files into FixErrors now forces only one long wait

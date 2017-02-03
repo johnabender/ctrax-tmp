@@ -1,0 +1,249 @@
+changes in Ctrax version 0.5.11
+===============================
+- skipped versions 0.5.9 and 0.5.10 due to Ubuntu PPA struggles
+- fixed bug in median background calculation when using a bg/fg model
+
+changes in Ctrax version 0.5.8
+==============================
+- double-check movie open before running in non-interactive mode
+- make 'enforce shape parameters' off by default
+- upgrade psutil
+- upgrade OpenCV
+- fix int/float implicit conversions in tracking code
+
+changes in Ctrax version 0.5.7
+==============================
+- upgrade psutil to 4.0.0
+- Windows upgrade setuptools to 20.2.2, requiring resource path changes
+- use 0 as the default max_nonarena threshold, instead of -1
+
+changes in Ctrax version 0.5.6
+==============================
+- allow background normalization type to be loaded from settings file
+
+changes in Ctrax version 0.5.5
+==============================
+- allow CSV exports in batch mode
+- catch some unimportant OpenCV errors without requiring user input
+
+changes in Ctrax version 0.5.3
+==============================
+- add bg_firstframe and bg_lastframe to saved bg model settings
+
+changes in Ctrax version 0.5.2
+==============================
+- Windows Wx workaround, SetValue for frame number during tracking
+
+changes in Ctrax version 0.5.1
+==============================
+- auto-detect circular arena in Tracking Wizard
+
+changes in Ctrax version 0.5.0
+==============================
+- dropped AVbin in favor of OpenCV for reading compressed AVIs
+- fixed exit() in Windows 8 (use sys.exit())
+- better warning when Windows fails saving settings file
+- save background images to settings file
+- fixed error in batch mode when a movie is shorter than the last one
+
+changes in Ctrax version 0.4.2
+==============================
+- added option to flip movies vertically
+- fixed font warnings in Windows and Mac OS
+- upgraded to WxPython 2.9.5.0 in Mac OS
+- fixed Tracking Wizard bug where mouse clicks could be misinterpreted in Mac OS
+- fixed bug causing MAT-file export to fail for large movies in Windows
+
+changes in Ctrax version 0.4.1
+==============================
+- added option to not enforce shape parameters
+- correctly export background algorithm type (crashed FixErrors)
+
+changes in Ctrax version 0.4.0
+==============================
+user-facing changes:
+- tracking speed improved 2-5x under most circumstances
+- always enforce fly shape bounds
+- bugfixes in ellipse zoom windows
+- various other bugfixes
+
+internal changes:
+- complete rewrite of annotation file module
+- moved background-subtraction and ellipse-fitting code to Cython
+- unit tests for annotation files and choosing orientations
+- updated format of user settings file
+
+changes in Ctrax version 0.3.16
+==============================
+- bugfix in avg. ellipse eccentricity calculation
+
+changes in Ctrax version 0.3.15
+==============================
+- built a signed Mac installer package
+- removed OpenGL drawing references
+- allow ellipse zoom windows to zoom dynamically with fly size
+- added scroll buttons to main window in Mac
+- implemented drag-and-drop file opening
+
+changes in Ctrax version 0.3.14
+==============================
+- allow line thickness to be set from GUI
+- fix ValueError in analysis plots on Mac
+- change scrollbars to sliders on Mac
+
+changes in Ctrax version 0.3.13
+==============================
+- fix to fix for reading compressed AVIs with Pyglet 1.2 (Ctrax for Windows)
+
+changes in Ctrax version 0.3.12
+==============================
+- fix for reading compressed AVIs with Pyglet version 1.2 (Ctrax for Windows)
+
+changes in Ctrax version 0.3.11
+==============================
+- bugfix for crash writing annotation file with no bg model
+- added new setting for transposing AVI movies
+
+changes in Ctrax version 0.3.10
+==============================
+- bugfix in tracking settings when viewing observations
+- bugfix for annfiles not initially seeking to end
+- added "save settings" menu option
+- bugfixes for giant ellipses in hindsight
+- new options and documentation for loading settings during batch processing
+- bugfixes for interpolating fly positions across a background-only region
+- new option to show fly orientation in zoom window
+- bugfix for not choosing orientations late in a movie without early data
+
+changes in Ctrax version 0.3.9
+==============================
+- bugfix for chooseorientations not saving
+- bugfix for a chooseorientations crash
+
+changes in Ctrax version 0.3.8
+==============================
+- bugfix for analysis plots with very few animals
+- bugfixes for returning -1 for lost ellipses in hindsight
+
+changes in Ctrax version 0.3.7
+==============================
+- shape parameters for major/minor axes sizes and eccentricity are enforced
+
+changes in Ctrax version 0.3.6
+==============================
+- triage for Ellipse/integer AttributeError crash in hindsight
+- multiprocessor "choose orientations"
+- multiprocessor "determining largest N to keep"
+
+changes in Ctrax version 0.3.5
+==============================
+- firstframe, lastframe, "use settings", and remember file extension in batch mode
+
+changes in Ctrax version 0.3.4
+==============================
+- don't block with a warning when opening a compressed AVI in batch mode
+
+changes in Ctrax version 0.3.3
+==============================
+- better support for small threshold values with "brightness"/intensity background normalization
+- CSV data export
+- analysis plot of velocity vs. time
+- Tracking Wizard shows the number of flies detected when thresholding
+
+changes in Ctrax version 0.3.2
+==============================
+- bugfix for correctly choosing largest connected components to keep
+- disable background-fixing in Tracking Wizard SBFMF movies
+- fix lingering offset issues in drag-to-zoom
+- bugfix for incomplete initialization of background parameters in non-interactive mode
+
+changes in Ctrax version 0.3.1
+==============================
+- bugfix for saving analysis plots
+- various fixes for command-line mode
+- firstframe and lastframe parameters added to command-line mode
+- setting input from command line now disables opening another movie in GUI
+- added robustness in reading/copying .ann files
+- .ann filenames now (again) requested from user by default
+- added option to not ask for .ann filenames
+- fix for display of observation parameters toolbox in Ubuntu Lucid
+- new max_jump_split parameter
+- background thresholds are reset and remembered when norm. type is changed
+- fix for unreachable default window positions (esp. Windows 7)
+- fix for uncloseable settings windows after opening a second movie
+- made "load settings" fail gracefully with incompatible movies
+- circular arena settings in batch mode are now used independently of shape setting
+
+
+changes in Ctrax version 0.3.0
+==============================
+- "tracking wizard" to help guide initialization and settings
+- simple tracking analytic plots now included in Ctrax
+- bugfix for "use settings from first movie" in batch processing (was ignored)
+- magnifier tool now allows zooming in on video in playback window
+- zooming allowed in background-threshold video window
+- sliders for background threshold are inverted (i.e., moving the slider up gives higher numbers)
+- background thresholds are no longer re-normalized after selecting image normalization type
+- pressing the play button when the movie is on its last frame will restart playback from the beginning
+- annotation data is displayed during and after batch processing
+- Ctrax remembers the file type of the last loaded movie even after quitting
+- the location and size of the zoom window is remembered across sessions
+- fixed bug involving no immediate display in zoomed-in ellipse window
+- fixed bug in prompting for choosing orientations
+- new tracking setting (observation parameter) to limit number of flies tracked
+- tracking settings "observation properties" now updates when frame is changed
+- Ctrax now checks for the availability of newer releases 
+
+
+changes in Ctrax version 0.2.4
+==============================
+- approximate correction for AVI headers that lie about frame count
+- up to 100x faster frame search in large uncompressed AVI files
+- modify environment variables to allow usability in Unity desktop
+
+
+changes in Ctrax version 0.2.3
+==============================
+- AVI codecs defined as 'Y8  ' are now allowed to be read in Ctrax
+
+
+changes in Ctrax version 0.2.2
+==============================
+- prompts to choose orientations before exporting, if not done already
+- small bugfix in annotation file write-buffering
+
+
+changes in Ctrax version 0.2.1
+==============================
+- timestamps are always exported with Matlab data
+- improved performance for calculating timestamps for AVI files
+- bugfixes in uncompressed AVI reader
+
+
+changes in Ctrax version 0.2.0
+==============================
+user-facing changes:
+- changed icon
+- executable name changed back to "Ctrax" (was "Ctrax-script")
+- user is no longer prompted for movie filename immediately upon startup
+- Ctrax remembers the file type of the last movie loaded (though not after quitting and restarting)
+- user is no longer prompted for .ann file names; existing annotation is always backed up and then loaded
+- user is no longer prompted for .sbfmf file names when saving
+- in Windows, .fmf, .sbfmf, and .ufmf files are now associated with Ctrax
+- improved robustness for reading various uncompressed AVI movies
+- resizing Ctrax window now preserves movie's aspect ratio
+- batch processing mode is now capable of mass-writing SBFMF files
+- centralized code to eliminate inconsistencies in "Play Speed" text display
+- improved layout and display of background-model windows
+- background-threshold sliders and text are now synchronized
+- increased maximum number of zoomed-in fly windows to 10
+
+internal changes:
+- Windows version updated to Python 2.7
+- use built-in "about" box in WxPython
+- code for opening movies is more modular
+- correction for inf/nan/0 fly positions resulting from hindsight's merge detection
+- floating-point arithmetic errors now raise Python exceptions instead of yielding meaningless data
+- bugfix to allow exporting very long AVI files in Linux
+- various other bugfixes
+- "fix background" dialog is now a subclass of "region of interest"

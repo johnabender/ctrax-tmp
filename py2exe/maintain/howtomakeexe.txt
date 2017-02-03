@@ -1,0 +1,95 @@
+1) Install dependencies in unzipped, non-egg form:
+$ easy_install.exe --always-unzip Ctrax
+[http://www.py2exe.org/index.cgi/ExeWithEggs]
+Remove installed Ctrax (C:\Python25\Lib\site-packages\Ctrax...) to avoid confusion (nec?)
+***This didn't work when I tried it with Python27 8/12/11 JAB.
+
+1.1) Make sure that Python27 has a copy of MSVCP90.dll in c:\python27\dlls.
+
+1.2) If the motmot packages were built from source (which is currently the only way to install them for Python 2.7), they will install only .egg files in the site-packages directory. In that case, copy_files_here.py will look in py2exe/maintain/py-sources for the needed source files. These are distributed with the Ctrax source tree, but should be replaced with the ones built on the compiling PC.
+
+The files imops.pyd, ufmf.py, wxvalidatedtext.py, and wxvideo.py can be found in the build/ directories of their respective source trees after being compiled. Copy them into the py2exe/maintain/py-sources directory.
+
+1.3) Carefully replace _gdi.py in the wx installation directory (c:\python27\lib\site-packages\wx-2.8-msw-unicode\wx) with the version in the py2exe/maintain/wx-mod directory. The only differences should be a try/except block inserted around line 911 in BitmapFromBufferRGBA(). This edit is to fix an error that seems to have no effect other than printing to the console during analysis-plot viewing, so this step can be skipped if necessary.
+
+2) [steps 2,3,4,5 are now combined in the script 'maintain/prepare_build.sh']
+
+Copy Ctrax and motmot stuff here
+
+***
+python copy_files_here.py
+***
+
+3) Remove pkg_resources from motmot. Currently, pkg_resources is not used by any of the required files (removed from currently installed motmot/simple_overlay). 
+
+***
+python removepkgresources.py
+***
+
+4) Replace import statements for motmot libraries
+
+***
+python replacemotmotimports.py
+***
+
+5) Set Ctrax version number correctly in EXE compilation script
+
+***
+python update_version_number.py
+***
+
+6) Compare the Ctrax/setup.py and py2exe/setup_py2exe.py scripts -- see if there are any changes to setup.py that need to manually be added to the old setup_py2exe.py script.
+
+7) Only needs to be done if scipy has been reinstalled; a couple of import hacks:
+
+In C:\Python25\Lib\site-packages\scipy\ndimage\__init__.py
+change:
+from io import *
+to
+from scipy.io import *
+
+8) [steps 8,9,10,11 are now combined in the script 'maintain/do_build.sh']
+
+Try to build
+
+***
+cd ..
+python setup_py2exe.py build -c mingw32
+***
+
+9) Try to make py2exe
+
+***
+python setup_py2exe.py build -c mingw32 py2exe
+***
+
+10) Copy dlls that are not automatically copied:
+
+***
+cp maintain/dlls/* dist/.
+cp build/lib.win32-2.5/*pyd dist/.
+***
+
+These dlls are:
+   _cobyla.pyd - /c/Python25/lib/site-packages/scipy/optimize/_cobyla.pyd
+   MSVCP71.dll - /c/Python25/lib/site-packages/wx-2.8-msw-unicode/wx/MSVCP71.dll
+   gdiplus.dll - /c/Python25/lib/site-packages/wx-2.8-msw-unicode/wx/gdiplus.dll
+   specfun.pyd - /c/Python25/lib/site-packages/scipy/special/specfun.pyd
+   OpenCV DLLs - C:\Users\benderj\Downloads\opencv-2.4.13\build\x86\vc12\bin
+
+11) Copy XML resources and icons (not automatically copied):
+
+***
+cp -R xrc dist/
+cp -R icons dist/
+cp -R mpl-data dist/
+***
+
+12) Try it out:
+$ cd dist
+$ ./Ctrax.exe
+
+13) Make the Windows installer using NSIS:
+Compile the script setup.nsi in the py2exe directory. (Start > NSIS, Compile NSI Scripts, File > Load > setup.nsi)
+
+14) This makes a file Ctrax-(ver).exe in the current directory that can be distributed. Try it out by double-clicking and installing. 

@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index">
+
+
+<title>Ctrax - The Caltech Multiple Walking Fly Tracker</title>
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all"
+href="styles/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen"
+href="styles/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print"
+href="styles/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8"
+media="projection" href="styles/projection.css">
+</head><body dir="ltr" lang="en">
+
+<div id="title" dir="ltr" lang="en">
+<table width="100%" border="0">
+  <tr>
+    <td><img src="images/ctrax-logo2b_128.png" width="128" height="128" alt="Ctrax logo"></td>
+    <td><h1>Ctrax: The Caltech Multiple Walking Fly Tracker</h1></td>
+  </tr>
+</table>
+</div>
+
+<div id="page" dir="ltr" lang="en"><!-- start page -->
+<div id="content" dir="ltr" lang="en">
+<p>Ctrax is an open-source,
+freely available, machine vision program for estimating the positions
+and orientations of many walking flies, maintaining their individual
+identities over long periods of time. It was designed to allow
+high-throughput, quantitative analysis of behavior in freely moving
+flies. Our primary goal in this project is to provide quantitative
+behavior analysis tools to the neuroethology community; thus, we've
+endeavored to make the system adaptable to other labs' setups. We have
+assessed the quality of the tracking results for our setup, and found
+that it can maintain fly identities indefinitely with minimal
+supervision, and on average for 1.5 fly-hours automatically.</p>
+<p>To further compensate for identity and other tracking errors, we
+provide the FixErrors
+Matlab GUI that identifies suspicious sequences of frames and allows
+ a user to correct any tracking errors. We also distribute the BehavioralMicroarray
+ Matlab Toolbox for defining and detecting a broad palette of
+individual and social behaviors. This software inputs the trajectories
+output by Ctrax and computes descriptive statistics of the behavior of
+each individual fly. We provide software for three proof-of-concept
+experiments to show the potential of the Ctrax software and our behavior
+ detectors.</p>
+<p>This package and its algorithms are described in detail in the article "High-Throughput Ethomics in Large Groups of <i>Drosophila</i>," Branson et al., <i>Nature Methods</i>, 2009 (<a class="reference"
+href="http://dx.doi.org/10.1038/nmeth.1328">DOI:10.1038/nmeth.1328</a>); reprints are available from the authors by request (see below).</p>
+
+<hr class="h2-divider"><h2>Contents</h2>
+
+<ul>
+  <li><h3><a class="reference" href="faq.html">Quick Guide and FAQ</a></h3>
+</ul>
+
+<ul>
+  <li><h3><a class="reference" href="install.html" id="id2" name="id2">Installation</a></h3></li>
+  <ul>
+    <li><a class="reference"
+href="install.html#download">Download</a></li>
+    <li><a class="reference" href="install.html#ctrax-requirements" id="id5"
+name="id5">Ctrax Requirements</a>
+    <ul>
+      <li><a class="reference"
+href="install.html#computer-and-software-requirements" id="id6" name="id6">Computer and Software Requirements</a></li>
+      <li><a class="reference" href="install.html#input-video-formats" id="id7" name="id7">Input Video Formats</a></li>
+      <li><a class="reference" href="install.html#arena-and-video-requirements" id="id12" name="id12">Arena and Video Requirements</a></li>
+    </ul>
+    </li>
+    <li><a class="reference" href="install.html#ctrax-installation" id="id17"
+name="id17">Ctrax Installation</a>
+    <ul>
+      <li><a class="reference" href="install.html#windows-installer"
+id="id18" name="id18">Windows Installer</a></li>
+      <li><a class="reference" href="install.html#macos-installer"
+>Mac Installer</a></li>
+      <li><a class="reference" href="install.html#ubuntu-package"
+id="id19" name="id19">Ubuntu Package</a></li>
+      <li><a class="reference" href="install.html#distutils"
+id="id20" name="id20">Source</a></li>
+    </ul>
+    </li>
+    <li><a class="reference" href="install.html#matlab-toolboxes-requirements"
+id="id70" name="id70">Matlab Toolboxes Requirements (FixErrors GUI and Behavioral Microarray Toolbox)</a></li>
+    <li><a class="reference" href="install.html#matlab-toolboxes-installation"
+id="id70" name="id70">Matlab Toolboxes Installation (FixErrors GUI and Behavioral Microarray Toolbox)</a></li>
+  </ul>
+</ul>
+
+<ul>
+  <li><h3><a class="reference" href="ctrax.html" id="id4" name="id4">Ctrax</a></h3>
+  <ul>
+    <li><a class="reference" href="ctrax.html#usage" id="id22" name="id22">Usage</a></li>
+    <li><a class="reference" href="ctrax.html#automation">Automation</a></li>
+    <li><a class="reference" href="ctrax.html#example-video-annotation-and-mat-files"
+id="id36" name="id36">Example Video, Annotation, and MAT files</a></li>
+    <li><a class="reference" href="ctrax.html#annotation-file-format">Annotation File Format</a></li>
+    <li><a class="reference" href="ctrax.html#changelist">Changelists</a></li>
+  </ul>
+  </li>
+</ul>
+
+<ul>
+  <li><h3><a class="reference" href="fixerrors.html" id="id37" name="id37">FixErrors Matlab GUI</a></h3>
+  <ul>
+    <li><a class="reference" href="fixerrors.html#start-up" id="id41"
+name="id41">Start-Up</a></li>
+    <li><a class="reference" href="fixerrors.html#suspiciousness-parameters"
+id="id42" name="id42">Suspiciousness Parameters</a></li>
+    <li><a class="reference" href="fixerrors.html#gui-display" id="id43"
+name="id43">FixErrors GUI Display</a></li>
+    <li><a class="reference" href="fixerrors.html#manipulating-trajectories" id="id44" name="id44">Manipulating Trajectories</a></li>
+  </ul>
+  </li>
+</ul>
+
+<ul>
+  <li><h3><a class="reference" href="bmat.html"
+id="id53" name="id53">BehavioralMicroarray Matlab Toolbox</a></h3>
+  <ul>
+    <li><a class="reference" href="bmat.html#showtrx-m" id="id57" name="id57">showtrx.m</a></li>
+    <li><a class="reference" href="bmat.html#simple-diagnostics-m" id="id58"
+name="id58">simple_diagnostics.m</a></li>
+    <li><a class="reference" href="bmat.html#make-ctrax-results-movie-m" id="id59"
+name="id59">make_ctrax_results_movie.m</a></li>
+    <li><a class="reference" href="bmat.html#load-tracks-m" id="id60" name="id60">load_tracks.m</a></li>
+    <li><a class="reference" href="bmat.html#convert-units-m" id="id61" name="id61">convert_units.m</a></li>
+    <li><a class="reference" href="bmat.html#compute-perframe-stats-m" id="id62"
+name="id62">compute_perframe_stats.m</a></li>
+    <li><a class="reference" href="bmat.html#compute-perframe-stats-social-m"
+id="id63" name="id63">compute_perframe_stats_social.m</a></li>
+    <li><a class="reference" href="bmat.html#classify-by-area-m" id="id64"
+name="id64">classify_by_area.m</a></li>
+    <li><a class="reference deprecated" href="bmat.html#learn-params-m" id="id65" name="id65">learn_params.m</a></li>
+    <li><a class="reference deprecated" href="bmat.html#learn-params-social-m" id="id66"
+name="id66">learn_params_social.m</a></li>
+    <li><a class="reference" href="bmat.html#detect-behaviors-m" id="id67"
+name="id67">detect_behaviors.m</a></li>
+    <li><a class="reference" href="bmat.html#histogramproperties-m" id="id68"
+name="id68">histogramproperties.m</a></li>
+    <li><a class="reference" href="bmat.html#plot-behaviormicroarray-m" id="id69"
+name="id69">plot_behaviormicroarray.m</a></li>
+  </ul>
+  </li>
+</ul>
+
+<ul>
+  <li><h3><a class="reference" href="#contact" id="id71" name="id71">Contact</a></h3></li>
+</ul>
+
+<ul>
+  <li><h3><a class="reference" href="#publications">Publications</a></h3></li>
+</ul>
+
+</div>
+
+<hr class="h2-divider"><h2><a name="contact">Contact</a></h2>
+
+<p>For questions or suggestions about the Ctrax software suite, please
+post to the <a class="reference"
+href="http://groups.google.com/group/ctrax">Ctrax Google Group</a>. For
+other inquiries, contact corresponding author <a
+href="http://www.hhmi.org/research/fellows/branson.html">Kristin Branson</a>.</p>
+
+<p>See also:
+<ul>
+  <li><a href="http://www.janelia.org/lab/branson-lab">the Branson lab</a></li>
+  <li><a href="http://vision.caltech.edu/">the Perona lab</a></li>
+  <li><a href="http://dickinsonlab.caltech.edu/">the Dickinson lab</a></li>
+</ul>
+</p>
+
+<hr class="h2-divider"><h2><a name="publications">Publications</a></h2>
+
+<p>Ctrax has been used for data collection in the following publications, that we know of:</p>
+<div class="citations">
+<ul>
+  <li>Branson, K., Robie, A. A., Bender, J., Perona, P. &amp; Dickinson, M. H. (2009). High-throughput ethomics in large groups of <i>Drosophila</i>. <i>Nature Methods</i> <b>6</b>:451-457. <a href="http://dx.doi.org/10.1038/nmeth.1328">DOI:10.1038/nmeth.1328</a></li>
+  <li>Simon, J. C. &amp; Dickinson, M. H. (2010). A new chamber for studying the behavior of <i>Drosophila</i>. <i>PLoS ONE</i> <b>5</b>(1):e8793. <a href="http://dx.doi.org/10.1371/journal.pone.0008793">DOI:10.1371/journal.pone.0008793</a>
+  <li>White, K. E., Humphrey, D. M. &amp; Hirth, F. (2010). The dopaminergic system in the aging brain of <i>Drosophila</i>. <i>Front Neurosci</i> <b>4</b>:205. <a href="http://dx.doi.org/10.3389/fnins.2010.00205">DOI:10.3389/fnins.2010.00205</a>
+  <li>Reid, C. R., Sumpter, D. J. T. &amp; Beekman, M. (2011). Optimisation in a natural system: Argentine ants solve the Towers of Hanoi. <i>J Exp Biol</i> <b>214</b>(1):50-58. <a href="http://dx.doi.org/10.1242/​jeb.048173">DOI:10.1242/​jeb.048173</a></li>
+  <li>Bender, J. A., Simpson, E. M., Tietz, B. R., Daltorio, K. A., Quinn, R. D. &amp; Ritzmann, R. E. (2011). Kinematic and behavioral evidence for a distinction between trotting and ambling gaits in the cockroach, <i>Blaberus discoidalis</i>. <i>J Exp Biol</i> <b>214</b>(12):2057-2064. <a href="http://dx.doi.org/10.1242/jeb.056481">DOI:10.1242/jeb.056481</a>
+  <li>Ofstad, T. A., Zuker, C. S. &amp; Reiser, M. B. (2011). Visual place learning in <i>Drosophila melanogaster</i>. <i>Nature</i>, <b>474</b>(7350):204-207. <a href="http://dx.doi.org/10.1038/nature10131">DOI:10.1038/nature10131</a>
+  <li>Herbert-Read, J. E., Perna, A., Mann, R. P., Schaerfa, T. M., Sumpter, D. J. T. &amp; Ward, A. J. W. (2011). Inferring the rules of interaction of shoaling fish. <i>Proc Nat Acad Sci USA</i> <b>108</b>(46):18726-18731. <a href="http://dx.doi.org/10.1073/pnas.1109355108">DOI:10.1073/pnas.1109355108</a>
+  <li>Barry, M. J. (2012). Application of a novel open-source program for measuring the effects of toxicants on the swimming behavior of large groups of unmarked fish. <i>Chemosphere</i>, <b>86</b>(9):938-944. <a href="http://dx.doi.org/10.1016/j.chemosphere.2011.11.011">DOI:10.1016/j.chemosphere.2011.11.011</a>
+  <li>Humphrey, D. M., Parsons, R. B., Ludlow, Z. N., Riemensperger, T., Esposito, G., Verstreken, P., Jacobs, H. T., Birman, S. &amp; Hirth, F. (2012). <i>Alternative oxidase</i> rescues mitochondria-mediated dopaminergic cell loss in <i>Drosophila</i>. <i>Hum Mol Genet</i>, <b>21</b>(12):2698-2712. <a href="http://dx.doi.org/10.1093/hmg/dds096">DOI: 10.1093/hmg/dds096</a>
+  <li>Daltorio, K. A., Tietz, B. R., Bender, J. A., Webster, V. A., Szczecinski, N. S., Branicky, M. S., Ritzmann, R. E. &amp; Quinn, R. D. (2012). A stochastic algorithm for explorative goal seeking extracted from cockroach walking data. <i>Proceedings of the IEEE ICRA conference</i>, St. Paul, MN (pp. 2261-2268). <a href="http://dx.doi.org/10.1109/ICRA.2012.6225020">DOI:10.1109/ICRA.2012.6225020</a></li>
+  <li>Schneider, J., Dickinson, M. H. &amp; Levine, J. D. (2012). Social structures depend on innate determinants and chemosensory processing in <i>Drosophila</i>. <i>Proc Nat Acad Sci USA</i> <b>109</b>(Supplement 2):17174-17179. <a href="http://dx.doi.org/10.1073/pnas.1121252109">DOI:10.1073/pnas.1121252109</a></li>
+  <li>Lambert, A. M., Bonkowsky, J. L. &amp; Masino, M. A. (2012). The conserved dopaminergic diencephalospinal tract mediates vertebrate locomotor development in zebrafish larvae. <i>J Neurosci</i>, <b>32</b>(39):13488-13500. <a href="http://dx.doi.org/10.1523/JNEUROSCI.1638-12.2012">DOI:10.1523/JNEUROSCI.1638-12.2012</a></li>
+  <li>Ramdya, P., Schaffter, T., Floreano, D., &amp; Benton, R. (2012). Fluorescence Behavioral Imaging (FBI) tracks identity in heterogeneous groups of <i>Drosophila</i>. <i>PLoS ONE</i> <b>7</b>(11):e48381. <a href="http://dx.doi.org/10.1371/journal.pone.0048381">DOI:10.1371/journal.pone.0048381</a></li>
+  <li>Kabra, M., Robie, A. A., Rivera-Alba, M., Branson, S. &amp Branson, K. (2012). JAABA: interactive machine learning for automatic annotation of animal behavior. <i>Nature Methods</i> <b>10</b>:64–67. <a href="http://dx.doi.org/10.1038/nmeth.2281">DOI:10.1038/nmeth.2281</a></li>
+  <li>Diaper, D. C., Adachi, Y., Sutcliffe, B., Humphrey, D. M., Elliot, C. J. H., Stepto, A., Ludlow, Z. N., Vanden Broeck, L., Callaerts, P., Dermaut, B., Al-Chalabi, A., Shaw, C. E., Robinson, I. M., &amp Hirth, F. (2013). Loss and gain of <i>Drosophila</i> TDP-43 impair synaptic efficacy and motor control leading to age-related neurodegeneration by loss-of-function phenotypes. <i>Hum Mol Genet</i> <b>22</b>(8):1539-1557. <a href="http://dx.doi.org/10.1093/hmg/ddt005">DOI:10.1093/hmg/ddt005</a></li>
+  <li>Barry, M. J. (2013). Effects of fluoxetine on the swimming and behavioural responses of the Arabian killifish. <i>Ecotoxicology</i>, <b>22</b>(2):425-432. <a href="http://dx.doi.org/10.1007/s10646-012-1036-7">DOI:10.1007/s10646-012-1036-7</a></li>
+  <li>Diaper, D. C., Adachi, Y., Lazarou, L., Greenstein, M., Simoes, F. A., Di Domenico, A., Solomon, D. A., Lowe, S., Alsubaie, R., Cheng, D., Buckley, S., Humphrey, D. M., Shaw, C. E. &amp Hirth, F (2013). <i>Drosophila</i> TDP-43 dysfunction in glia and muscle cells cause cytological and behavioral phenotypes that characterize ALS and FTLD. <i>Hum Mol Genet</i> <b>22</b>(19):3883-3893. <a href="http://dx.doi.org/10.1093/hmg/ddt243">DOI:10.1093/hmg/ddt243</a></li>
+  <li>Ingebretson, J. J. &amp Masino, M. A. (2013). Quantification of locomotor activity in larval zebrafish: considerations for the design of high-throughput behavioral studies. <i>Front Neural Circuits</i> <b>7</b>:109. <a href="http://dx.doi.org/10.3389/fncir.2013.00109">DOI:10.3389/fncir.2013.00109</a></li>
+  <li>Daltorio, K. A., Tietz, B. R., Bender, J. A., Webster, V. A., Szczecinski, N. S., Branicky, M. S., Ritzmann, R. E. &amp Quinn, R. D. (2013). A model of exploration and goal-searching in the cockroach, <i>Blaberus discoidalis</i>. <i>Adapt Behav</i> <b>21</b>(5):404-420. <a href="http://dx.doi.org/10.1177/1059712313491615">DOI:10.1177/1059712313491615</a></li>
+  <li>Mann, K., Gordon, M. D. &amp Scott, K. (2013). A pair of interneurons influences the choice between feeding and locomotion in <i>Drosophila</i>. <i>Neuron</i> <b>79</b>(4):754-765. <a href="http://dx.doi.org/10.1016/j.neuron.2013.06.018">DOI:10.1016/j.neuron.2013.06.018</a></li>
+  <li>Nath, T., Liu, G., Weyn, B., Hassan, B., Ramaekers, A., De Backer, S. &amp Scheunders, P. (2013). Tracking for quantifying social network of <i>Drosophila melanogaster</i>. <i>Proceedings of the CAIP conference</i>, York, U.K. (pp. 539-545). <a href="http://dx.doi.org/10.1007/978-3-642-40246-3_67">DOI:10.1007/978-3-642-40246-3_67</a></li>
+  <li>Decker, A. R., McNeill, M. S., Lambert, A. M., Overton, J. D., Chen, Y.-C., Lorca, R. A., Johnson, N. A., Brockerhoff, S. E., Mohapatra, D. P., MacArthur, H., Panula, P., Masino, M. A., Runnels, L. W. &amp Cornell, R. A. (2014). Abnormal differentiation of dopaminergic neurons in zebraﬁsh <i>trpm7</i> mutant larvae impairs development of the motor pattern. <i>Dev Biol</i> <b>386</b>(2):428-439. <a href="http://dx.doi.org/10.1016/j.ydbio.2013.11.015">DOI:10.1016/j.ydbio.2013.11.015</a></li>
+  <li>Lacin, L., Rusch, J., Yeh, R. T., Fujioka, M., Wilson, B. A., Zhu, Y., Robie, A. A., Mistry, H., Wang, T., Jaynes, J. B. &amp Skeath, J. B. (2014). Genome-wide identification of <i>Drosophila</i> Hb9 targets reveals a pivotal role in directing the transcriptome within eight neuronal lineages, including activation of Nitric oxide synthase and Fd59a/Fox-D. <i>Dev Biol</i> <b>388</b>(1):117-133. <a href="http://dx.doi.org/10.1016/j.ydbio.2014.01.029">DOI:10.1016/j.ydbio.2014.01.029</a></li>
+  <li>Ruhl, T., Prinz, N., Oellers, N. Seidel, N. I., Jonas, A. Albayram, Ö, Bilkei-Gorzo, A. &amp von der Emde, G. (2014). Acute administration of THC impairs spatial but not associative memory function in zebrafish. <i>Psychopharmacology</i> <b>231</b>(19):3829-3842. <a href="http://dx.doi.org/10.1007/s00213-014-3522-5">DOI:10.1007/s00213-014-3522-5</a></li>
+  <li>Bussell, J. J., Yapici, N., Zhang, S. X., Dickson, B. J. &amp Vosshall, L. B. (2014). <i>Abdominal-B</i> neurons control <i>Drosophila</i> virgin female receptivity. <i>Curr Biol</i> <b>24</b>(14):1584-1595. <a href="http://dx.doi.org/10.1016/j.cub.2014.06.011">DOI:10.1016/j.cub.2014.06.011</a></li>
+  <li>Ott, B. M., Cruciger, M., Dacks, A. M. &amp; Rio, R. V. M. (2014). Hitchhiking of host biology by beneficial symbionts enhances transmission. <i>Sci Rep</i> <b>4</b>:5825. <a href="http://dx.doi.org/10.1038/srep05825">DOI:10.1038/srep05825</a></li>
+  <li>Barry, M. J. (2014). Fluoxetine inhibits predator avoidance behavior in tadpoles. <i>Tox Env Chem</i>, <b>96</b>(4):641-649. <a href="http://dx.doi.org/10.1080/02772248.2014.966713">DOI:10.1080/02772248.2014.966713</a></li>
+  <li>Gou, B., Liu, Y., Guntur, A. R., Stern, U. &amp; Yang, C-H. (2014). Mechanosensitive neurons on the internal reproductive tract contribute to egg-laying-induced acetic acid attraction in <i>Drosophila</i>. <i>Cell Rep</i> <b>9</b>(2):522-530. <a href="http://dx.doi.org/10.1016/j.celrep.2014.09.033">DOI:10.1016/j.celrep.2014.09.033</a></li>
+  <li>Yang, C-H., He, R. &amp; Stern, U. (2015). Behavioral and circuit basis of sucrose rejection by <i>Drosophila</i> females in a simple decision-making task. <i>J Neurosci</i> <b>35</b>(4):1396-1410. <a href="http://dx.doi.org/10.1523/JNEUROSCI.0992-14.2015">DOI:10.1523/JNEUROSCI.0992-14.2015</a></li>
+  <li>Schneider, J. &amp; Levine, J. D. (2014). Automated identification of social interaction criteria in <i>Drosophila melanogaster</i>. <i>Biol Lett</i> <b>10</b>(10). <a href="http://dx.doi.org/10.1098/rsbl.2014.0749">DOI:10.1098/rsbl.2014.0749</a></li>
+  <li>Ramdya, P., Lichocki, P., Cruchet, S., Frisch, L., Tse, W., Floreano, D. &amp; Benton, R. (2015). Mechanosensory interactions drive collective behaviour in <i>Drosophila</i>. <i>Nature</i>, <b>519</b>(7542):233-236. <a href="http://dx.doi.org/10.1038/nature14024">DOI:10.1038/nature14024</a></li>
+  <li>Zhu, E. Y., Guntur, A. R., He, R., Stern, U. &amp; Yang, C-H. (2014). Egg-laying demand induces aversion of UV light in <i>Drosophila</i> females. <i>Curr Biol</i>, <b>24</b>(23):2797-2804. <a href="http://dx.doi.org/10.1016/j.cub.2014.09.076">DOI:10.1016/j.cub.2014.09.076</a></li>
+  <li>Battesti, M., Pasquaretta, P., Moreno, C., Teseo, S., Joly, D., Klensch, E., Petit, O., Sueur, C. &amp; Mery, F. (2014). Ecology of information: social transmission dynamics within groups of non-social insects. <i>Proc Roy Soc Lond B</i>, <b>282</b>(1801). <a href="http://dx.doi.org/10.1098/rspb.2014.2480">DOI:10.1098/rspb.2014.2480</a></li>
+  <li>Barnes, A. D., Spey, I.-K., Rohde, L., Brose, U. &amp; Dell, A. I. (2015). Individual behaviour mediates effects of warming on movement across a fragmented landscape. <i>Func Ecol</i>, <b>29</b>(12):1543-1552. <a href="http://dx.doi.org/10.1111/1365-2435.12474">DOI:10.1111/1365-2435.12474</a></li>
+  <li>van der Bijl, W., Thyselius, M., Kotrschal, A., &amp; Kolm, N. (2015). Brain size affects the behavioural response to predators in female guppies (<i>Poecilia reticulata</i>). <i>Proc Roy Soc Lond B</i>, <b>282</b>:20151132. <a href="http:/dx.doi.org/10.1098/rspb.2015.1132">DOI:10.1098/rspb.2015.1132</a></li>
+  <li>Chan, J. D., Agbedanu, P. N., Grab, T., Zamanian, M., Dosa, P. I., Day, T. A. &amp; Marchant, J. S. (2015). Ergot alkaloids (re)generate new leads as antiparasitics. <i>PLoS Negl Trop Dis</i>, <b>9</b>(9):e0004063. <a href="http://dx.doi.org/10.1371/journal.pntd.0004063">DOI:10.1371/journal.pntd.0004063</a></li>
+  <li>Martin, J. P., Guo, P., Mu, M., Harley, C. M. &amp; Ritzmann, R. E. (2015). Central-complex control of movement in the freely walking cockroach. <i>Curr Biol</i>, <b>25</b>(21):2795–2803. <a href="http://dx.doi.org/10.1016/j.cub.2015.09.044">DOI:10.1016/j.cub.2015.09.044</a></li>
+  <li>Daltorio, K. A., Mirletz, B. T., Sterenstein, A., Cheng, J. C., Watson, A., Kesavan, M., Bender, J., Martin, J., Ritzmann, R. E. &amp; Quinn, R. D. (2015). How cockroaches exploit tactile boundaries to find new shelters. <i>Bioinspir Biomimem</i>, <b>10</b>:065002. <a href="http://dx.doi.org/10.1088/1748-3190/10/6/065002">DOI:10.1088/1748-3190/10/6/065002</a></li>
+  <li>Maesani, M., Ramdya, P., Cruchet, S., Gustafson, K., Benton, R. &amp;Floreano, D. (2015). Fluctuation-driven neural dynamics reproduce <i>Drosophila</i> locomotor patterns. <i>PLoS Comp Biol</i>, <b>11</b>(11):e1004577. <a href="http://dx.doi.org/10.1371/journal.pcbi.1004577">DOI:10.1371/journal.pcbi.1004577</a></li>
+  <li>Stanley Jr., C. E. &amp; Kulathinal, R. J. (2016). Genomic signatures of domestication on neurogenetic genes in <i>Drosophila melanogaster</i>. <i>BMC Evol Biol</i> <b>16</b>(1):1-14. <a href="http://dx.doi.org/10.1186/s12862-015-0580-1">DOI:10.1186/s12862-015-0580-1</a></li>
+  <li>Mora-Zamorano, F. X., Klingler, R., Murphy, C. A., Basu, N., Head, J. &amp; Carvan III, M. J. (2016). Parental whole life cycle exposure to dietary methylmercury in zebrafish (<i>Danio rerio</i>) affects the behavior of offspring. <i>Environ Sci Technol</i>, <b>50</b>(9):4808–4816. <a href="http://dx.doi.org/10.1021/acs.est.6b00223">DOI:10.1021/acs.est.6b00223</a></li>
+  <li>Pasquaretta, C., Klenschi, E., Pansanel, J., Battesti, M., Mery, F. &amp; Sueur, C. (2016). Understanding dynamics of information transmission in <i>Drosophila melanogaster</i> using a statistical modeling framework for longitudinal network data (the RSiena Package). <i>Front Psychol</i> <b>7</b>:539. <a href="http://dx.doi/org/10.3389/fpsyg.2016.00539">DOI:10.3389/fpsyg.2016.00539</a></li>
+  <li>Mora-Zamorano, F. X., Svoboda, K. R. &amp; Carvan III, M. J. (2016). The nicotine-evoked locomotor response: a behavioral paradigm for toxicity screening in zebrafish (<i>Danio rerio</i>) embryos and eleutheroembryos exposed to methylmercury. <i>PLoS ONE</i>, <b>11</b>(4):e0154570. <a href="http://dx.doi.org/10.1371/journal.pone.0154570">DOI:10.1371/journal.pone.0154570</a></li>
+</ul>
+</div>
+
+<p>If you know of (or produce) another publication which made use of Ctrax and/or the associated Matlab toolboxes, please <a
+href="http://www.hhmi.org/research/fellows/branson.html">let us know</a>!</p>
+
+<p>See also the full reverse-lookup results of <a href="http://scholar.google.com/scholar?cites=2318109415457463235&as_sdt=5,47&sciodt=0,47&hl=en">citing articles on Google Scholar</a>.
+
+<hr class="h2-divider"><h2><a name="Statistics">Statistics</a></h2>
+
+<table class="stats">
+  <tr><td class="stats" width=200>Current version:</td> <td class="stats"><b>0.5.11</b></td> <td class="stats">(released 21 December 2016)</td></tr>
+  <tr><td class="stats">Active users:</td> <td class="stats"><b>1229</b></td> <td class="stats">(Sourceforge + Launchpad downloads of version 0.5.8)</td></tr>
+<!--
+0.3.8:225 9/12/12
+0.3.9:290 w/PyPI 11/10/12
+0.3.10:366 w/o PyPI 3/30/13
+0.3.16:433 10/19/13
+0.4.2:472 5/12/14
+0.5.3:528 3/7/15
+0.5.5:1369 5/31/16
+0.5.8:1229 12/22/16
+-->
+  <tr><td class="stats">Cumulative downloads:</td> <td class="stats"><b>12982</b></td> <td class="stats">(Sourceforge since June 2011, Launchpad since February 2012)</td></tr>
+<!--
+4276 9/12/12
+5348 w/PyPI 11/10/12
+2934 (+ 9037 PyPI = 11971) 3/30/13
+4051 10/19/13
+4565 1/22/14
+5064 5/12/14
+6717 3/7/15
+9968 5/31/16
+12982 12/22/16
+-->
+  <tr><td class="stats">Citations:</td> <td class="stats"><b>329</b></td> <td class="stats">(Google Scholar)</td></tr>
+<!--
+72 9/12/12
+81 11/10/12
+101 3/30/13
+133 10/19/13
+143 1/22/14
+163 5/12/14
+216 3/7/15
+289 5/31/16
+329 12/21/16
+-->
+  <tr><td class="stats">Forum posts/month:</td> <td class="stats"><b>18</b></td> <td class="stats">(average over the past 3 full months)</td></tr>
+<!--
+41 Aug 2012
+11 Sep 2012
+45 Oct 2012
+27 Nov 2012
+13 Dec 2012
+11 Jan 2013
+27 Feb 2013
+36 Mar 2013
+39 Apr 2013
+50 May 2013
+21 Jun 2013
+33 Jul 2013
+09 Aug 2013
+26 Sep 2013
+34 Oct 2013
+41 Nov 2013
+15 Dec 2013
+18 Jan 2014
+29 Feb 2014
+26 Mar 2014
+17 Apr 2014
+10 May 2014
+15 Jun 2014
+23 Jul 2014
+07 Aug 2014
+06 Sep 2014
+22 Oct 2014
+26 Nov 2014
+08 Dec 2014
+04 Jan 2015
+19 Feb 2015
+8 Mar 2016
+0 Apr 2016
+6 May 2016
+3 Jun 2016
+6 Jul 2016
+21 Aug 2016
+14 Sep 2016
+20 Oct 2016
+21 Nov 2016
+-->
+  <tr><td class="stats">Forum subscribers:</td> <td class="stats"><b>218</b></td> <td class="stats"></td></tr>
+</table>
+<i>Statistics last updated 22 December 2016</i>
+
+</div>
+</div>
+
+
+</body></html>

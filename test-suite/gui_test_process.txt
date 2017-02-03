@@ -1,0 +1,274 @@
+Steps to test Ctrax GUI
+=======================
+= Unopened movies =
+-Try changing all available options in all menus.
+-Try play button, stop button, speed-up/slow-down buttons.
+-Try changing text in frame number box, etc.
+-Check "Ask for annotation file names" in the Settings menu.
+
+= Opening movies =
+-Open "open movie" dialog and cancel.
+-Choose an FMF movie.
+-Cancel the selection of the annotation filename. Ctrax should exit.
+-Open an FMF movie. Choose the default annotation filename (should be the movie's name + '.ann').
+-Open "open movie" dialog and cancel.
+-Scroll backward and forward in time through the movie, ending in the middle somewhere.
+-Open "open movie" dialog and cancel.
+-Open each different movie type (SBFMF, FMF, UFMF, AVI) in different directories and scroll backward and forward in each movie type. Verify that default directory is always the directory of the last-opened movie, that the default file type is the last file type opened, and that the annotation filename is the movie's name + '.ann'.
+-In Windows, open each movie type (not AVI) by double-clicking on the movie file in Explorer. Verify annotation filenames, frame scrolling, and directory memory.
+-In Windows and Mac, open movies by dropping them on top of the Ctrax window. Drop non-movie files on top of the Ctrax window.
+-Uncheck "Ask for annotation file names" in the Settings menu.
+
+= Scrolling and buttons =
+-Open a movie with annotation.
+-Play the movie all the way through.
+-Play the movie again and speed it up to maximum.
+-Play the movie again and slow it down to minimum.
+-Play the movie again and stop it partway through.
+-Change the frame number using the (blue) text box.
+-Press play, and while the movie is playing, open a different movie (with annotation).
+
+= Playback display options and zoom =
+-Scroll to an annotated frame.
+-Change all of the options in the Settings->Playback Options menu.
+-Open zoom window using the Settings menu.
+-Change #flies and ID in the zoom window.
+-Select the magnifying glass button in the Ctrax window and use it to select a different fly.
+-Play the movie, and edit zoom window's #flies and IDs during playback, using both the zoom tool on the playback toolbar and the widgets in the zoom window.
+-During playback, open another movie.
+-Select the magnifying glass and drag to zoom in on part of the frame.
+-Use the scrollbar to view different frames.
+-Double-click to zoom out.
+-Use the scrollbar to view different frames.
+-Zoom in on part of the frame again.
+-Zoom in again.
+-Play the movie. While it's playing, double-click to zoom out, then zoom in again.
+-Play the whole movie zoomed in.
+-Play again, and during playback, open another movie.
+
+= Background model type =
+-Open Settings->Background Model.
+-Change all settings to all possible values.
+-Click "Done" button.
+-Re-open dialog and verify that settings are retained.
+-Click "Calculate Now" button.
+-Close dialog.
+
+= Background subtraction settings =
+-Open Settings->Background Subtraction.
+-Change all settings.
+-Close window and re-open dialog to verify that settings are retained.
+-Try all the settings in the view choice box (below the movie frame -- "Foreground/Background Classification"). Leave it at "Distance from Background".
+-Try all the settings in the "Background Type" choice box.
+-Change the view type to "Foreground/Background Classification" and the background type to "Other".
+-Move each threshold slider at the left and the frame slider at the bottom.
+-Type wide ranges of values (including non-numerical values) into the threshold boxes below the sliders.
+-Type wide ranges of values into the "Std Range" boxes at the right. In particular, ensure that very small values (0.001) and very large values (250) alter the displayed image.
+-Change the view type to "Background-Only Areas".
+-Type wide ranges of values into the maximum and minumum "Non-Foreground Intensity" boxes at the right. Find values that alter the displayed image.
+-Change the view type to "Connected Components"
+-Check "Apply Morphological Filtering" and find combinations of "Radius" values and image thresholds that alter the displayed image. Uncheck morphological filtering.
+-Change the view type to "Normalization Image".
+-Repeatedly change the selection in the "Normalize By" choice box. Alter the thresholds under each normalization type setting and verify that they're remembered independently.
+-Drag to zoom in on displayed image. Zoom in again. Double-click to zoom out. Try all view types.
+
+= Background regions of interest =
+-In the Background Subtraction dialog, choose to view "Background-Only Areas".
+-Open the "Set Regions of Interest" dialog.
+-Draw a polygon by clicking a few times on the image and choosing "Close".
+-Start drawing a new polygon and choose "Cancel".
+-Draw a new polygon and choose "Undo".
+-Draw a new polygon and leave it.
+-Check and uncheck "Show selected polygons".
+-Switch back and forth from "Background Center" to "Regions of Interest".
+-Choose "Quit". Don't save. Re-open the dialog and enter two new polygons.
+-Choose "Quit" and save. The displayed image in the Background dialog should change.
+-Re-open the dialog, choose "Undo", then "Save". The displayed image in the Background dialog should change.
+-Choose "Quit"; no prompt should occur.
+-Repeat the previous steps with the "Fix Background Model" dialog, except viewing "Background Image" in the main dialog.
+-Switch to displaying "Background-Only Areas". Check "Set Circular Arena Region of Interest" and open the "Detect Circular Arena" dialog.
+-In the Background Subtraction dialog, uncheck "Set Circular..."; the circle in the main view should go away and the "Detect Circular Arena" button should be disabled.
+-Recheck the "Set Circular Arena..." box.
+-In the Circular Arena dialog, modify the "radius", "X", and "Y" values in the "Manual Refinement" section. The circle should move.
+-Click "Detect arena".
+-Change "edge threshold" up and down. The edges in the image should get brighter and dimmer. Leave it at a very different value than the original.
+-Click "Detect arena".
+-Click "Refine estimate".
+-Change the values under "Automatic Detection", and click "Detect arena" each time.
+-Close the window. The circle should show up in the Background Subtraction dialog.
+-Make sure that the background area is the intersection of the polygons from "Regions of Interest" and the circle from "Detect Circular Arena".
+
+= Tracking settings =
+-Open the "Tracking Settings" dialog.
+-Fiddle with stuff.
+-Try setting minimum > mean, and mean > maximum, for any shape bounds setting.
+-Close settings window and open it again; verify that manual shape bounds settings haven't changed.
+-Zoom in on window, zoom again, zoom out.
+-Open a movie that has no associated annotation.
+-Choose Track->Compute background. Cancel the calculation while it's running.
+-Choose Track->Compute background again.
+-Choose Track->Compute target shape. Cancel the calculation while it's running.
+-Choose Track->Compute target shape again.
+-Choose Track->Start tracking; let it finish.
+-Close Ctrax, delete the annotation file, re-run, and open the same movie again.
+-Choose Track->Start and don't allow computing the background.
+-Choose Track->Start, allow computing the background, and cancel the calculation while it's running.
+-Choose Track->Start. Cancel the calculation of the shape model.
+-Choose Track->Start, allow calculation of the shape model, and cancel the calculation while it's running.
+-Make one of the shape/size settings very restrictive. Track with and without "enforce shape parameters" set to verify its functionality.
+
+= Tracking control =
+-Choose Track->Start and select not to calculate the shape model. Tracking should begin. Close Ctrax while tracking is running.
+-Delete the annotation file, re-run, and open the same movie again.
+-Choose Track->Start, compute the background, calculate the shape model, and let the tracking finish.
+-The "Resume tracking" menu option should be disabled.
+-Choose Track->Choose orientations and compute the orientations.
+-Choose Track->Start and start tracking again from the beginning.
+-Partway through, choose Track->Stop.
+-Choose Track->Start to start over from the beginning.
+-Partway through, choose Track->Stop.
+-Choose Track->Resume.
+-Before completion, choose Track->Stop.
+-Scroll to a later frame and choose Track->Resume from current. Tracking should start at last-tracked frame.
+-Before completion, choose Track->Stop.
+-Scroll to a later frame and choose Track->Resume from current.
+-Choose Track->Start to start over from the beginning.
+-Partway through, choose Track->Stop.
+-Choose Track->Choose orientations.
+-Choose Track->Resume.
+-Before completion, press the "stop" button to stop tracking.
+-Choose Track->Resume.
+-Before completion, test the "speed up" and "slow down" buttons to alter refresh rate.
+-Before completion, press the "zoom" button and choose a fly to view it in the zoom window.
+-Alter the fly ID shown in the zoom window.
+-Zoom in on multiple flies, using both the zoom tool and the controls in the zoom window.
+
+= Tracking wizard =
+-Close Ctrax and restart, then open a movie.
+-Choose Track->Tracking wizard.
+-Click Randomize Frames. Click several times quickly.
+-Click Next.
+-Cancel the background calculation before it finishes. Wizard should return to "Initialize".
+-Click Next with each of the background types, then Previous to return to "Initialize".
+-In "Define region of interest", choose "don't use" and click Next. Click Previous to return to "Define".
+-Choose "circular" and click Next. Set a small circular ROI and close the dialog.
+-Choose "no", click Next, and inspect the background-subtracted images. The region of interest should be apparent.
+-Click Previous twice.
+-Choose "don't use", click Next, choose "no", click Next. The circular region of interest should be gone. Click Previous twice.
+-Choose "polygonal" and click Next. Set a small polygonal ROI and close the dialog (save).
+-Choose "no", click Next, and inspect the background-subtracted images. The region of interest should be apparent.
+-Click Previous twice.
+x-Choose "don't use", click Next, choose "no", click Next. The polygonal region of interest should be gone. Click Previous twice.
+-Choose "circular", click Next, and set a ROI.
+-Click Previous, choose "polygonal", click Next, and set a ROI.
+-Choose "no", click Next, and inspect the background-subtracted images. The combined region of interest should be apparent. Click Previous three times to reach "Initialize".
+-Choose "dark on light" or "light on dark", depending on the movie.
+-In "Define", choose "polygonal" and click Next. The polygon should still be present in the dialog.
+-Click Previous, choose "circular", and click Next. The circular ROI should still be present in the dialog.
+-Choose "no", click Next, and inspect the background-subtracted images. The combined ROI should still be apparent. Click Previous twice.
+-Choose "don't use" and click Next to advance to "Check background".
+-Choose "yes" and click Next. Define a polygon and close the dialog (save).
+-Change the high threshold setting, click Next, and change the low threshold setting.
+-Click Previous. The high setting should be maintained.
+-Click Previous, choose "no", and click Next. The high setting should be maintained.
+-Click Previous twice, choose "circular", click Next, set a ROI, choose "no", and click Next. The high setting should be maintained.
+-Click Previous, choose "yes", and click Next. The background polygon should still be present. Close the window to advance to "Choose high".
+-Click Next. The low setting should be maintained.
+-Try dragging the low setting to a higher value than the high setting. It should stick at the high setting minus 1. Also try paging the slider to a value higher than the high setting.
+-Click Next to advance to "Auto-compute shape".
+-Choose "auto-compute" and click Next.
+-Cancel the shape calculation before it finishes. Wizard should return to "Auto-compute".
+-Choose "auto-compute" and click Next.
+-Click Previous, choose "manual", and click Next.
+-Close the dialog to advance wizard to "Start tracking".
+-Click Randomize Frames several times quickly.
+-Click Track.
+
+= Tracking options =
+-After the tracking wizard completes, select Settings->Playback->Flip movie vertically. The annotation should not change.
+-Retrack the movie using the tracking wizard.
+-After tracking completes, close Ctrax, reopen it, and open the same movie. It should still be upside-down. The "Flip movie vertically" menu option should be checked.
+
+= SBFMF writing =
+-Choose Track->Start.
+-Before completion, choose Track->Stop.
+-Choose Track->Write compressed sbfmf.
+-Choose Track->Resume ("could not restart writing", resumes).
+-Choose Track->Write compressed sbfmf.
+-Choose Track->Start.
+-Partway through, choose Track->Stop.
+-Choose Track->Resume.
+-Choose Track->Write compressed sbfmf.
+-Choose Track->Start.
+-After tracking finishes, open the newly created SBFMF file. It should be fully annotated.
+
+= Import/export =
+-Choose File->Export as MAT-file. Should be prompted to choose orientations first.
+-Click No, then Cancel.
+-Choose File->Export as MAT-file. Should be prompted to choose orientations first.
+-Click Yes, then Cancel twice.
+-Choose File->Export as MAT-file. Should be prompted to choose orientations first.
+-Click Yes, then Compute, then Cancel.
+-Choose File->Export as MAT-file. Should not be prompted for orientations.
+-Click Cancel.
+-Choose File->Export as MAT-file. Should not be prompted for orientations. Save as default filename.
+-Choose Track->Start to restart tracking; let tracking finish.
+-Choose File->Export as MAT-file. Should be prompted to choose orientations first.
+-Choose File->Export as AVI-file. Select a subset of frames from the middle.
+-View the exported AVI.
+-Choose File->Export as AVI-file, and export all the frames.
+-View the exported AVI.
+-Choose File->Save Diagnostics.
+-View the exported diagnostics file.
+-Open a movie and alter some tracking settings: set a circular ROI, add a polygon to "fix" the background model, and set some manual bounds on fly shape.
+-Track the movie. Verify that the altered settings are still set.
+-Quit, restart, and open the same movie. Verify that the altered settings are still set, except for the polygon in the background model.
+-Quit, restart, and open another movie. Choose File->Load settings and load the .ann file with the altered settings.
+-Verify that the altered settings were imported to the new movie.
+-Track the new movie.
+-Verify that the altered settings are still set.
+-Quit, restart, and open the same movie. Verify that the altered settings are still set.
+-Quit, restart, and open a movie with no annotation file. Alter some tracking settings and choose File->Save Settings. Save to 'settings.ann'
+-Quit and rename 'settings.ann' to the movie's .ann file.
+-Restart, open the movie, and verify that the saved settings are applied.
+
+= Batch execution =
+-Quit, restart, and open the batch window (File->Batch processing).
+-Execute with no movies.
+-Add and remove movies (try adding the same movie twice). End with at least one movie listed.
+-Close and reopen the batch window.
+-Execute the batch.
+-Close the batch window and verify that tracking data is visible in the last movie tracked.
+-Verify that the auto-calculated tracking settings, background model, etc. are visible in the settings dialogs.
+-Retrack a batch with the "flip movies vertically" box checked. Verify that all movies are flipped and that the Settings->Playback->Flip movies option is checked when tracking completes.
+-Quit, delete the annotation files, and restart.
+-Open a movie without annotation, then open the batch window.
+-Execute the batch.
+-Close and reopen the batch window while tracking is running. Close the batch window again.
+-Verify that the settings and annotation are visible via the main window.
+-Open the batch window again and verify that no movies are listed.
+-Quit, restart, and open the movie that was just tracked.
+-Open the batch window and execute the batch.
+-Partway through, choose Track->Stop in the main window.
+-Choose Track->Resume.
+-Make a batch with multiple types of movies and execute it.
+-Open each movie and verify that it was tracked correctly.
+-Add a movie to a batch, modify "first frame" and "last frame", and execute the batch.
+-Verify that the frames tracked are correct.
+-Quit, restart, and open the movie. Verify that the frames tracked are correct.
+
+= Batch settings =
+-Open the batch window, check "Save SBFMF files", and execute the batch.
+-Open the SBFMF file associated with the movie.
+-Quit, delete the annotation files, and restart.
+-Open a movie and alter the tracking settings: set a circular ROI, add a polygon to "fix" the background model, and set some manual bounds on fly shape. Save the movie's settings to a file called "settings.ann".
+-Quit and restart.
+-Open the batch window and add two movies to the batch, one with the same image size as the settings movie and one with a different image size.
+-Change all the options at the bottom to "Load one settings file for all movies". Execute the batch and choose the "settings.ann" file for tracking settings.
+-Quit and restart.
+-Open the both movies and verify that the altered settings were applied to it. The background polygon should be set only on the movie with the same frame size as the settings movie.
+
+= Plots =
+-Make each type of plot. Resize the windows repeatedly.
+-Right-click and save each type of plot as each type of file. Open the files to verify them.
+
