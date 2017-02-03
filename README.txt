@@ -1,6 +1,6 @@
 Ctrax: The Caltech Multiple Fly Tracker
 
-(c) 2007-2016 The Caltech Ethomics Project
+(c) 2007-2017 The Caltech Ethomics Project
 http://ctrax.sourceforge.net
 bransonk@janelia.hhmi.org
 

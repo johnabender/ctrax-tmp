@@ -72,7 +72,7 @@ Ctrax_package_data = [ f[6:] for f in glob.glob(os.path.join('Ctrax','xrc','*.xr
 long_description = """
 Ctrax: The Caltech Multiple Fly Tracker
 
-(c) 2007-2016 The Caltech Ethomics Project
+(c) 2007-2017 The Caltech Ethomics Project
 http://ctrax.sourceforge.net
 bransonk@janelia.hhmi.org
 
@@ -149,7 +149,7 @@ setup(
     app=['Ctrax/Ctrax-script.py'],
     options={'py2app': {'iconfile': 'Ctrax/icons/Ctraxicon.icns',
                         'plist': {'CFBundleIdentifier': 'edu.caltech.ctrax',
-                                  'NSHumanReadableCopyright': '2007-2016 Kristin Branson/Caltech Ethomics Project',
+                                  'NSHumanReadableCopyright': '2007-2017 Kristin Branson/Caltech Ethomics Project',
                                   'LSApplicationCategoryType': 'public.app-category.utilities',
                                   'CFBundleDocumentTypes': [{'CFBundleTypeExtensions': ['fmf'],
                                                              'CFBundleTypeIconFile': 'Ctrax/icons/drosophila.icns',

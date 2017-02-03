@@ -1,5 +1,5 @@
 Ctrax -- The Caltech Multiple Fly Tracker
-Copyright 2007-2016, Caltech ethomics project
+Copyright 2007-2017, Caltech ethomics project
 http://ctrax.sourceforge.net
 
 Ctrax is a joint effort of the Dickinson and Perona labs

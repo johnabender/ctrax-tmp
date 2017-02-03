@@ -1,8 +1,8 @@
 #!/bin/bash
 
 version=`tail -n 1 matlab/version_ctrax.m | cut -d' ' -f3 | cut -c2-7`
-svn export . ~/ctraxmatlab-$version
-cd ~/ctraxmatlab-$version
+git checkout-index -a --prefix=/home/jbender/ctraxmatlab-$version/
+cd ~/ctraxmatlab-$version || exit 1
 
 zip -r Ctrax-matlab-$version.zip matlab/
 zip -r fixerrors-only-$version.zip fixerrors/
