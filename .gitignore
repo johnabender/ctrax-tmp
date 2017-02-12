@@ -1,0 +1,6 @@
+deb_dist/
+dist/
+tmp/
+version.txt
+Ctrax-*.tar.gz
+*.egg-info

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # upload script for Ctrax PPA
 # JAB 2/14/12
@@ -27,7 +27,7 @@ keyname='E56DDCF5' # Ctrax key!
 
 
 ##### This sequence of commands builds and uploads to Launchpad. #####
-rm -r deb_dist
+rm -rf deb_dist
 
 # requires stdeb package, from PyPI (same command as makedeb.sh)
 python setup.py --command-packages=stdeb.command \
@@ -58,22 +58,25 @@ do
 
    # append Matplotlib and Cython as dependencies...
    # this is a total hack, since what packages are already listed varies unexplainably
-   perl -pi -e "s/python-imaging/python-imaging, cython, python-matplotlib/" debian/control
+   # I believe this is resolved by adding cython,python-matplotlib to stdeb.cfg.
+   #perl -pi -e "s/python-imaging/python-imaging, cython, python-matplotlib/" debian/control
 
-   # remove python-support dependency, since it doesn't exist as of Ubuntu Xenial
-   perl -pi -e "s/python-support(\\s?(.*?\))//" debian/control
+   # Remove python-support dependency, since it doesn't exist as of Ubuntu Xenial.
+   # This seems to break installation of the resulting .deb on systems that don't
+   # have python-support already installed (i.e., clean installs).
+   # It seems to have been resolved by removing python-support from stdeb.cfg.
+   #perl -pi -e "s/python-support(\\s?(.*?\))//" debian/control
 
    # build again (first build created debian/changelog from setup.py config)
    debuild -S -sa -k$keyname || exit 1
 
    cd ..
-   echo "dput $distro $version-$revision"
    dput ctrax ctrax_$version-"$revision"_source.changes || exit 1
-   echo "upload attempt finished: $distro $version-$revision"
 
-   # subsequent builds will use the first .orig.tar.gz uploaded.
-   # not deleting this file will cause subsequent builds to be rejected.
-   rm -f ctrax_$version.orig.tar.gz
+   # Subsequent builds will use the first .orig.tar.gz uploaded.
+   # Not deleting this file will cause subsequent builds to be rejected.
+   #rm -f ctrax_$version.orig.tar.gz
+   # This seems to have changed sometime around 2016.
 
    last_revision=$revision
    last_distro=$distro
