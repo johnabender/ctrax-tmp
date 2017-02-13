@@ -11,14 +11,12 @@ i = shortversion.rfind( '.' )
 if i > 0:
     shortversion = shortversion[:i]
 
+with open( '../setup.nsi.template', 'r' ) as template:
+    with open( '../setup.nsi', 'w' ) as outfile:
+        for line in template:
+            outline = line.replace( '{ctraxlongversion}', longversion )
+            outline = outline.replace( '{ctraxshortversion}', shortversion )
+            outfile.write( outline )
 
-template = open( '../setup.nsi.template', 'r' )
-outfile = open( '../setup.nsi', 'w' )
-
-for line in template:
-    outline = line.replace( '{ctraxlongversion}', longversion )
-    outline = outline.replace( '{ctraxshortversion}', shortversion )
-    outfile.write( outline )
-
-outfile.close()
-template.close()
+with open('../version.txt', 'w') as verfile:
+    verfile.write('{!s}\n'.format(longversion))
