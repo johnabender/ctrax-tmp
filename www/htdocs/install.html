@@ -8,13 +8,13 @@
 
 <title>Ctrax Installation</title>
 
-<link rel="stylesheet" type="text/css" charset="utf-8" media="all" 
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all"
 href="styles/common.css">
-<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" 
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen"
 href="styles/screen.css">
-<link rel="stylesheet" type="text/css" charset="utf-8" media="print" 
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print"
 href="styles/print.css">
-<link rel="stylesheet" type="text/css" charset="utf-8" 
+<link rel="stylesheet" type="text/css" charset="utf-8"
 media="projection" href="styles/projection.css">
 </head>
 <body dir="ltr" lang="en">
@@ -38,58 +38,58 @@ media="projection" href="styles/projection.css">
 <ul>
   <li><a class="reference" href="#ctrax-requirements" id="id5" name="id5">Ctrax Requirements</a>
   <ul>
-    <li><a class="reference" 
+    <li><a class="reference"
 href="#computer-and-software-requirements" id="id6" name="id6">Computer and Software Requirements</a></li>
-    <li><a class="reference" href="#input-video-formats" id="id7" 
+    <li><a class="reference" href="#input-video-formats" id="id7"
 name="id7">Input Video Formats</a>
     <ul>
-      <li><a class="reference" href="#uncompressed-avi-format" id="id8" 
+      <li><a class="reference" href="#uncompressed-avi-format" id="id8"
 name="id8">Uncompressed AVI Format</a></li>
-      <li><a class="reference" href="#compressed-avi-format" id="id8" 
+      <li><a class="reference" href="#compressed-avi-format" id="id8"
 name="id8">Compressed AVI Format</a></li>
       <li><a class="reference" href="#fly-movie-format" id="id9" name="id9">Fly
  Movie Format</a></li>
-      <li><a class="reference" href="#static-background-fly-movie-format" 
+      <li><a class="reference" href="#static-background-fly-movie-format"
 id="id10" name="id10">Static Background Fly Movie Format</a></li>
-      <li><a class="reference" href="#micro-fly-movie-format" id="id11" 
+      <li><a class="reference" href="#micro-fly-movie-format" id="id11"
 name="id11">Micro Fly Movie Format</a></li>
     </ul>
     </li>
-    <li><a class="reference" href="#arena-and-video-requirements" 
+    <li><a class="reference" href="#arena-and-video-requirements"
 id="id12" name="id12">Arena and Video Requirements</a>
     <ul>
-      <li><a class="reference" href="#background-subtraction-considerations" 
+      <li><a class="reference" href="#background-subtraction-considerations"
 id="id13" name="id13">Background-Subtraction Considerations</a></li>
-      <li><a class="reference" href="#constant-velocity-considerations" 
+      <li><a class="reference" href="#constant-velocity-considerations"
 id="id14" name="id14">Constant-Velocity Considerations</a></li>
       <li><a class="reference" href="#splitting-and-merging-connected-components" id="id15" name="id15">Splitting
  and Merging Connected Components</a></li>
-      <li><a class="reference" href="#escaping-and-entering-flies" id="id16" 
+      <li><a class="reference" href="#escaping-and-entering-flies" id="id16"
 name="id16">Escaping and Entering Flies</a></li>
     </ul>
     </li>
   </ul>
   </li>
-  <li><a class="reference" href="#ctrax-installation" id="id17" 
+  <li><a class="reference" href="#ctrax-installation" id="id17"
 name="id17">Ctrax Installation</a>
   <ul>
-    <li><a class="reference" href="#windows-installer" 
+    <li><a class="reference" href="#windows-installer"
 id="id18" name="id18">Windows Installer</a></li>
-    <li><a class="reference" href="#ubuntu-package" 
+    <li><a class="reference" href="#ubuntu-package"
 id="id19" name="id19">Ubuntu Package</a></li>
-    <li><a class="reference" href="#distutils" 
+    <li><a class="reference" href="#distutils"
 id="id20" name="id20">Source code</a>
     <ul>
-      <li><a class="reference" href="#python-dependencies" id="id21" 
+      <li><a class="reference" href="#python-dependencies" id="id21"
 name="id21">Python Dependencies</a></li>
       <li><a class="reference" href="#source-windows">Windows-specific instructions</a></li>
     </ul>
     </li>
   </ul>
   </li>
-  <li><a class="reference" href="#matlab-toolboxes-requirements" 
+  <li><a class="reference" href="#matlab-toolboxes-requirements"
 id="id70" name="id70">Matlab Toolboxes Requirements (FixErrors GUI and Behavioral Microarray Toolbox)</a></li>
-  <li><a class="reference" href="#matlab-toolboxes-installation" 
+  <li><a class="reference" href="#matlab-toolboxes-installation"
 id="id70" name="id70">Matlab Toolboxes Installation (FixErrors GUI and Behavioral Microarray Toolbox)</a></li>
 </ul>
 
@@ -99,7 +99,7 @@ id="id70" name="id70">Matlab Toolboxes Installation (FixErrors GUI and Behaviora
 
 <ul>
   <li><h3>All software is available from our <a class="reference" href="http://sourceforge.net/projects/ctrax/files/">SourceForge distribution site</a>.</h3></li>
- 
+
   <li><h3><a class="reference" href="ctrax.html">Ctrax</a> tracking software:</h3></li>
   <ul>
     <li><b>Windows</b>: A 32-bit installer for the Ctrax tracker is available from the <a class="reference" href="https://sourceforge.net/projects/ctrax/files/Ctrax%20in%20Windows/">Ctrax Windows installer</a> page on Sourceforge. Please follow the instructions for the <a class="reference" href="#windows-installer">Windows Installer</a>.</li>
@@ -107,22 +107,22 @@ id="id70" name="id70">Matlab Toolboxes Installation (FixErrors GUI and Behaviora
     <li><b>Ubuntu Linux</b>: 32- and 64-bit Debian packages for the Ctrax tracker are available from the <a class="reference" href="https://launchpad.net/~ctrax/+archive/ppa">Ctrax PPA Repository</a>,
 or directly from the <A href="https://sourceforge.net/projects/ctrax/files/Ctrax%20in%20Linux/">Ctrax Linux installer</a> page on Sourceforge. Please follow the instructions for the <a class="reference" href="#ubuntu-package">Ubuntu Package</a>.</li>
     <li><b>Source code</b>: The Ctrax tracker source code is available from the <a class="reference" href="https://sourceforge.net/projects/ctrax/files/Ctrax%20source/">Ctrax source
- download</a> page on Sourceforge. Please follow the instructions at <a 
+ download</a> page on Sourceforge. Please follow the instructions at <a
 class="reference" href="#distutils">DistUtils</a>.</li>
-    <li>The development version of the software can be checked out using <a 
+    <li>The development version of the software can be checked out using <a
 class="reference" href="http://subversion.tigris.org/">Subversion</a> by
- following the instructions at <a class="reference" 
-href="https://sourceforge.net/scm/?type=svn&group_id=552243">Ctrax SVN 
+ following the instructions at <a class="reference"
+href="https://sourceforge.net/scm/?type=svn&group_id=552243">Ctrax SVN
 Instructions</a>.</li>
   </ul>
 
   <li><h3><a class="reference" href="fixerrors.html">FixErrors Matlab GUI</a> and <a class="reference" href="bmat.html">BehavioralMicroarray Matlab Toolbox</a>:</h3></li>
   <ul>
     <li>The two Matlab toolboxes associated with Ctrax can be downloaded together from <a class="reference" href="https://sourceforge.net/projects/ctrax/files/Matlab%20complete/">Ctrax
- Matlab Toolboxes Latest Release</a>. Please follow instructions at <a 
+ Matlab Toolboxes Latest Release</a>. Please follow instructions at <a
 class="reference" href="#matlab-toolboxes-installation">Matlab Toolboxes Installation</a>.</li>
-    <li>The FixErrors Matlab GUI alone can be downloaded at <a class="reference" 
-href="https://sourceforge.net/projects/ctrax/files/Matlab%20FixErrors/">FixErrors Matlab GUI Latest Release</a>. Please follow instructions at <a 
+    <li>The FixErrors Matlab GUI alone can be downloaded at <a class="reference"
+href="https://sourceforge.net/projects/ctrax/files/Matlab%20FixErrors/">FixErrors Matlab GUI Latest Release</a>. Please follow instructions at <a
 class="reference" href="#fixerrors-installation">FixErrors Installation</a>.</li>
     <li>The BehavioralMicroarray Matlab Toolbox alone can be downloaded at <a class="reference" href="https://sourceforge.net/projects/ctrax/files/Matlab%20BehavioralMicroarray/">BehavioralMicroarray
  Matlab Toolbox Latest Release</a>. Please follow the instructions at <a
@@ -134,35 +134,35 @@ class="reference" href="#fixerrors-installation">FixErrors Installation</a>.</li
 
 <hr class="h2-divider"><h2><a name="ctrax-requirements">Ctrax Requirements</a></h2>
 
-<p>Ctrax is Python-based, and it and all dependent software are 
-open-source and (somewhat) platform-independent. A description of the 
-computer hardware and software requirements for Ctrax is given in <a 
-class="reference" href="#computer-and-software-requirements">Computer and Software Requirements</a>. Usage 
-instructions are given at <a class="reference" 
-href="ctrax.html">Ctrax Usage</a>. An overview of the video and physical arena requirements is given in <a 
+<p>Ctrax is Python-based, and it and all dependent software are
+open-source and (somewhat) platform-independent. A description of the
+computer hardware and software requirements for Ctrax is given in <a
+class="reference" href="#computer-and-software-requirements">Computer and Software Requirements</a>. Usage
+instructions are given at <a class="reference"
+href="ctrax.html">Ctrax Usage</a>. An overview of the video and physical arena requirements is given in <a
 class="reference" href="#arena-and-video-requirements">Arena
  and Video Requirements</a>.</p>
- 
-<h3><a name="computer-and-software-requirements">Computer and 
+
+<h3><a name="computer-and-software-requirements">Computer and
 Software Requirements</a></h3>
-<p>Ctrax has been installed and tested on 32- and 64-bit Windows, 64-bit Mac OS, and 32- and 64-bit Linux systems. As it is written in Python and Python is a 
-platform-independent language, it conceivably can be run on other 
+<p>Ctrax has been installed and tested on 32- and 64-bit Windows, 64-bit Mac OS, and 32- and 64-bit Linux systems. As it is written in Python and Python is a
+platform-independent language, it conceivably can be run on other
 platforms as well. Installation instructions are at <a class="reference"
- href="#ctrax-installation">Ctrax Installation</a>. Memory usage is not 
-demanding for reasonably short videos -- all that is needed is enough 
-memory to store the ellipse fit for each fly in each frame. Ctrax will 
+ href="#ctrax-installation">Ctrax Installation</a>. Memory usage is not
+demanding for reasonably short videos -- all that is needed is enough
+memory to store the ellipse fit for each fly in each frame. Ctrax will
 run faster on faster computers, but has no minimal speed requirements.</p>
 
 <h3><a name="input-video-formats">Input Video Formats</a></h3>
-<p>All of our published data were derived from <a class="reference" href="#fly-movie-format">Fly 
-Movie Format</a> (FMF) and <a class="reference" 
-href="#static-background-fly-movie-format">Static Background Fly Movie 
+<p>All of our published data were derived from <a class="reference" href="#fly-movie-format">Fly
+Movie Format</a> (FMF) and <a class="reference"
+href="#static-background-fly-movie-format">Static Background Fly Movie
 Format</a> (SBFMF) videos.</p>
 
 <h4><a name="uncompressed-avi-format">Uncompressed AVI Format</a></h4>
-<p>The AVI container is rather poorly defined, and the built-in AVI reader for Ctrax has 
-only been tested with the uncompressed AVIs output by <a 
-class="reference" href="http://www.mathworks.com/products/matlab/">Matlab</a>, <a 
+<p>The AVI container is rather poorly defined, and the built-in AVI reader for Ctrax has
+only been tested with the uncompressed AVIs output by <a
+class="reference" href="http://www.mathworks.com/products/matlab/">Matlab</a>, <a
 class="reference" href="http://en.wikipedia.org/wiki/MEncoder">mencoder</a> (Linux or Mac),
  and <a class="reference" href="http://www.virtualdub.org/">VirtualDub</a> (Windows). These videos can be highly compressed without affecting Ctrax by converting them to <a href="#micro-fly-movie-format">UFMF</a> format using <a href="any2ufmf.html">any2ufmf</a>.
 
@@ -170,11 +170,11 @@ class="reference" href="http://en.wikipedia.org/wiki/MEncoder">mencoder</a> (Lin
 <ol>
 <li>Start VirtualDub program.</li>
 <li>Open compressed video (File-&gt;Open video file...).</li>
-<li>In the dialog opened from Video-&gt;Compression..., select 
+<li>In the dialog opened from Video-&gt;Compression..., select
 "[Uncompressed RGB/YCbCr]", and click "OK".</li>
 <li>Select Video-&gt;Full Processing Mode.</li>
 <li>Select Audio-&gt;No audio.</li>
-<li>In the Video-&gt;Video Color Depth dialog, select "Luminance only 
+<li>In the Video-&gt;Video Color Depth dialog, select "Luminance only
 (Y8)" as the "Output format to compressor/display". <span class="footnote">[Ctrax also works if "24 bit RGB (888)" is selected as the color depth. Some configurations of Matlab can read 24-bit RGB movies but not luminance-only movies, which could result in Matlab errors on movies that Ctrax tracked successfully.]</span></li>
 <li>Output uncompressed video to a file: File-&gt;Save as AVI... It has been reported that with large (&gt;2 GB) AVI files, one should instead use File-&gt;Save old format AVI. This may prevent some "frame number out of range" errors. <span class="footnote">[To the extent that "older" means "simpler" in regards to AVI file format, the "old format" may yield more reliable results with Ctrax in other cases, as well.]</span></li>
 </ol>
@@ -192,79 +192,79 @@ class="reference" href="http://en.wikipedia.org/wiki/MEncoder">mencoder</a> (Lin
 
 <h4><a name="fly-movie-format">Fly Movie Format</a></h4>
 <p><a href="http://code.astraw.com/projects/motmot/fly-movie-format.html">Motmot's
- Fly Movie Format</a> (FMF) is the uncompressed movie format output by <a href="http://code.astraw.com/projects/motmot/fview.html">fview</a>, the 
+ Fly Movie Format</a> (FMF) is the uncompressed movie format output by <a href="http://code.astraw.com/projects/motmot/fview.html">fview</a>, the
 program we use to capture uncompressed, high-resolution, high-frame-rate
  video in our labs.</p>
 
-<h4><a name="static-background-fly-movie-format">Static Background Fly Movie 
+<h4><a name="static-background-fly-movie-format">Static Background Fly Movie
 Format</a></h4>
-<p>Static Background Fly Movie Format (SBFMF) is a compressed video 
-format designed to work well with background-subtraction-based tracking 
-algorithms. It stores the static background model for the entire video, then only the pixel intensities and locations for those pixels in a 
-frame that are sufficiently different from the background model. Using this format, we have achieved 100x compression without affecting tracking results. Ctrax can optionally output an SBFMF while tracking so that this smaller file can be stored and transferred instead of the original, 
+<p>Static Background Fly Movie Format (SBFMF) is a compressed video
+format designed to work well with background-subtraction-based tracking
+algorithms. It stores the static background model for the entire video, then only the pixel intensities and locations for those pixels in a
+frame that are sufficiently different from the background model. Using this format, we have achieved 100x compression without affecting tracking results. Ctrax can optionally output an SBFMF while tracking so that this smaller file can be stored and transferred instead of the original,
 uncompressed video.</p>
 
 <h4><a name="micro-fly-movie-format">Micro Fly Movie Format</a> [new in Ctrax 0.1.5.5]</h4>
 <p>The UFMF format is similar to SBFMF (above), but can be saved in real time
 by <a href="http://code.astraw.com/projects/motmot/fview.html">fview</a>. We also provide the <a href="any2ufmf.html">any2ufmf</a> program to assist in converting AVI videos to UFMF. These videos can be 100x smaller than the original AVIs and are tracked equally well by Ctrax.</p>
 
-<h3><a name="arena-and-video-requirements">Arena and Video 
+<h3><a name="arena-and-video-requirements">Arena and Video
 Requirements</a></h3>
 <a class="reference image-reference" href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/resultsmovie_25F25M_2min_20071009_164618_xvid20MB.avi/download"><div class="align-center" align="center"><img alt="25 female and 25 male flies in 24.5-cm diameter open arena." class="align-center" src="images/ctrax_003.jpg" style="width: 400px;"></div>
 </a>
-<p class="caption">25 female and 25 male wild-type flies in a 24.5 cm-diameter open 
+<p class="caption">25 female and 25 male wild-type flies in a 24.5 cm-diameter open
 arena. Video is recorded at 20 fps in near-infrared; hence, the flies appear as
- white specks on a black background. Flies are approximately 8 pixels in 
-length. Their wings have been clipped to keep them from flying, and a 
+ white specks on a black background. Flies are approximately 8 pixels in
+length. Their wings have been clipped to keep them from flying, and a
 heat barrier restricts them from climbing the arena walls.</p>
-<p>A description of the tracking algorithm and the apparatuses we used 
+<p>A description of the tracking algorithm and the apparatuses we used
 it with is given in the article <a class="reference" href="http://dx.doi.org/10.1038/nmeth.1328">"High-Throughput Ethomics in Large Groups of <i>Drosophila</i>"</a>. Here, we discuss briefly the assumptions made by the algorithm, and the constraints they put on the physical arena setup. Here are links to videos of tracking results in our two arena types:</p>
 
 <ul>
-  <li><a class="reference" 
+  <li><a class="reference"
 href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/resultsmovie_25F25M_2min_20071009_164618_xvid20MB.avi/download">25
  female and 25 male wild-type flies in open arena</a></li>
-  <li><a class="reference" 
+  <li><a class="reference"
 href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/resultsmovie_50F00M_2min_20071009_155327_xvid16MB.avi/download">50
  female wild-type flies in open arena</a></li>
-  <li><a class="reference" 
+  <li><a class="reference"
 href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/resultsmovie_00F50M_2min_20071009_161603_xvid20MB.avi/download">50
  male wild-type flies in open arena</a></li>
-  <li><a class="reference" 
+  <li><a class="reference"
 href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/openarena_fru1fru1_20090306_213758_xvid30MB.avi/download">20
  male fru1/fru1 flies in open arena</a></li>
-  <li><a class="reference" 
+  <li><a class="reference"
 href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/flybowl_fru1fru1_20090301_204358_xvid_30MB.avi/download">14
  male fru1/fru1 flies in covered chamber</a></li>
-  <li><a class="reference" 
+  <li><a class="reference"
 href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/flybowl_wildtype_20090302_220732_xvid_30MB.avi/download">14
  male wild-type flies in covered chamber</a></li>
 </ul>
 
-<p>Please contact <a class="reference" 
-href="http://www.hhmi.org/research/fellows/branson.html">Kristin Branson</a> 
-if you have successfully applied Ctrax in your experimental set-up and 
+<p>Please contact <a class="reference"
+href="http://www.hhmi.org/research/fellows/branson.html">Kristin Branson</a>
+if you have successfully applied Ctrax in your experimental set-up and
 have a video to share.</p>
-<a class="reference image-reference" 
+<a class="reference image-reference"
 href="http://sourceforge.net/projects/ctrax/files/Ctrax%20samples/flybowl_fru1fru1_20090301_204358_xvid_30MB.avi/download"><div
- class="align-center" align="center"><img alt="14 male fru1/fru1 flies 
-in &quot;Flybowl&quot; covered arena." class="align-center" 
+ class="align-center" align="center"><img alt="14 male fru1/fru1 flies
+in &quot;Flybowl&quot; covered arena." class="align-center"
 src="images/ctrax_012.png" style="width: 400px;"></div>
 </a>
-<p class="caption">14 male fruitless flies in a 5 in-diameter chamber with glass 
-top. Video is recorded at 20 fps in the visible spectrum, and flies 
-appear as black specks on a white background. Flies are approximately 
+<p class="caption">14 male fruitless flies in a 5 in-diameter chamber with glass
+top. Video is recorded at 20 fps in the visible spectrum, and flies
+appear as black specks on a white background. Flies are approximately
 17.5 pixels in length. Their wings have <b>not been clipped.</b></p>
 
-<h4><a name="background-subtraction-considerations">Background-Subtraction 
+<h4><a name="background-subtraction-considerations">Background-Subtraction
 Considerations</a></h4>
 <p>Ctrax is based on background subtraction. It estimates a static model of what the
 arena looks like without flies, then classifies pixels in each frame as foreground (belonging to a fly) or background (belonging to the
 arena) based on the difference between the current frame and the background model. Thus, there must not be anything moving or changing
 appearance in the video other than the flies [note: using the Ctrax GUI, the user can specify pixel locations to ignore changes in and
 always classify as background, relaxing this assumption slightly]. Incandescent lights flickering at 60 Hz, for example, can cause big changes in background
-appearance, and Ctrax is not robust to this type of noise. Poor camera quality and video compression can also cause changes in the background appearance. <b>We repeat:</b> video compression artifacts that are unnoticeable to the human eye can have huge effects on background subtraction and tracking. At this point, we advocate recording video in uncompressed format, then simultaneously compressing and tracking using the <a class="reference" 
-href="#static-background-fly-movie-format">Static Background Fly Movie 
+appearance, and Ctrax is not robust to this type of noise. Poor camera quality and video compression can also cause changes in the background appearance. <b>We repeat:</b> video compression artifacts that are unnoticeable to the human eye can have huge effects on background subtraction and tracking. At this point, we advocate recording video in uncompressed format, then simultaneously compressing and tracking using the <a class="reference"
+href="#static-background-fly-movie-format">Static Background Fly Movie
 Format</a> (SBFMF), which in our
 setup achieves 100x compression without affecting tracking performance
 (see below). We also provide the <a href="any2ufmf.html">any2ufmf</a> program to convert AVI movies to <a href="#micro-fly-movie-format">Micro Fly Movie Format</a>, very similar to SBFMF.</p>
@@ -282,7 +282,7 @@ black specks on a white background). See the example movies.</p>
 <p>To keep track of identities, Ctrax relies on the flies moving with an approximately constant velocity. Given the previous two positions of
 each fly, it predicts that fly's position in the current frame. It matches predicted positions to observed positions so as to best obey the constant-velocity assumption. In general, we've found that this assumption is obeyed by walking flies at 20 fps (we have not tried slower frame rates, though <a href="http://dx.doi.org/10.3389/fnins.2010.00205">White, et al.</a> were able to track at 5 fps). Problems with the assumption only occur when two flies jump in close proximity to each other.</p>
 
-<h4><a name="splitting-and-merging-connected-components">Splitting and Merging 
+<h4><a name="splitting-and-merging-connected-components">Splitting and Merging
 Connected Components</a></h4>
 <p>After subtracting the background, leftover pixels are called "foreground". Foreground pixels that are adjacent to each other are called connected components. Usually, each connected component of foreground pixels corresponds to exactly one fly. If two flies are touching, they will be detected as a single connected component. More rarely, two separate areas of connected foreground pixels might be part of the same fly. Ctrax uses the
 expected size of a fly to decide whether to merge or split connected components, and again to decide how many flies a large component probably contains. Mistakes are not uncommon when choosing the number of flies to split a large component into, as well as when choosing which pixels of a component
@@ -300,7 +300,7 @@ periods of time clustered in large, tight groups, then there is the chance that 
 <h3><a name="windows-installer">Windows Installer</a></h3>
 <p>For Windows systems, we have developed a downloadable <a class="reference" href="https://sourceforge.net/projects/ctrax/files/Ctrax%20in%20Windows/">Windows Installer</a>.
 Run the installer to install Ctrax to your Desktop and/or Start Menu. Ctrax can then be launched by double-clicking the Ctrax icon on the Desktop or selecting Ctrax from the Start Menu.</p>
-<p>Ctrax requires Windows XP or later.</p>
+<p>Ctrax requires Windows 7 or later.</p>
 
 <h3><a name="macos-installer">Mac Installer</a></h3>
 <p>For Mac OS X systems, we have developed a downloadable <a href="https://sourceforge.net/projects/ctrax/files/Ctrax%20in%20Mac%20OS/">Mac OS X Installer</a>. Run the installer package to install Ctrax to your Applications folder. Ctrax can then be launched from your Applications menu.</p>
@@ -308,15 +308,15 @@ Run the installer to install Ctrax to your Desktop and/or Start Menu. Ctrax can 
 
 <h3><a name="ubuntu-package">Ubuntu Package</a></h3>
 <p>For Ubuntu Linux systems, we have developed Debian packages containing pre-compiled versions of Ctrax for 32- and 64-bit architectures. These are distributed from <a class="reference" href="https://launchpad.net/~ctrax/+archive/ppa">the Ctrax PPA Repository</a>.</p>
-<p>To install, you must add both the <a class="reference" href="https://launchpad.net/~ctrax/+archive/ppa">Ctrax PPA</a> and <a class="reference" href="http://strawlab.org/">the Straw Lab</a>'s repository to your sources list and then install the package <tt>python-ctrax</tt>. Subsequently, you can run Ctrax from the command line by typing <tt class="bg">Ctrax</tt>. From the command line, this sequence of commands should install and run Ctrax under Ubuntu Precise:</p>
+<p>To install, you must add both the <a class="reference" href="https://launchpad.net/~ctrax/+archive/ppa">Ctrax PPA</a> and <a class="reference" href="http://strawlab.org/">the Straw Lab</a>'s repository to your sources list and then install the package <tt>python-ctrax</tt>. Subsequently, you can run Ctrax from the command line by typing <tt class="bg">Ctrax</tt>. From the command line, this sequence of commands should install and run Ctrax under Ubuntu Xenial or Yakkety:</p>
 <pre>wget -q http://debs.strawlab.org/astraw-archive-keyring.gpg -O - | sudo apt-key add -
-sudo sh -c 'echo "deb http://debs.strawlab.org/ precise/" >> \
+sudo sh -c 'echo "deb http://debs.strawlab.org/ xenial/" >> \
    /etc/apt/sources.list.d/strawlab_public.list'
-sudo sh -c 'echo "deb-src http://debs.strawlab.org/ precise/" >> \
+sudo sh -c 'echo "deb-src http://debs.strawlab.org/ xenial/" >> \
    /etc/apt/sources.list.d/strawlab_public.list'
 sudo add-apt-repository ppa:ctrax/ppa
 sudo apt-get update
-sudo apt-get install python-ctrax python-matplotlib
+sudo apt-get install python-ctrax python-matplotlib python-opencv
 Ctrax</pre>
 <p>For some mysterious reason, <tt>python-matplotlib</tt> has to be specified as above, otherwise it will not install automatically. If pieces of the Straw Lab's Motmot toolkit do not install correctly, installing the <tt>python-motmot-fview</tt> package should retrieve them.</p>
 
@@ -331,11 +331,11 @@ Ctrax</pre>
 <p>Ctrax depends on the following Python packages:</p>
 <ul>
   <li><a class="reference" href="http://www.python.org/">Python 2.x</a> &gt;= 2.5</li>
-  <li><a class="reference" href="http://www.wxpython.org/">wxPython</a> 
+  <li><a class="reference" href="http://www.wxpython.org/">wxPython</a>
 version &gt;= 2.8</li>
-  <li><a class="reference" href="http://numpy.scipy.org/">Numpy</a> 
+  <li><a class="reference" href="http://numpy.scipy.org/">Numpy</a>
 version &gt;= 1.3.0</li>
-  <li><a class="reference" href="http://www.scipy.org/">Scipy</a> version 
+  <li><a class="reference" href="http://www.scipy.org/">Scipy</a> version
 &gt;= 0.7.1</li>
   <li><a class="reference" href="http://www.pythonware.com/products/pil/">PIL</a>
  version &gt;= 1.1.6</li>
@@ -349,7 +349,7 @@ version &gt;= 1.3.0</li>
   <li><a class="reference" href="http://code.astraw.com/projects/motmot/">motmot</a>.ufmf
  version &gt;= 0.3.2</li>
   <li><a href="http://opencv.org/">OpenCV</a> version &gt;=2.4.2</li>
-  <li><a class="reference" href="http://www.cython.org/">Cython</a> &gt;= 
+  <li><a class="reference" href="http://www.cython.org/">Cython</a> &gt;=
 0.12.1</li>
 </ul>
 
@@ -373,7 +373,7 @@ sudo apt-get install python-motmot-wxvideo python-motmot-wxvalidatedtext</pre>
 <hr class="h2-divider"><h2><a name="matlab-toolboxes-requirements">Matlab Toolboxes Requirements</a></h2>
 
 <h3>FixErrors Requirements</h3>
-<p>The FixErrors GUI is written in Matlab, and requires <a class="reference" href="http://www.mathworks.com/products/matlab/">Matlab</a> version 
+<p>The FixErrors GUI is written in Matlab, and requires <a class="reference" href="http://www.mathworks.com/products/matlab/">Matlab</a> version
 &gt;= 2009b. Licenses for the <a class="reference" href="http://www.mathworks.com/products/image/">Matlab Image Processing Toolbox</a> and the <a class="reference" href="http://www.mathworks.com/products/statistics/">Matlab Statistics Toolbox</a> are also necessary.</p>
 
 <h3>BehavioralMicroarray Requirements</h3>
@@ -382,15 +382,15 @@ sudo apt-get install python-motmot-wxvideo python-motmot-wxvalidatedtext</pre>
 <hr class="h2-divider"><h2><a name="matlab-toolboxes-installation">Matlab Toolboxes Installation</a></h2>
 
 <h3>Shared files</h3>
-<p>FixErrors and BehavioralMicroarray rely on a common library of 
-Matlab helper functions. If you plan to use both the FixErrors Matlab 
-GUI and the BehavioralMicroarray Matlab 
+<p>FixErrors and BehavioralMicroarray rely on a common library of
+Matlab helper functions. If you plan to use both the FixErrors Matlab
+GUI and the BehavioralMicroarray Matlab
 Toolbox, download the latest release of all the Matlab code for the <a class="reference" href="https://sourceforge.net/projects/ctrax/files/Matlab%20complete/">Ctrax Matlab Toolboxes Latest Release</a>.</p>
 
 <h3><a name="fixerrors-installation">FixErrors Installation</a></h3>
 <h4>Download:</h4>
 <ul>
-  <li>All of the Matlab code necessary to run the FixErrors GUI (FixErrors and general helper functions) can be downloaded from the <a class="reference" 
+  <li>All of the Matlab code necessary to run the FixErrors GUI (FixErrors and general helper functions) can be downloaded from the <a class="reference"
 href="http://sourceforge.net/projects/ctrax/files/Matlab%20FixErrors/">FixErrors Matlab GUI Latest Release</a>.</li>
   <li>The Matlab code specific to the FixErrors GUI can be downloaded from <a class="reference" href="http://sourceforge.net/projects/ctrax/files/Matlab%20FixErrors/">FixErrors Matlab GUI Only Latest Release</a>.</li>
   <li>The development version of the FixErrors and Matlab helper code can be checked out from the <a class="reference" href="http://subversion.tigris.org/">Subversion</a> repository (see instructions at <a class="reference" href="https://sourceforge.net/scm/?type=svn&group_id=552243">Ctrax SVN Instructions</a>). The FixErrors code is in the directory <tt>ctrax/trunk/fixerrors</tt> and the Matlab helper functions are in the directory <tt>ctrax/trunk/matlab</tt>.</li>
@@ -402,14 +402,14 @@ href="http://sourceforge.net/projects/ctrax/files/Matlab%20FixErrors/">FixErrors
   <li>Unzip the downloaded Matlab code. Note the location of the downloaded directory <tt>fixerrors</tt>.</li>
   <li>Start up Matlab.</li>
   <li>Change into the <tt>fixerrors</tt> directory.</li>
-  <li>Run the script <tt>fixerrors</tt> by typing <tt>fixerrors</tt> at 
+  <li>Run the script <tt>fixerrors</tt> by typing <tt>fixerrors</tt> at
 the command line.</li>
 </ol>
 
 <h3><a name="behavioralmicroarray-installation">BehavioralMicroarray Installation</a></h3>
 <h4>Download:</h4>
 <ul>
-  <li>All of the Matlab code necessary for the 
+  <li>All of the Matlab code necessary for the
 BehavioralMicroarray Toolbox (BehavioralMicroarray and general helper functions) can be downloaded from <a class="reference" href="http://sourceforge.net/projects/ctrax/files/Matlab%20BehavioralMicroarray/">BehavioralMicroarray
  Matlab Toolbox Latest Release</a>.</li>
   <li>The Matlab code specific to the BehavioralMicroarray toolbox can be downloaded from <a class="reference" href="http://sourceforge.net/projects/ctrax/files/Matlab%20BehavioralMicroarray/">BehavioralMicroarray

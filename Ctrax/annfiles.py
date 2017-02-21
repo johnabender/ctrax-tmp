@@ -1040,9 +1040,9 @@ class AnnotationFile (object):
 
         # first get ntargets to allocate other matrices
         off = self.firstframetracked
-        for i in range(nframes):
+        for i in xrange(nframes):
             ntargets[i] = len(self[off+i])
-        z = num.sum(ntargets)
+        z = num.sum(ntargets).astype(num.int64)
 
         # allocate arrays as all NaNs
         try:

@@ -6,6 +6,7 @@ import os # use os for manipulating path names
 import platform
 import sys # use sys for parsing command line
 import time # use time for setting playback rate
+import warnings
 
 import wx
 from wx import xrc
@@ -14,6 +15,8 @@ num.seterr( invalid='raise' ) # raise errors on numerical exceptions
 num.seterr( divide='raise' )
 num.seterr( over='warn' )
 num.seterr( under='ignore' )
+#warnings.filterwarnings("error", category=num.VisibleDeprecationWarning)
+
 from scipy.misc import imresize
 from matplotlib import __version__ as mpl_version
 try:
@@ -85,7 +88,7 @@ class CtraxApp (algorithm.CtraxAlgorithm): # eventually inherits from wx.App
 	Print command line arguments for Ctrax.
 	"""
         self.RestoreStdio()
-        print """Ctrax:
+        print """Ctrax version {0}:
 Optional Command Line Arguments:
 --Interactive={True,False}
 --Output=<movie.fmf.ann>
@@ -136,7 +139,7 @@ If CsvFile is not set, no CSV output will be exported.
 
 If DiagnosticsFile is not set, then
 <basename>_ctraxdiagnostics.txt will be used.
-"""
+""".format(__version__)
 
     def ParseCommandLine(self):
 	"""
@@ -157,7 +160,10 @@ If DiagnosticsFile is not set, then
         if len( args ) == 1:
             if args[0] == '--help':
                 self.PrintUsage()
-                sys.exit( 1 )
+                sys.exit(1)
+            elif args[0] == '--version':
+                print "Ctrax", __version__
+                sys.exit(1)
             elif args[0].startswith( '-psn_' ):
                 # in Mac, launching from Finder sends a process serial number
                 args = []

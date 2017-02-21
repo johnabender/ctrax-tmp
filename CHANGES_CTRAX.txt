@@ -1,3 +1,13 @@
+changes in Ctrax version 0.5.14
+===============================
+- added --version CLI option
+
+changes in Ctrax version 0.5.13
+===============================
+- skipped version 0.5.12 due to more Ubuntu PPA struggles
+- updated build dependencies in Ubuntu PPA
+- built natively in Windows 10
+
 changes in Ctrax version 0.5.11
 ===============================
 - skipped versions 0.5.9 and 0.5.10 due to Ubuntu PPA struggles
@@ -192,7 +202,7 @@ changes in Ctrax version 0.3.0
 - fixed bug in prompting for choosing orientations
 - new tracking setting (observation parameter) to limit number of flies tracked
 - tracking settings "observation properties" now updates when frame is changed
-- Ctrax now checks for the availability of newer releases 
+- Ctrax now checks for the availability of newer releases
 
 
 changes in Ctrax version 0.2.4

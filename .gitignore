@@ -1,6 +1,9 @@
+build/
 deb_dist/
 dist/
 tmp/
 version.txt
 Ctrax-*.tar.gz
 *.egg-info
+kcluster2d/kcluster2d_cython.c
+tracking_funcs/tracking_funcs.c

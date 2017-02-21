@@ -353,7 +353,8 @@ class Hindsight:
         new_ells = [ellipseinterpolate( start, end, t-t1+1, t2-t ) \
                     for t in range( t1, t2 )]
         for ellipse in new_ells:
-            if not self.bg.isarena[num.rint(ellipse.center.y), num.rint(ellipse.center.x)]:
+            if not self.bg.isarena[num.rint(ellipse.center.y).astype(num.int64),
+                                   num.rint(ellipse.center.x).astype(num.int64)]:
                 if DEBUG_LEVEL > 1: print "interp moved out of arena at %.f,%.f" % (ellipse.center.x, ellipse.center.y)
                 return False
         for t, ellipse in zip( range( t1, t2 ), new_ells ):
