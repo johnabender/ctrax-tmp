@@ -274,11 +274,12 @@ class CtraxAlgorithm (settings.AppWithSettings):
 
     def DoAll(self):
 
-        if not params.interactive:
-            self.RestoreStdio()
+        # if not params.interactive:
+        #     self.RestoreStdio()
+        # seems redundant to Ctrax.py:181, removed in v0.5.14 2/26/17
 
         print "Performing preprocessing...\n"
-	self.DoAllPreprocessing()
+        self.DoAllPreprocessing()
 
         # initialize ann files
 

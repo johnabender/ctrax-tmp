@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # KMB 11/06/2008
 
-
+import distutils
+from distutils import util as distutils_util
 import os # use os for manipulating path names
 import platform
 import sys # use sys for parsing command line
@@ -178,7 +179,8 @@ If DiagnosticsFile is not set, then
                 params.enable_feedback( False )
                 # if we were redirecting to an output window,
                 # restore stdio to the command line prompt
-                self.RestoreStdio()
+                if not os.getenv('CTRAX_REDIRECT_FILENAME'):
+                    self.RestoreStdio()
 
         for i in range(len(args)):
 	    # the arguments should be of the form --<paramname>=<paramvalue>
@@ -1561,11 +1563,6 @@ the new name is created and returned without user input."""
             self.EnableControls()
 
 
-    def OnCheckBatchStats( self, evt ):
-        """Batch statistics box checked. Force re-read of annotation data."""
-        self.batch_data = None # currently irrelevant
-
-
     def OnHelp( self, evt ):
         """Help requested. Popup box with website."""
         wx.MessageBox( "Documentation available at\nhttp://ctrax.sourceforge.net", "Help", wx.OK )
@@ -1577,10 +1574,14 @@ the new name is created and returned without user input."""
 def main():
     args = (0,)
     kw = {}
-    if (not int(os.environ.get('CTRAX_NO_REDIRECT','0'))):
+    dont_redirect = distutils_util.strtobool(os.getenv('CTRAX_NO_REDIRECT','0'))
+    if not dont_redirect:
         # redirect to a window
         args = ()
         kw = dict(redirect=True)
+        if os.getenv('CTRAX_REDIRECT_FILENAME'):
+            # redirect to a file instead of a window
+            kw['filename'] = os.getenv('CTRAX_REDIRECT_FILENAME')
 
     # for debugging only: reseed the random number generator at 0 for repeatable behavior
     if DEBUG_REPEATABLE_BEHAVIOR:

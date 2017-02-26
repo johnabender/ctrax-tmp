@@ -1,6 +1,7 @@
 changes in Ctrax version 0.5.14
 ===============================
 - added --version CLI option
+- fixed AVI reader in Windows (broken in 0.5.13)
 
 changes in Ctrax version 0.5.13
 ===============================
