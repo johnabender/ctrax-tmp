@@ -231,7 +231,7 @@ If DiagnosticsFile is not set, then
                 try:
                     start_frame = float(value)
                     if start_frame < 0 or round(start_frame) != start_frame:
-                        raise NotImplementedError
+                        raise ValueError
                 except:
                     print "FirstFrameTrack must be an integer greater than or equal to 0"
                     self.PrintUsage()
@@ -1180,7 +1180,7 @@ the new name is created and returned without user input."""
         self.menu.SetLabel( xrc.XRCID("menu_track_start"), const.TRACK_STOP )
         self.menu.Check( xrc.XRCID("menu_playback_show_ann"), True )
 
-	self.EnableControls()
+        self.EnableControls()
 
         wx.Yield() # refresh GUI
 
@@ -1206,7 +1206,7 @@ the new name is created and returned without user input."""
                     self.abort_sbfmf_writing( details )
 
         elif evt is not None and evt.GetId() == xrc.XRCID("menu_track_resume_here"):
-	    # if resuming here, then erase parts of track after current frame
+            # if resuming here, then erase parts of track after current frame
 
             # the latest possible frame to start tracking on is
             # lastframetracked

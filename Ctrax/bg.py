@@ -33,7 +33,9 @@ SAVE_STUFF = False
 USE_SAVED = False # USE_SAVED takes precedence over SAVE_STUFF
 
 DEBUG_BGBUFFER = False
-if not DEBUG:
+if DEBUG:
+    import pdb
+else:
     DEBUG_BGBUFFER = False
 
 
@@ -971,6 +973,7 @@ class BackgroundCalculator (bg_settings.BackgroundSettings):
                     self.curr_im, stamp = self.movie.get_frame( int(framenumber) )
                 except:
                     print "failed getting frame", framenumber
+                    if DEBUG: pdb.set_trace()
                     raise
             else:
                 self.curr_im = im

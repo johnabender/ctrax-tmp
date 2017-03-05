@@ -59,7 +59,7 @@ class CtraxAlgorithm (settings.AppWithSettings):
             wx.Yield()
 
         # initialize hindsight data structures
-        self.hindsight = hindsight.Hindsight(self.ann_file,self.bg_imgs)
+        self.hindsight = hindsight.Hindsight(self.ann_file, self.bg_imgs)
 
         # initialize dfore and connected component buffer
         self.bg_imgs.set_buffer_maxnframes()
@@ -69,7 +69,7 @@ class CtraxAlgorithm (settings.AppWithSettings):
 
         self.break_flag = False
 
-        for self.start_frame in range(self.start_frame,self.movie.get_n_frames()):
+        for self.start_frame in range(self.start_frame, self.movie.get_n_frames()):
             if DEBUG or DEBUG_TRACKINGSETTINGS: print "frame", self.start_frame
 
             # KB 20120109 added last_frame command-line option
@@ -193,7 +193,7 @@ class CtraxAlgorithm (settings.AppWithSettings):
         if hasattr( self, 'track_timer_cancel' ):
             delattr( self, 'track_timer_cancel' )
             return
-        
+
         elapsed = time.time() - self.track_timer_start_time
         h = int( (elapsed - (elapsed % (60.*60.)))/60./60. )
         elapsed -= h*60.*60.
@@ -283,9 +283,9 @@ class CtraxAlgorithm (settings.AppWithSettings):
 
         # initialize ann files
 
-        # if resuming tracking, we will keep the tracks from 
-        # frames firstframetracked to lastframetracked-1 
-        # (remove last frame in case writing the last frame 
+        # if resuming tracking, we will keep the tracks from
+        # frames firstframetracked to lastframetracked-1
+        # (remove last frame in case writing the last frame
         # was interrupted)
         if params.noninteractive_resume_tracking and self.ann_file.lastframetracked > 0:
             print "resuming at", self.ann_file.lastframetracked
@@ -324,7 +324,7 @@ class CtraxAlgorithm (settings.AppWithSettings):
         # write the sbfmf index and close the sbfmf file
         if self.dowritesbfmf and self.movie.writesbfmf_isopen():
             self.movie.writesbfmf_close(self.start_frame)
-        
+
         print "Choosing Orientations..."
         # choose orientations
         choose_orientations = chooseorientations.ChooseOrientations(self.frame,interactive=False)

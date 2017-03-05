@@ -334,7 +334,10 @@ class AnnotationFile (object):
         except BgImgShapeNoneError:
             pass
         except Exception, details:
-            print "error getting image from ann-file with target shape", self.bg_img_shape, ":", details
+            try:
+                print "error getting image from ann-file with target shape {} and imported image shape {}: {}".format(self.bg_img_shape, img.shape, details)
+            except:
+                print "error getting image from ann-file: {}".format(details)
         else:
             return img
         finally:

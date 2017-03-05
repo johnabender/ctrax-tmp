@@ -1049,17 +1049,26 @@ class CompressedAvi:
         if not self.source.isOpened():
             raise IOError( "OpenCV could not open the movie %s" % filename )
 
-        self.start_time = self.source.get( cv2.CAP_PROP_POS_MSEC )
-        self.fps = self.source.get( cv2.CAP_PROP_FPS )
-        self.n_frames = int( self.source.get( cv2.CAP_PROP_FRAME_COUNT ) )
+        if hasattr(cv2, 'cv'): # OpenCV 2.x
+            self.start_time = self.source.get( cv2.cv.CV_CAP_PROP_POS_MSEC )
+            self.fps = self.source.get( cv2.cv.CV_CAP_PROP_FPS )
+            self.n_frames = int( self.source.get( cv2.cv.CV_CAP_PROP_FRAME_COUNT ) )
+        else: # OpenCV 3.x
+            self.start_time = self.source.get( cv2.CAP_PROP_POS_MSEC )
+            self.fps = self.source.get( cv2.CAP_PROP_FPS )
+            self.n_frames = int( self.source.get( cv2.CAP_PROP_FRAME_COUNT ) )
         self.frame_delay_us = 1e6 / self.fps
 
         # added to help masquerade as FMF file:
         self.filename = filename
 
         # read in the width and height of each frame
-        self.width = int( self.source.get( cv2.CAP_PROP_FRAME_WIDTH ) )
-        self.height = int( self.source.get( cv2.CAP_PROP_FRAME_HEIGHT ) )
+        if hasattr(cv2, 'cv'): # OpenCV 2.x
+            self.width = int( self.source.get( cv2.cv.CV_CAP_PROP_FRAME_WIDTH ) )
+            self.height = int( self.source.get( cv2.cv.CV_CAP_PROP_FRAME_HEIGHT ) )
+        else: # OpenCV 3.x
+            self.width = int( self.source.get( cv2.CAP_PROP_FRAME_WIDTH ) )
+            self.height = int( self.source.get( cv2.CAP_PROP_FRAME_HEIGHT ) )
         self.MAXBUFFERSIZE = num.round(200*1000*1000./self.width/self.height)
         self.keyframe_period = 100 ##################
         self.buffersize = min(self.MAXBUFFERSIZE,self.keyframe_period)
@@ -1104,6 +1113,7 @@ class CompressedAvi:
             return self.get_next_frame()
 
         # otherwise, we need to seek
+        if DEBUG_MOVIES: print "seeking to frame %d" % framenumber
         self.seek( framenumber )
         try:
             return self.get_next_frame_and_reset_buffer()
@@ -1139,7 +1149,10 @@ class CompressedAvi:
         return (frame,ts)
 
     def _get_next_frame_helper(self):
-        ts = self.source.get( cv2.CAP_PROP_POS_MSEC )/1000.
+        if hasattr(cv2, 'cv'): # OpenCV 2.x
+            ts = self.source.get( cv2.cv.CV_CAP_PROP_POS_MSEC )/1000.
+        else: # OpenCV 3.x
+            ts = self.source.get( cv2.CAP_PROP_POS_MSEC )/1000.
         retval, im = self.source.read()
         if not retval:
             raise IOError( "OpenCV failed reading frame %d" % self.currframe )
@@ -1296,7 +1309,10 @@ class CompressedAvi:
 
     def seek(self,framenumber):
         self.currframe = framenumber
-        self.source.set( cv2.CAP_PROP_POS_FRAMES, self.currframe )
+        if hasattr(cv2, 'cv'): # OpenCV 2.x
+            self.source.set( cv2.cv.CV_CAP_PROP_POS_FRAMES, self.currframe )
+        else: # OpenCV 3.x
+            self.source.set( cv2.CAP_PROP_POS_FRAMES, self.currframe )
         return self.currframe
 
 def write_results_to_avi(movie,tracks,filename,f0=None,f1=None):

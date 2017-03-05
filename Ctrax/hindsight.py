@@ -11,11 +11,13 @@ import estconncomps as est
 import kcluster2d as kcluster
 import matchidentities
 
-DEBUG_LEVEL = 0 # 0 == none, 1 == important, 2 == verbose
+DEBUG_LEVEL = 1 # 0 == none, 1 == important, 2 == verbose
 from version import DEBUG
 
-if DEBUG: import pdb
-if not DEBUG: DEBUG_LEVEL = 0
+if DEBUG:
+    import pdb
+else:
+    DEBUG_LEVEL = 0
 
 class MyDictionary(dict):
     def __init__(self,emptyval=None):
@@ -30,7 +32,6 @@ class MyDictionary(dict):
 class Milestones:
 
     def __init__(self,tracks,T=None):
-
         if T is None:
             T = tracks.lastframetracked
 
@@ -177,7 +178,7 @@ class Hindsight:
         # T - 3 - t1 - 1 <= params.splitdetection_length
         # id2 can be merged with id1 in all frames t1:T-3
 
-        if DEBUG_LEVEL > 1: print "before fixing, tracks[T-1]: "
+        if DEBUG_LEVEL > 1: print "before fixing %d, tracks[T-1]: " % T
         if DEBUG_LEVEL > 1:
             for tmpid in self.tracks[T-1].iterkeys():
                 print str(self.tracks[T-1][tmpid])
@@ -230,7 +231,7 @@ class Hindsight:
 
         if DEBUG_LEVEL > 0:
             if len( self.tracks ) >= 10:
-                for dbgt in range( 1, 11 ):
+                for dbgt in range(1, 10):
                     for tmpid in self.tracks[T-dbgt].iterkeys():
                         fly = self.tracks[T-dbgt][tmpid]
                         if fly.center.x == 0 and fly.center.y == 0:
@@ -834,9 +835,11 @@ class Hindsight:
 
 
     def cc(self,t):
+        """Calculate connected components for a specific frame."""
 
         # perform background subtraction
-        (dfore,bw) = self.bg.sub_bg(t+params.start_frame,docomputecc=False)
+        if DEBUG_LEVEL > 1: print "cc re-reading frame %d" % (t)
+        (dfore,bw) = self.bg.sub_bg(t, docomputecc=False)
 
         # for each pixel, find the target it most likely belongs to
         (y,x) = num.where(bw)
