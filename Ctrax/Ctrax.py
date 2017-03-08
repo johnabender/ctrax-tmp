@@ -1246,9 +1246,9 @@ the new name is created and returned without user input."""
 
             # update toolbar function
             self.UpdateToolBar('stopped')
-	    self.menu.SetLabel( xrc.XRCID("menu_track_start"), const.TRACK_START )
+        self.menu.SetLabel( xrc.XRCID("menu_track_start"), const.TRACK_START )
 
-	    self.EnableControls()
+        self.EnableControls()
 
 
     def abort_sbfmf_writing( self, exception ):

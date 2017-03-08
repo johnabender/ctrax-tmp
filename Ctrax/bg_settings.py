@@ -62,19 +62,9 @@ class BackgroundSettings:
         self.hf.frame.Bind( wx.EVT_BUTTON, self.OnQuitHF, id=xrc.XRCID("hm_done_button") )
         self.hf.frame.Bind( wx.EVT_CLOSE, self.OnQuitHF )
 
-        self.menu = self.frame.GetMenuBar()
-        #self.frame.Bind( wx.EVT_MENU, self.OnShowBG, id=xrc.XRCID("menu_show_bg") )
-        #self.frame.Bind( wx.EVT_MENU, self.OnShowThresh, id=xrc.XRCID("menu_show_thresh") )
-        #self.frame.Bind( wx.EVT_MENU, self.OnFrameSlider, id=xrc.XRCID("menu_show_bin") )
-        #self.frame.Bind( wx.EVT_BUTTON, self.OnCalcButton, id=xrc.XRCID("button_calculate") )
-        #self.frame.Bind( wx.EVT_BUTTON, self.OnResetButton, id=xrc.XRCID("button_reset") )
-
         # control handles
         self.frame_text = xrc.XRCCTRL( self.frame, "text_frame" )
         self.range_text = xrc.XRCCTRL( self.frame, "text_range" )
-        #self.reset_button = xrc.XRCCTRL( self.frame, "button_reset" )
-        #if self.old_thresh is None:
-        #    self.reset_button.Enable( False )
 
         # set threshold
         self.thresh_slider = xrc.XRCCTRL( self.frame, "slider_thresh" )
@@ -188,8 +178,8 @@ class BackgroundSettings:
         self.opening_struct = self.create_morph_struct(params.opening_radius)
         wxvt.setup_validated_integer_callback( self.closing_radius_textinput,
                                                xrc.XRCID("closing_radius"),
-                                             self.OnClosingRadiusTextEnter,
-                                             pending_color=params.wxvt_bg )
+                                               self.OnClosingRadiusTextEnter,
+                                               pending_color=params.wxvt_bg )
         self.closing_radius_textinput.SetValue( '%d'%params.closing_radius )
         self.closing_radius_textinput.Enable(params.do_use_morphology)
         self.closing_struct = self.create_morph_struct(params.closing_radius)
@@ -203,9 +193,9 @@ class BackgroundSettings:
         # minimum fraction of frames nec. for estimating bg model
         self.min_frac_frames_isback_textinput = xrc.XRCCTRL(self.frame,"min_frac_frames_isback")
         wxvt.setup_validated_float_callback( self.min_frac_frames_isback_textinput,
-                                               xrc.XRCID("min_frac_frames_isback"),
-                                               self.OnMinFracFramesIsBackTextEnter,
-                                               pending_color=params.wxvt_bg )
+                                             xrc.XRCID("min_frac_frames_isback"),
+                                             self.OnMinFracFramesIsBackTextEnter,
+                                             pending_color=params.wxvt_bg )
 
         # fill
         self.expbgfgmodel_fill_chooser = xrc.XRCCTRL(self.frame,"expbgfgmodel_fill")
@@ -230,7 +220,12 @@ class BackgroundSettings:
         self.img_panel.SetAutoLayout( True )
         self.img_panel.Layout()
 
+        # update GUI controls with current values of normalization params
         self.OnNormChoice( None )
+        evt = wx.PyCommandEvent(wx.EVT_TEXT_ENTER.typeId, self.bg_minstd_textinput.GetId())
+        self.bg_minstd_textinput.GetEventHandler().ProcessEvent(evt)
+        evt = wx.PyCommandEvent(wx.EVT_TEXT_ENTER.typeId, self.bg_maxstd_textinput.GetId())
+        self.bg_maxstd_textinput.GetEventHandler().ProcessEvent(evt)
 
 
     def thresh_mult( self ):

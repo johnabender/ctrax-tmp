@@ -1,3 +1,12 @@
+changes in Ctrax version 0.5.16
+===============================
+- update bg normalization thresholds after setting norm choice from settings file
+
+changes in Ctrax version 0.5.15
+===============================
+- fixed hindsight split/merge bug when tracking with a first-frame offset
+- fixed AVI reader in Linux/Mac (broken by 0.5.14 changes)
+
 changes in Ctrax version 0.5.14
 ===============================
 - added --version CLI option
