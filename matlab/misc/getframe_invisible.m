@@ -49,13 +49,26 @@ end
 %Turn off warning in case opengl is not supported and
 %hardcopy needs to use zbuffer
 warnstate = warning('off');
-noanimate('save',get(haxes,'parent'));
-img = hardcopy(haxes, ['-d' renderer], ['-r' num2str(round(pixelsperinch))]);
+try
+   % < Matlab R2017a
+   noanimate('save',get(haxes,'parent'));
+   img = hardcopy(haxes, ['-d' renderer], ['-r' num2str(round(pixelsperinch))]);
+catch
+   % Matlab R2017
+   img = print(hfig, '-RGBImage', ['-' renderer], ['-r' num2str(round(pixelsperinch))]);
+end
+
 if numel(img) == 1,
   fprintf('Could not grab invisible figure. Making visible temporarily.\n');
   set(hfig,'visible','on');
   pause(.1);
-  img = hardcopy(haxes, ['-d' renderer], ['-r' num2str(round(pixelsperinch))]);
+  try
+     % < Matlab R2017a
+     img = hardcopy(haxes, ['-d' renderer], ['-r' num2str(round(pixelsperinch))]);
+  catch
+     % Matlab R2017a
+     img = print(hfig, '-RGBImage', ['-' renderer], ['-r' num2str(round(pixelsperinch))]);
+  end
   pause(.1);
   set(hfig,'visible','off');
 end
@@ -88,9 +101,12 @@ else
 end
 img = img(firstrow:lastrow,firstcol:lastcol,:);
 
-noanimate('restore',get(haxes,'parent'));
 warning(warnstate);
-
+try
+   % < Matlab R2017a
+   noanimate('restore',get(haxes,'parent'));
+catch
+end
 
 function inputType = getInputType(frame)
 if (isscalar(frame) && ishandle(frame)) && (isobject(frame) || (frame > 0))

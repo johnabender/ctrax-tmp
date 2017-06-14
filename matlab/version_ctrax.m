@@ -1,2 +1,2 @@
 function v = version_ctrax()
-v = '0.2.22';
+v = '0.2.23';
