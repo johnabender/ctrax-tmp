@@ -150,7 +150,6 @@ else
     readframe = @(f) read_mjpg_frame(headerinfo,f);
   
   else
-  
     
     if CTRAX_ISVIDEOIO,
       readerobj = videoReader(filename,'preciseFrames',30,'frameTimeoutMS',5000);
@@ -195,7 +194,6 @@ else
           error('Could not open file %s with VideoReader (%s) or with aviread (%s)',...
             filename,getReport(ME_videoreader),getReport(ME_aviread));
         end
-        
         
       end
     end
@@ -243,7 +241,9 @@ im = imread(imfiles{f});
 function [im,stamp] = aviread_helper(filename,f,fps)
 
 if numel(f) == 2,
-  M = aviread_rawy8(filename,f(1):f(2));
+  M = aviread_rawy8(filename,f(1):f(2)); % JAB 8/6/17 - I don't know if aviread_rawy8() ever existed,
+                                         % or where it came from if it did. This code hasn't worked
+                                         % since 2016 at the latest.
 else
   M = aviread_rawy8(filename,f);
 end
