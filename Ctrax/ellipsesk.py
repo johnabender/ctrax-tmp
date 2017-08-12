@@ -448,7 +448,7 @@ def est_shape( bg, tracking_settings_frame=None ):
 
     # compute the median
     iseven = num.mod(n_ell,2) == 0
-    middle1 = num.floor(n_ell/2)
+    middle1 = num.floor(n_ell/2).astype(num.int64)
     middle2 = middle1 - 1
     major.sort()
     minor.sort()

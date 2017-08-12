@@ -9,3 +9,5 @@ kcluster2d/kcluster2d_cython.c
 tracking_funcs/tracking_funcs.c
 .DS_Store
 *.pyc
+
+.fixerrorsrc.mat
