@@ -43,7 +43,7 @@ last_distro='unstable'
 last_revision=1
 revision=1
 
-for distro in 'yakkety' 'xenial' 'trusty'
+for distro in 'artful' 'zesty' 'xenial' 'trusty'
 do
    cd ctrax-$version/
 
