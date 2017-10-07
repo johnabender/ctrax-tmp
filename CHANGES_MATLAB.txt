@@ -1,3 +1,7 @@
+changes in Ctrax Matlab Toolboxes release 0.2.24
+================================================
+- added count_flies_in_frames to Behavioralmicroarray Toolbox
+
 changes in Ctrax Matlab Toolboxes release 0.2.22
 ================================================
 - allow setting a rectangular arena in FixErrors autotracking
