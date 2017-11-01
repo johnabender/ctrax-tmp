@@ -861,7 +861,7 @@ class AnnotationFile (object):
                                        params.mergeddetection_length,
                                        params.splitdetection_length ),
                                   params.maxnframesbuffer )
-                last_frame = min( last_frame, self.lastframetracked - buffer_req )
+                last_frame = min( last_frame, self.lastframetracked - buffer_req - 1 )
                 #print "flushing frames %d:%d to disk" % (len( self.__frame_lookups ), last_frame)
                 self.__write_frames( last_frame )
             else:
